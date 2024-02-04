@@ -9,6 +9,7 @@ public class DungeonCharacter {
     private int myDamageMax;
     private double myAttackSpeed;
     private double myChanceToHit;
+    private int myTurns;
 
     DungeonCharacter(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                      double theChanceToHit) {
@@ -22,14 +23,17 @@ public class DungeonCharacter {
 
     public int attack(DungeonCharacter theCh) {
         Random r = new Random();
-        if (r.nextInt(101) < this.myChanceToHit) {
-            int damageDealt = r.nextInt(myDamageMax - myDamageMin) + myDamageMin;
-            theCh.takeDamage(damageDealt);
-            return damageDealt;
-        } else {
-            System.out.println("Missed attack!");
-            return 0;
+        int totalDamage = 0;
+        while (myTurns > 1) {
+            if (r.nextInt(101) < this.myChanceToHit) {
+                int damageDealt = r.nextInt(myDamageMax - myDamageMin) + myDamageMin;
+                theCh.takeDamage(damageDealt);
+                totalDamage += damageDealt;
+            } else {
+                System.out.println("Missed attack!");
+            }
         }
+        return totalDamage;
     }
 
     public void takeDamage(int theDamage) {
@@ -38,5 +42,9 @@ public class DungeonCharacter {
 
     public void heal(int theHealAmt) {
         this.myHealthPoints += theHealAmt;
+    }
+
+    public void startBattle(DungeonCharacter theCh) {
+        myTurns = (int)(this.myAttackSpeed / theCh.myAttackSpeed);
     }
 }
