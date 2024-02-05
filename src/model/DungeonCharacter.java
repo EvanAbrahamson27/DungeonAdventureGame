@@ -1,5 +1,7 @@
 package model;
 
+import controller.DungeonAdventure;
+
 import java.util.Random;
 
 public class DungeonCharacter {
@@ -38,10 +40,12 @@ public class DungeonCharacter {
 
     public void takeDamage(int theDamage) {
         this.myHealthPoints -= theDamage;
+        DungeonAdventure.addToLog("Ouch! " + myName + " took " + theDamage + " damage!");
     }
 
     public void heal(int theHealAmt) {
         this.myHealthPoints += theHealAmt;
+        DungeonAdventure.addToLog(myName + " has been healed for " + theHealAmt + " damage!");
     }
 
     public void startBattle(DungeonCharacter theCh) {

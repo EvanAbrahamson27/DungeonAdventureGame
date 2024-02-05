@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added base GUI&#10;- Made DungeonAdventure runnable (runs GUI and initializes Hero)&#10;- Added some getters to DungeonCharacter&#10;- Created GUI GameWindow&#10;- Created Panels for GUI">
-      <change afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LogPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/MapPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/RoomPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/StatPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/TempDungeonImage.jpg" afterDir="false" />
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory">
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonAdventure.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +37,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="a2efd55c-ecff-41d9-9e1e-fe17f834dca5" />
+        <option name="url" value="https://github.com/EvanAbrahamson27/DungeonAdventureGame.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -46,12 +59,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Owner\IdeaProjects\DungeonAdventureGame\src\view" />
@@ -59,12 +73,26 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="DungeonAdventure" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.DungeonAdventure" />
+    <configuration name="DungeonAdventure" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="controller.DungeonAdventure" />
       <module name="DungeonAdventureGame" />
       <extension name="coverage">
         <pattern>
+          <option name="PATTERN" value="*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
           <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -72,11 +100,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.DungeonAdventure" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -146,6 +169,15 @@
     <MESSAGE value="Created intelliJ project" />
     <MESSAGE value="- Created DungeonCharacter and Item classes&#10;- Added basic functionality to Item class&#10;- Added basic functionality to DungeonCharacter class" />
     <MESSAGE value="- Added base GUI&#10;- Made DungeonAdventure runnable (runs GUI and initializes Hero)&#10;- Added some getters to DungeonCharacter&#10;- Created GUI GameWindow&#10;- Created Panels for GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added base GUI&#10;- Made DungeonAdventure runnable (runs GUI and initializes Hero)&#10;- Added some getters to DungeonCharacter&#10;- Created GUI GameWindow&#10;- Created Panels for GUI" />
+    <MESSAGE value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DungeonAdventureGame$DungeonAdventure.ic" NAME="DungeonAdventure Coverage Results" MODIFIED="1707173583983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>*</FILTER>
+      <FILTER>controller.*</FILTER>
+      <FILTER>model.*</FILTER>
+      <FILTER>view.*</FILTER>
+    </SUITE>
   </component>
 </project>

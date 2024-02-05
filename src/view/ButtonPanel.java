@@ -1,6 +1,5 @@
 package view;
 
-import model.DungeonCharacter;
 import model.Hero;
 
 import javax.swing.*;
@@ -14,16 +13,19 @@ public class ButtonPanel extends JPanel {
         addButtons(thePlayer);
     }
 
-    private void addButtons(DungeonCharacter theTarget) {
+    private void addButtons(Hero thePlayer) {
         JButton button = new JButton("Test Damage");
         button.addActionListener(e -> {
             Random r = new Random();
-            theTarget.takeDamage(r.nextInt(theTarget.getDamageMax() - theTarget.getDamageMin())
-                    + theTarget.getDamageMin());
+            thePlayer.takeDamage(r.nextInt(thePlayer.getDamageMax() + 1 - thePlayer.getDamageMin())
+                    + thePlayer.getDamageMin());
         });
         add(button);
         button = new JButton("Test Heal");
-        button.addActionListener(e -> theTarget.heal(5));
+        button.addActionListener(e -> thePlayer.heal(5));
+        add(button);
+        button = new JButton("Use Item");
+        button.addActionListener(e -> thePlayer.useItem("Healing Potion", thePlayer)); //Temp just heal
         add(button);
     }
 }

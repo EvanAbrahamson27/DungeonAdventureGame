@@ -5,7 +5,7 @@ public class Item {
     final private char myItemType;
     final private String myName;
 
-    Item(char theItemType, int theItemUseAmt, String theName) {
+    public Item(char theItemType, int theItemUseAmt, String theName) {
         myUseAmt = theItemUseAmt;
         myItemType = theItemType;
         myName = theName;
@@ -21,17 +21,12 @@ public class Item {
     }
     private void heal(DungeonCharacter theTarget) {
         theTarget.heal(myUseAmt);
-        this.removeFromInventory();
     }
     private void dealDamage(DungeonCharacter theTarget) {
         theTarget.takeDamage(myUseAmt);
-        this.removeFromInventory();
     }
     private void giveVision() {
         // Implement "vision" ability
-    }
-    private void removeFromInventory() {
-
     }
     public char getItemType() {
         return myItemType;
