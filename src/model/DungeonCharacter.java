@@ -3,13 +3,13 @@ package model;
 import java.util.Random;
 
 public class DungeonCharacter {
-    final private String myName;
-    private int myHealthPoints;
-    private int myDamageMin;
-    private int myDamageMax;
-    private double myAttackSpeed;
-    private double myChanceToHit;
-    private int myTurns;
+    final protected String myName;
+    protected int myHealthPoints;
+    protected int myDamageMin;
+    protected int myDamageMax;
+    protected double myAttackSpeed;
+    protected double myChanceToHit;
+    protected int myTurns;
 
     DungeonCharacter(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                      double theChanceToHit) {
@@ -46,5 +46,25 @@ public class DungeonCharacter {
 
     public void startBattle(DungeonCharacter theCh) {
         myTurns = (int)(this.myAttackSpeed / theCh.myAttackSpeed);
+    }
+
+    public int getHealthPoints() {
+        return myHealthPoints;
+    }
+
+    public int getDamageMin() {
+        return myDamageMin;
+    }
+
+    public int getDamageMax() {
+        return myDamageMax;
+    }
+
+    public double getAttackSpeed() {
+        return myAttackSpeed;
+    }
+
+    public double getChanceToHit() {
+        return myChanceToHit;
     }
 }
