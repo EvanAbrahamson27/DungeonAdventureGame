@@ -1,18 +1,16 @@
 package view;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
-public class RoomPanel extends JPanel {
-    RoomPanel() throws IOException {
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
+import java.util.Objects;
 
-        BufferedImage backgroundBufImage = ImageIO.read(new File("src/view/TempDungeonImage.jpg"));
-        Image backgroundImage = backgroundBufImage.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
-        add(new JLabel(new ImageIcon(backgroundImage)));
+public class RoomPanel extends BorderPane {
+    RoomPanel() {
+        Image dungeonBackground = new Image(Objects.requireNonNull(getClass()
+                .getResource("/view/TempDungeonImage.jpg")).toExternalForm());
+        setBackground(new Background(new BackgroundImage(dungeonBackground, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
     }
 }

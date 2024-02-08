@@ -1,32 +1,49 @@
 package view;
 
 import controller.DungeonAdventure;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 
-import javax.swing.*;
-import java.awt.*;
-
-public class LogPanel extends JPanel {
-    final private JTextArea log;
+public class LogPanel extends BorderPane {
+    final private TextArea myLog;
+    final private ScrollPane myScrollPane;
     LogPanel() {
-        setLayout(new GridLayout(1,0));
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(new JLabel("Game Log:"));
-        log = new JTextArea();
-        log.setEditable(false);
-        log.setFocusable(false);
-        log.setFont(new Font("Times New Roman", Font.PLAIN, 10));
-        log.setLineWrap(true);
-        JScrollPane scrollPane = new JScrollPane(log);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        add(log);
+        myLog = new TextArea();
+        myScrollPane = new ScrollPane(myLog);
+        setStyle("-fx-border-color: black;");
+        VBox contentBox = new VBox();
+        contentBox.getChildren().addAll(new Label("Game Log:"), createLog());
+        contentBox.setMaxSize(500, 100);
+
+        setCenter(contentBox);
+
         updateLog();
-        setSize(500, 200);
+    }
+
+    private TextArea createLog() {
+        myLog.setEditable(false);
+        myLog.setFocusTraversable(false);
+        myLog.setFont(new Font("Times New Roman", 18));
+        myLog.setWrapText(true);
+
+        myScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+        return myLog;
     }
 
     private void updateLog() {
-        int delay = 100;
-        Timer updateTimer = new Timer(delay, e ->
-                log.setText(DungeonAdventure.getLog()));
-        updateTimer.start();
+        Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            if (!myLog.getText().equals(DungeonAdventure.getLog())) {
+                myLog.setText(DungeonAdventure.getLog());
+                myLog.positionCaret(myLog.getLength() - 1);
+            }}));
+        updateTimer.setCycleCount(Timeline.INDEFINITE);
+        updateTimer.play();
     }
 }

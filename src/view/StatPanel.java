@@ -1,39 +1,44 @@
 package view;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import model.Hero;
 
-import javax.swing.*;
-import java.awt.*;
-
-public class StatPanel extends JPanel {
-    private JTextArea statsArea;
+public class StatPanel extends BorderPane {
+    private Label statsArea;
 
     StatPanel(Hero thePlayer) {
-        setLayout(new GridLayout(3,0));
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(new JLabel("Stats:"));
+        setStyle("-fx-border-color: black;");
 
-        createStatsList();
+        VBox contentBox = new VBox();
+        contentBox.getChildren().addAll(createStatsList());
+
+        setCenter(contentBox);
+
         updateStats(thePlayer);
     }
 
-    private void createStatsList() {
-        statsArea = new JTextArea();
-        statsArea.setEditable(false);
-        statsArea.setFocusable(false);
-        statsArea.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+    private Label createStatsList() {
+        statsArea = new Label();
+        statsArea.setText("Test!");
+        statsArea.setFont(new Font("Times New Roman", 20));
 
-        add(statsArea);
+        return statsArea;
     }
 
     private void updateStats(Hero thePlayer) {
-        int delay = 100;
-        Timer updateTimer = new Timer(delay, e ->
+        Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event ->
                 statsArea.setText("Health: " + thePlayer.getHealthPoints() +
                         "\nAttack Range: " + thePlayer.getDamageMin() + " - " + thePlayer.getDamageMax() +
                         "\nAttack Speed: " + thePlayer.getAttackSpeed() +
                         "\nChance to Hit: " + thePlayer.getChanceToHit() + "%" +
-                        "\n\nClass: Hero\nSpecial Skill: Self Heal"));
-        updateTimer.start();
+                        "\n\nClass: Hero\nSpecial Skill: Self Heal")));
+        updateTimer.setCycleCount(Timeline.INDEFINITE);
+        updateTimer.play();
     }
 }
