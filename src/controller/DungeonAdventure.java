@@ -2,11 +2,13 @@ package controller;
 
 import model.Hero;
 import model.Item;
+import model.Monster;
 import view.GameWindow;
 
 public class DungeonAdventure {
     public static StringBuilder myLog;
     public static Hero myHero;
+    public static Monster myMonster;
 
     public static void main(String[] theArgs) {
         setupGame(theArgs);
@@ -18,6 +20,9 @@ public class DungeonAdventure {
                 30, 60, 85);
         myHero.addToInventory(new Item('h', 25,
                 "Healing Potion")); //Temp for Item Tests
+        myMonster = new Monster("Zombie", 50,
+                5, 15, 30, 95, 50);
+        myHero.startBattle(myMonster);
         GameWindow.main(theArgs);
     }
 
