@@ -3,42 +3,46 @@ package view;
 import controller.DungeonAdventure;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class LogPanel extends BorderPane {
-    final private TextArea log;
+    final private TextArea myLog;
+    final private ScrollPane myScrollPane;
     LogPanel() {
-        log = new TextArea();
+        myLog = new TextArea();
+        myScrollPane = new ScrollPane(myLog);
         setStyle("-fx-border-color: black;");
         VBox contentBox = new VBox();
         contentBox.getChildren().addAll(new Label("Game Log:"), createLog());
+        contentBox.setMaxSize(500, 100);
+
+        setCenter(contentBox);
 
         updateLog();
-        setPrefSize(500, 200);
     }
 
     private TextArea createLog() {
-        log.setEditable(false);
-        log.setFocusTraversable(false);
-        log.setFont(new Font("Times New Roman", 10));
-        log.setWrapText(true);
+        myLog.setEditable(false);
+        myLog.setFocusTraversable(false);
+        myLog.setFont(new Font("Times New Roman", 18));
+        myLog.setWrapText(true);
 
-        ScrollPane scrollPane = new ScrollPane(log);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        myScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-        return log;
+        return myLog;
     }
 
     private void updateLog() {
-        Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event ->
-                log.setText(DungeonAdventure.getLog())));
+        Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            if (!myLog.getText().equals(DungeonAdventure.getLog())) {
+                myLog.setText(DungeonAdventure.getLog());
+                myLog.positionCaret(myLog.getLength() - 1);
+            }}));
         updateTimer.setCycleCount(Timeline.INDEFINITE);
         updateTimer.play();
     }

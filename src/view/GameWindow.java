@@ -1,14 +1,13 @@
 package view;
 
+import controller.DungeonAdventure;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import model.Hero;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
-import java.io.IOException;
 
 public class GameWindow extends Application {
     protected ButtonPanel buttonPanel;
@@ -17,17 +16,8 @@ public class GameWindow extends Application {
     protected MapPanel mapPanel;
     protected RoomPanel roomPanel;
 
-//    public GameWindow(Hero thePlayer) throws IOException {
-//        buttonPanel = new ButtonPanel(thePlayer);
-//        statPanel = new StatPanel(thePlayer);
-//        logPanel = new LogPanel();
-//        mapPanel = new MapPanel();
-//        roomPanel = new RoomPanel();
-//    }
-
     @Override
     public void start(Stage theStage) {
-        logPanel = new LogPanel();
         theStage.setTitle("Dungeon Escape");
         theStage.setWidth(1200);
         theStage.setHeight(600);
@@ -36,11 +26,16 @@ public class GameWindow extends Application {
 
         borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
+        buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
+        logPanel = new LogPanel();
+        statPanel = new StatPanel(DungeonAdventure.myHero);
+        roomPanel = new RoomPanel();
+
         borderPane.setBottom(buttonPanel);
-//        borderPane.setRight(statPanel);
+        borderPane.setRight(statPanel);
         borderPane.setTop(logPanel);
 //        borderPane.setLeft(mapPanel);
-//        borderPane.setCenter(roomPanel);
+        borderPane.setCenter(roomPanel);
 
         Scene scene = new Scene(borderPane);
         theStage.setScene(scene);
