@@ -12,7 +12,7 @@ public abstract class DungeonCharacter {
     protected double myAttackSpeed;
     protected double myChanceToHit;
     protected int myTurns;
-    protected boolean isDead;
+    protected boolean myIsDead;
 
     DungeonCharacter(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                      double theChanceToHit) {
@@ -22,11 +22,11 @@ public abstract class DungeonCharacter {
         myDamageMax = theDamageMax;
         myAttackSpeed = theAttackSpeed;
         myChanceToHit = theChanceToHit;
-        isDead = false;
+        myIsDead = false;
     }
 
     public void attack(DungeonCharacter theCh) {
-        if (!isDead && theCh.getIsDead()) {
+        if (!myIsDead && !theCh.getIsDead()) {
             Random r = new Random();
             if (myTurns > 0) {
                 if (r.nextInt(101) < this.myChanceToHit) {
@@ -45,7 +45,7 @@ public abstract class DungeonCharacter {
     }
 
     public void takeDamage(int theDamage) {
-        if (!isDead) {
+        if (!myIsDead) {
             this.myHealthPoints -= theDamage;
             String message = ("Ouch! " + myName + " took " + theDamage + " damage!");
             if (this.getClass().equals(Monster.class) && this.myHealthPoints > 0) {
@@ -59,21 +59,21 @@ public abstract class DungeonCharacter {
     }
 
     public void heal(int theHealAmt) {
-        if (!isDead) {
+        if (!myIsDead) {
             this.myHealthPoints += theHealAmt;
             DungeonAdventure.addToLog(myName + " has been healed for " + theHealAmt + " damage!");
         }
     }
 
     public void startBattle(DungeonCharacter theCh) {
-        if (!isDead && theCh.getIsDead()) {
+        if (!myIsDead && !theCh.getIsDead()) {
             myTurns = (int)(this.myAttackSpeed / theCh.myAttackSpeed);
             if (myTurns == 0) myTurns++;
         }
     }
 
     public void die() {
-        isDead = true;
+        myIsDead = true;
         DungeonAdventure.addToLog(myName + " has died.");
     }
 
@@ -81,24 +81,8 @@ public abstract class DungeonCharacter {
         return myHealthPoints;
     }
 
-    public int getDamageMin() {
-        return myDamageMin;
-    }
-
-    public int getDamageMax() {
-        return myDamageMax;
-    }
-
-    public double getAttackSpeed() {
-        return myAttackSpeed;
-    }
-
-    public double getChanceToHit() {
-        return myChanceToHit;
-    }
-
     public boolean getIsDead() {
-        return !isDead;
+        return myIsDead;
     }
 
     @Override

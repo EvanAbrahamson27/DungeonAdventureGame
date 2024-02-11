@@ -20,7 +20,7 @@ public class DungeonAdventure {
                 30, 60, 85);
         myHero.addToInventory(new Item('h', 25,
                 "Healing Potion")); //Temp for Item Tests
-        myMonster = new Monster("Zombie", 50,
+        myMonster = new Monster("Skeleton", 50,
                 5, 15, 30, 95, 50);
         myHero.startBattle(myMonster);
         GameWindow.main(theArgs);

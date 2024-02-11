@@ -28,7 +28,7 @@ public class Item {
     private void giveVision() {
         // Implement "vision" ability
     }
-    public char getItemType() {
+    public char getMyItemType() {
         return myItemType;
     }
     @Override

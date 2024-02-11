@@ -37,4 +37,17 @@ public class Hero extends DungeonCharacter {
     public void addToInventory(Item theItem) {
         myInventory.add(theItem);
     }
+    public List<Item> getInventory() {
+        return myInventory;
+    }
+
+    @Override
+    public String toString() {
+        return ("Health: " + getHealthPoints() +
+                "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
+                "\nAttack Speed: " + myAttackSpeed +
+                "\nChance to Hit: " + myChanceToHit + "%" +
+                "\n\nClass: Hero\nSpecial Skill: Self Heal" +
+                "\n\nItems: ");
+    }
 }

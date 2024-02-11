@@ -14,7 +14,7 @@ public class Monster extends DungeonCharacter {
     }
 
     public void useTurn() {
-        if (!isDead) {
+        if (!myIsDead) {
             while (myTurns > 0) {
                 Random movePicker = new Random();
                 switch (movePicker.nextInt(3)) {
