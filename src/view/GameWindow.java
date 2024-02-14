@@ -2,7 +2,9 @@ package view;
 
 import controller.DungeonAdventure;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
 import javafx.application.Application;
@@ -26,21 +28,33 @@ public class GameWindow extends Application {
 
         borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
-        logPanel = new LogPanel();
-        statPanel = new StatPanel(DungeonAdventure.myHero);
-        roomPanel = new RoomPanel();
+        Button startButton = new Button("Start Game");
+        startButton.setOnAction(e -> startButtonAction(theStage, borderPane, startButton));
+        borderPane.setCenter(startButton);
+        BorderPane.setAlignment(startButton, Pos.CENTER);
 
+        Scene scene = new Scene(borderPane);
+        theStage.setScene(scene);
+
+        theStage.show();
+
+    }
+
+    private void startButtonAction(Stage theStage, BorderPane borderPane, Button startButton) {
+        borderPane.getChildren().remove(startButton); // Remove the Start Game button
+
+        if (buttonPanel == null) {
+            buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
+            logPanel = new LogPanel();
+            statPanel = new StatPanel(DungeonAdventure.myHero);
+            roomPanel = new RoomPanel();
+        }
         borderPane.setBottom(buttonPanel);
         borderPane.setRight(statPanel);
         borderPane.setTop(logPanel);
 //        borderPane.setLeft(mapPanel);
         borderPane.setCenter(roomPanel);
 
-        Scene scene = new Scene(borderPane);
-        theStage.setScene(scene);
-
-        theStage.show();
     }
 
     public static void main(String[] theArgs) {

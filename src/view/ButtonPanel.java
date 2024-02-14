@@ -2,7 +2,9 @@ package view;
 
 import controller.DungeonAdventure;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -36,4 +38,5 @@ public class ButtonPanel extends BorderPane {
 
         return buttonBox;
     }
+
 }

@@ -10,7 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
-public class LogPanel extends BorderPane {
+public class  LogPanel extends BorderPane {
     final private TextArea myLog;
     final private ScrollPane myScrollPane;
     LogPanel() {
