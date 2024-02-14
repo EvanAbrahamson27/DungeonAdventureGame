@@ -13,6 +13,7 @@ public abstract class DungeonCharacter {
     protected double myChanceToHit;
     protected int myTurns;
     protected boolean myIsDead;
+    protected Position myPosition;
 
     DungeonCharacter(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                      double theChanceToHit) {
@@ -23,6 +24,7 @@ public abstract class DungeonCharacter {
         myAttackSpeed = theAttackSpeed;
         myChanceToHit = theChanceToHit;
         myIsDead = false;
+        myPosition = new Position(0,0);
     }
 
     public void attack(DungeonCharacter theCh) {

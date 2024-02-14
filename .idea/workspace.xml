@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory">
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DungeonCharacter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,6 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/belle/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
     "project.structure.last.edited": "Libraries",
@@ -158,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707420380170</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Add the start button when starting the game">
+      <created>1707884616505</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707884616505</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,7 +209,8 @@
     <MESSAGE value="- Added base GUI&#10;- Made DungeonAdventure runnable (runs GUI and initializes Hero)&#10;- Added some getters to DungeonCharacter&#10;- Created GUI GameWindow&#10;- Created Panels for GUI" />
     <MESSAGE value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
     <MESSAGE value="- Finished updating to JavaFX" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Finished updating to JavaFX" />
+    <MESSAGE value="- Add the start button when starting the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add the start button when starting the game" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
