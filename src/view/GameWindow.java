@@ -74,6 +74,7 @@ public class GameWindow extends Application {
         Menu helpMenu = new Menu("Help");
 
         MenuItem saveItem = new MenuItem("Save");
+        MenuItem restartItem = new MenuItem("Restart");
         MenuItem exitItem = new MenuItem("Exit");
         MenuItem helpItem = new MenuItem("Help");
 
