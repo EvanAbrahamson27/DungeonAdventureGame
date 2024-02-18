@@ -14,6 +14,7 @@ import java.util.Objects;
 public class RoomPanel extends BorderPane {
     final private VBox myContentBox;
     private ImageView myMonsterImage;
+    private ImageView myItemImage;
     RoomPanel() {
         Image dungeonBackground = new Image(Objects.requireNonNull(getClass()
                 .getResource("/images/TempDungeonImage.jpg")).toExternalForm());
@@ -22,17 +23,15 @@ public class RoomPanel extends BorderPane {
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
 
         myContentBox = new VBox();
-        myContentBox.getChildren().add(createMonsterImage());
 
         setCenter(myContentBox);
         myContentBox.setAlignment(Pos.CENTER);
 
-        updateEnemy();
+        updateRoom();
     }
 
     private ImageView createMonsterImage() {
         switch (DungeonAdventure.myMonster.toString()) {
-            case "Zombie" -> myMonsterImage = createImage("/images/HealthPotion.png");
             case "Skeleton" -> myMonsterImage = createImage("/images/Skeleton.png");
             default -> {return null;}
         }
@@ -43,17 +42,38 @@ public class RoomPanel extends BorderPane {
         return myMonsterImage;
     }
 
+    private ImageView createItemImage() {
+        switch (DungeonAdventure.myHero.getRoom().getItem().toString()) {
+            case "Health Potion" -> myItemImage = createImage("/images/HealthPotion.png");
+            case "Vision Potion" -> myItemImage = createImage("/images/VisionPotion.png");
+            case "Damage Potion" -> myItemImage = createImage("/images/DamagePotion.png");
+            default -> {return null;}
+        }
+
+        myItemImage.setFitWidth(150);
+        myItemImage.setPreserveRatio(true);
+
+        return myItemImage;
+    }
+
     private ImageView createImage(final String theFileLocation) {
         return new ImageView(new Image(Objects.requireNonNull(getClass()
                 .getResource(theFileLocation)).toExternalForm()));
     }
 
-    private void updateEnemy() {
+    private void updateRoom() {
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
-            if (DungeonAdventure.myMonster.getIsDead()) {
+            if (DungeonAdventure.myMonster != null && DungeonAdventure.myMonster.getIsDead()) {
                 myContentBox.getChildren().remove(myMonsterImage);
-            } else if (myContentBox.getChildren().size() == 0) {
+            } else if (myContentBox.getChildren().size() == 0 && DungeonAdventure.myMonster != null) {
                 myContentBox.getChildren().add(createMonsterImage());
+            }
+
+            if (DungeonAdventure.myHero.getRoom().getItem() != null) {
+                myContentBox.getChildren().add(createItemImage());
+            } else if (!myContentBox.getChildren().contains(myItemImage) &&
+                    DungeonAdventure.myHero.getRoom().getItem() == null) {
+                myContentBox.getChildren().remove(myItemImage);
             }
         }));
         updateTimer.setCycleCount(Timeline.INDEFINITE);
