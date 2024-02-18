@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory">
+      <change afterPath="$PROJECT_DIR$/src/model/Gremlin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Ogre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Priestess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Skeleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Thief.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,19 +58,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/belle/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/belle/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Owner\IdeaProjects\DungeonAdventureGame\src\view" />

@@ -30,9 +30,6 @@ public class Hero extends DungeonCharacter {
         }
         DungeonAdventure.addToLog("No item found");
     }
-    public void performSpecialSkill() {
-
-    }
     public void addToInventory(Item theItem) {
         myInventory.add(theItem);
         DungeonAdventure.addToLog("Picked up a " + theItem);
