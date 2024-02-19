@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Gremlin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Ogre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Skeleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +37,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="a2efd55c-ecff-41d9-9e1e-fe17f834dca5" />
+        <option name="accountId" value="ef265a56-3e1e-4396-97d2-f6d0b17ee01f" />
         <option name="url" value="https://github.com/EvanAbrahamson27/DungeonAdventureGame.git" />
       </UrlAndAccount>
     </option>
@@ -170,21 +166,6 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -202,6 +183,21 @@
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
