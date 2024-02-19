@@ -72,16 +72,27 @@ public class GameWindow extends Application {
 
         Menu fileMenu = new Menu("File");
         Menu helpMenu = new Menu("Help");
+        Menu debugMenu = new Menu("Debug");
+        Menu debugClassMenu = new Menu("Change Class");
 
         MenuItem saveItem = new MenuItem("Save");
         MenuItem restartItem = new MenuItem("Restart");
         MenuItem exitItem = new MenuItem("Exit");
         MenuItem helpItem = new MenuItem("Help");
 
+        MenuItem dbClassP = new MenuItem("Priestess");
+        MenuItem dbClassW = new MenuItem("Warrior");
+        MenuItem dbClassT = new MenuItem("Thief");
+        dbClassP.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Priestess"));
+        dbClassW.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Warrior"));
+        dbClassT.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Thief"));
+
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
         fileMenu.getItems().addAll(saveItem, exitItem);
-        helpMenu.getItems().add(helpItem);
+        helpMenu.getItems().addAll(helpItem, debugMenu);
+        debugMenu.getItems().add(debugClassMenu);
+        debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
 
         menuBar.getMenus().addAll(fileMenu, helpMenu);
 

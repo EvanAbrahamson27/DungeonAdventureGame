@@ -9,7 +9,7 @@ public abstract class DungeonCharacter {
     protected int myHealthPoints;
     protected int myDamageMin;
     protected int myDamageMax;
-    protected double myAttackSpeed;
+    protected int myAttackSpeed;
     protected double myChanceToHit;
     protected int myTurns;
     protected boolean myIsDead;
@@ -69,13 +69,14 @@ public abstract class DungeonCharacter {
 
     public void startBattle(DungeonCharacter theCh) {
         if (!myIsDead && !theCh.getIsDead()) {
-            myTurns = (int)(this.myAttackSpeed / theCh.myAttackSpeed);
+            myTurns = (this.myAttackSpeed / theCh.myAttackSpeed);
             if (myTurns == 0) myTurns++;
         }
     }
 
     public void die() {
         myIsDead = true;
+        DungeonAdventure.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(myName + " has died.");
     }
 

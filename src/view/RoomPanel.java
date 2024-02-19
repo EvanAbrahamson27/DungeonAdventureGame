@@ -4,6 +4,7 @@ import controller.DungeonAdventure;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -75,6 +76,19 @@ public class RoomPanel extends BorderPane {
                     DungeonAdventure.myHero.getRoom().getItem() == null) {
                 myContentBox.getChildren().remove(myItemImage);
             }
+
+            // Working on some "animation" stuff
+//            if (DungeonAdventure.myMonster != null && DungeonAdventure.myMonster.getUsingTurn() == 'a') {
+//                Timeline attackAnim = new Timeline(new KeyFrame(Duration.seconds(1), attackEvent -> {
+//                    ColorAdjust colorAdjust = new ColorAdjust();
+//                    colorAdjust.setBrightness(500);
+//                    myContentBox.getChildren().remove(myMonsterImage);
+//                    myMonsterImage.setEffect(colorAdjust);
+//                    myContentBox.getChildren().add(myMonsterImage);
+//                }));
+//                attackAnim.setOnFinished(attackEventOver -> myMonsterImage.setEffect(null));
+//                DungeonAdventure.myMonster.setUsingTurn('f');
+//            }
         }));
         updateTimer.setCycleCount(Timeline.INDEFINITE);
         updateTimer.play();

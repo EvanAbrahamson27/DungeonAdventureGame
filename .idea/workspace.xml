@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added special skills&#10;- Added Debug menu&#10;- Added debug class switch (not functional as of now)&#10;- Added skill cooldowns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Gremlin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Ogre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Priestess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Priestess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Thief.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/RoomPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +34,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="evan" />
+        <entry key="$PROJECT_DIR$" value="aaniyah" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -126,6 +132,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -170,21 +177,6 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -206,6 +198,21 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created intelliJ project" />
@@ -214,14 +221,15 @@
     <MESSAGE value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
     <MESSAGE value="- Finished updating to JavaFX" />
     <MESSAGE value="-Added child classes for Hero and Monster&#10;-Added menu bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added child classes for Hero and Monster&#10;-Added menu bar" />
+    <MESSAGE value="- Added special skills&#10;- Added Debug menu&#10;- Added debug class switch (not functional as of now)&#10;- Added skill cooldowns" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added special skills&#10;- Added Debug menu&#10;- Added debug class switch (not functional as of now)&#10;- Added skill cooldowns" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DungeonAdventureGame$DungeonAdventure.ic" NAME="DungeonAdventure Coverage Results" MODIFIED="1707174410441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DungeonAdventureGame$DungeonAdventure.ic" NAME="DungeonAdventure Coverage Results" MODIFIED="1707877315452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>*</FILTER>
       <FILTER>controller.*</FILTER>
       <FILTER>model.*</FILTER>
