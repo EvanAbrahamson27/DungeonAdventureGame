@@ -29,7 +29,7 @@ public class GameWindow extends Application {
         BorderPane borderPane = new BorderPane();
 
         // Add game background image
-        Image dungeonBackground = new Image("DungeonBackground.png");
+        Image dungeonBackground = new Image("images/TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
@@ -52,7 +52,8 @@ public class GameWindow extends Application {
 
         Button startButton = new Button("Start Game");
         startButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        startButton.setOnAction(e -> startButtonAction(theStage, borderPane, startButton));
+        startButton.setOnAction(e -> {startButtonAction(theStage, borderPane, startButton);
+                borderPane.getChildren().remove(dungeonImageView);});
 //        borderPane.setCenter(startButton);
 //        BorderPane.setAlignment(startButton, Pos.CENTER);
 
@@ -74,8 +75,6 @@ public class GameWindow extends Application {
         helpButton.setMinWidth(185);
         buttons.getChildren().addAll(startButton, loadGame, helpButton, exitButton);
         borderPane.setCenter(buttons);
-
-//        borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         Scene scene = new Scene(borderPane);
         scene.getStylesheets().add("Style.css");
