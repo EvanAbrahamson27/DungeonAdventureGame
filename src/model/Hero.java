@@ -83,11 +83,11 @@ public abstract class Hero extends DungeonCharacter {
 
         switch (theClass) {
             case "Priestess" : {
-                DungeonAdventure.myHero = new Priestess(myName, myHealthPoints, myDamageMin, myDamageMax, myAttackSpeed, myChanceToHit);
+                DungeonAdventure.myHero = new Priestess(myName);
             } case "Warrior" : {
-                DungeonAdventure.myHero = new Warrior(myName, myHealthPoints, myDamageMin, myDamageMax, myAttackSpeed, myChanceToHit);
+                DungeonAdventure.myHero = new Warrior(myName);
             } case "Thief" : {
-                DungeonAdventure.myHero = new Thief(myName, myHealthPoints, myDamageMin, myDamageMax, myAttackSpeed, myChanceToHit);
+                DungeonAdventure.myHero = new Thief(myName);
             }
         }
 
@@ -100,5 +100,10 @@ public abstract class Hero extends DungeonCharacter {
 
     public void setSkillCooldown(final int theSkillCooldown) {
         this.mySkillCooldown = theSkillCooldown;
+    }
+
+    public void setDamageRange(final int theMinDmg, final int theMaxDmg) {
+        myDamageMin = theMinDmg;
+        myDamageMax = theMaxDmg;
     }
 }

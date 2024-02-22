@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Hero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +25,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="evan" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -123,6 +124,8 @@
         <item itemvalue="Application.GameWindow" />
         <item itemvalue="Application.GameWindow" />
         <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707420380170</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Added debug options&#10;- Changed some class code for simplification">
+      <created>1708564058579</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708564058579</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +214,8 @@
     <MESSAGE value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
     <MESSAGE value="- Finished updating to JavaFX" />
     <MESSAGE value="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing" />
+    <MESSAGE value="- Added debug options&#10;- Changed some class code for simplification" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added debug options&#10;- Changed some class code for simplification" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

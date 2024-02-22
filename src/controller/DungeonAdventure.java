@@ -16,8 +16,7 @@ public class DungeonAdventure {
     private static void setupGame(String[] theArgs) {
         myLog = new StringBuilder();
         myDungeonMap = new DungeonMap();
-        myHero = new Thief("Test_Priestess", 100, 25,
-                45, 60, 85);
+        myHero = new Thief("Test_Priestess");
         GameWindow.main(theArgs);
     }
 
