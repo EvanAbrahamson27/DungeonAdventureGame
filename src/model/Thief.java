@@ -8,9 +8,8 @@ public class Thief extends Hero {
     final static int DAMAGE_MIN = 20;
     final static int DAMAGE_MAX = 40;
 
-    public Thief (String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
-                   double theChanceToHit) {
-        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
+    public Thief (String theName) {
+        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 6, 80);
         setSkillName("Surprise Attack");
     }
 
@@ -23,9 +22,10 @@ public class Thief extends Hero {
             attack(DungeonAdventure.myMonster);
         } else if (attackChance >= 20) {
             DungeonAdventure.addToLog("Caught. Normal attack!");
+            myTurns ++;
             attack(DungeonAdventure.myMonster);
         } else {
-            myTurns--;
+            myTurns = 0;
             DungeonAdventure.addToLog("Missed skill!");
         }
 

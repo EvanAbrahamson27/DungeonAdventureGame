@@ -5,7 +5,7 @@ import controller.DungeonAdventure;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero extends DungeonCharacter {
+public abstract class Hero extends DungeonCharacter {
     private final List<Item> myInventory;
     private Room myRoom;
     private String mySkillName;
@@ -47,7 +47,8 @@ public class Hero extends DungeonCharacter {
                 "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
                 "\nAttack Speed: " + myAttackSpeed +
                 "\nChance to Hit: " + myChanceToHit + "%" +
-                "\n\nClass: " + this.getClass().toString().substring(12) + " \nSpecial Skill: Self Heal" +
+                "\n\nClass: " + this.getClass().toString().substring(12) +
+                " \nSpecial Skill: " + mySkillName +
                 "\n\nItems: ");
     }
 

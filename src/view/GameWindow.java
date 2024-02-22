@@ -134,11 +134,18 @@ public class GameWindow extends Application {
         dbClassW.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Warrior"));
         dbClassT.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Thief"));
 
+        MenuItem dbDamageBoost = new MenuItem("Damage Boost");
+        dbDamageBoost.setOnAction(actionEvent ->
+                DungeonAdventure.myHero.setDamageRange(99999, 100000));
+        MenuItem dbHealthBoost = new MenuItem("Health Boost");
+        dbHealthBoost.setOnAction(actionEvent ->
+                DungeonAdventure.myHero.heal(99999));
+
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
         fileMenu.getItems().addAll(saveItem, exitItem);
         helpMenu.getItems().addAll(helpItem, debugMenu);
-        debugMenu.getItems().add(debugClassMenu);
+        debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost);
         debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
 
         menuBar.getMenus().addAll(fileMenu, helpMenu);

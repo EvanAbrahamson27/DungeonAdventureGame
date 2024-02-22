@@ -8,9 +8,8 @@ public class Warrior extends Hero {
     final static int DAMAGE_MIN = 35;
     final static int DAMAGE_MAX = 60;
 
-    public Warrior(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
-                   double theChanceToHit) {
-        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
+    public Warrior(String theName) {
+        super(theName, 125, DAMAGE_MIN, DAMAGE_MAX, 4, 80);
         setSkillName("Crushing Blow");
     }
 
