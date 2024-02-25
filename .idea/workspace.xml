@@ -4,14 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_17_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/DamagePotion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DamagePotion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/HealthPotion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/HealthPotion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/Skeleton.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Skeleton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/TempDungeonImage.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TempDungeonImage.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/VisionPotion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/VisionPotion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ogre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Priestess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Priestess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Thief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LogPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/StatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -24,7 +74,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="evan" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,13 +87,16 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="ef265a56-3e1e-4396-97d2-f6d0b17ee01f" />
+        <option name="accountId" value="a2efd55c-ecff-41d9-9e1e-fe17f834dca5" />
         <option name="url" value="https://github.com/EvanAbrahamson27/DungeonAdventureGame.git" />
       </UrlAndAccount>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2bjopd3KL2spwtQMVStytOaCMnp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -56,9 +109,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/belle/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-21.0.2/lib/javafx.web.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
@@ -66,6 +118,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="C:\Users\Owner\IdeaProjects\DungeonAdventureGame\src\view" />
       <recent name="C:\Users\Owner\IdeaProjects\DungeonAdventureGame\src" />
     </key>
@@ -122,6 +175,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -155,12 +212,12 @@
       <option name="project" value="LOCAL" />
       <updated>1707420380170</updated>
     </task>
-    <task id="LOCAL-00004" summary="-Added child classes for Hero and Monster&#10;-Added menu bar">
-      <created>1708230578940</created>
+    <task id="LOCAL-00004" summary="- Added debug options&#10;- Changed some class code for simplification">
+      <created>1708564058579</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1708230578940</updated>
+      <updated>1708564058579</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -209,8 +266,9 @@
     <MESSAGE value="- Added base GUI&#10;- Made DungeonAdventure runnable (runs GUI and initializes Hero)&#10;- Added some getters to DungeonCharacter&#10;- Created GUI GameWindow&#10;- Created Panels for GUI" />
     <MESSAGE value="- Added Log Panel on GUI&#10;- Updates Log when actions are taken&#10;- Added item usage to the GUI&#10;- Added 1 example Healing Potion to the Hero inventory" />
     <MESSAGE value="- Finished updating to JavaFX" />
-    <MESSAGE value="-Added child classes for Hero and Monster&#10;-Added menu bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added child classes for Hero and Monster&#10;-Added menu bar" />
+    <MESSAGE value="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing" />
+    <MESSAGE value="- Added debug options&#10;- Changed some class code for simplification" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added debug options&#10;- Changed some class code for simplification" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

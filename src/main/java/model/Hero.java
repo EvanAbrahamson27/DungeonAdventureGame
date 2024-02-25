@@ -5,15 +5,18 @@ import controller.DungeonAdventure;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero extends DungeonCharacter {
+public abstract class Hero extends DungeonCharacter {
     private final List<Item> myInventory;
     private Room myRoom;
+    private String mySkillName;
+    private int mySkillCooldown = 0;
 
     public Hero(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                      double theChanceToHit) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
         myRoom = DungeonAdventure.myDungeonMap.getRoomAtLocation(0, 0);
+        mySkillName = "Heal";
     }
 
     public void blockAttack() {
@@ -44,7 +47,8 @@ public class Hero extends DungeonCharacter {
                 "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
                 "\nAttack Speed: " + myAttackSpeed +
                 "\nChance to Hit: " + myChanceToHit + "%" +
-                "\n\nClass: Hero\nSpecial Skill: Self Heal" +
+                "\n\nClass: " + this.getClass().toString().substring(12) +
+                " \nSpecial Skill: " + mySkillName +
                 "\n\nItems: ");
     }
 
@@ -65,5 +69,41 @@ public class Hero extends DungeonCharacter {
     }
     public int getX() {
         return myRoom.getXLocation();
+    }
+    public void performSpecialSkill() {
+        heal(5);
+    }
+    public String getSkillName() {
+        return mySkillName;
+    }
+    public void setSkillName(final String theSkill) {
+        mySkillName = theSkill;
+    }
+    public void setClass(final String theClass) {
+
+        switch (theClass) {
+            case "Priestess" : {
+                DungeonAdventure.myHero = new Priestess(myName);
+            } case "Warrior" : {
+                DungeonAdventure.myHero = new Warrior(myName);
+            } case "Thief" : {
+                DungeonAdventure.myHero = new Thief(myName);
+            }
+        }
+
+        // this will be used for debug/test menu purposes, not working as intended yet
+    }
+
+    public int getSkillCooldown() {
+        return mySkillCooldown;
+    }
+
+    public void setSkillCooldown(final int theSkillCooldown) {
+        this.mySkillCooldown = theSkillCooldown;
+    }
+
+    public void setDamageRange(final int theMinDmg, final int theMaxDmg) {
+        myDamageMin = theMinDmg;
+        myDamageMax = theMaxDmg;
     }
 }

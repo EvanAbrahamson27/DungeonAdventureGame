@@ -1,13 +1,11 @@
 package view;
 
 import controller.DungeonAdventure;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -29,7 +27,7 @@ public class GameWindow extends Application {
         BorderPane borderPane = new BorderPane();
 
         // Add game background image
-        Image dungeonBackground = new Image("DungeonBackground.png");
+        Image dungeonBackground = new Image("TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
@@ -52,7 +50,8 @@ public class GameWindow extends Application {
 
         Button startButton = new Button("Start Game");
         startButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        startButton.setOnAction(e -> startButtonAction(theStage, borderPane, startButton));
+        startButton.setOnAction(e -> {startButtonAction(theStage, borderPane, startButton);
+                borderPane.getChildren().remove(dungeonImageView);});
 //        borderPane.setCenter(startButton);
 //        BorderPane.setAlignment(startButton, Pos.CENTER);
 
@@ -74,8 +73,6 @@ public class GameWindow extends Application {
         helpButton.setMinWidth(185);
         buttons.getChildren().addAll(startButton, loadGame, helpButton, exitButton);
         borderPane.setCenter(buttons);
-
-//        borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         Scene scene = new Scene(borderPane);
         scene.getStylesheets().add("Style.css");
@@ -120,16 +117,34 @@ public class GameWindow extends Application {
 
         Menu fileMenu = new Menu("File");
         Menu helpMenu = new Menu("Help");
+        Menu debugMenu = new Menu("Debug");
+        Menu debugClassMenu = new Menu("Change Class");
 
         MenuItem saveItem = new MenuItem("Save");
         MenuItem restartItem = new MenuItem("Restart");
         MenuItem exitItem = new MenuItem("Exit");
         MenuItem helpItem = new MenuItem("Help");
 
+        MenuItem dbClassP = new MenuItem("Priestess");
+        MenuItem dbClassW = new MenuItem("Warrior");
+        MenuItem dbClassT = new MenuItem("Thief");
+        dbClassP.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Priestess"));
+        dbClassW.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Warrior"));
+        dbClassT.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Thief"));
+
+        MenuItem dbDamageBoost = new MenuItem("Damage Boost");
+        dbDamageBoost.setOnAction(actionEvent ->
+                DungeonAdventure.myHero.setDamageRange(99999, 100000));
+        MenuItem dbHealthBoost = new MenuItem("Health Boost");
+        dbHealthBoost.setOnAction(actionEvent ->
+                DungeonAdventure.myHero.heal(99999));
+
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
         fileMenu.getItems().addAll(saveItem, exitItem);
-        helpMenu.getItems().add(helpItem);
+        helpMenu.getItems().addAll(helpItem, debugMenu);
+        debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost);
+        debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
 
         menuBar.getMenus().addAll(fileMenu, helpMenu);
 

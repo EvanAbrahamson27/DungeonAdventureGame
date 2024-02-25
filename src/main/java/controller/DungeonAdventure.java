@@ -1,8 +1,6 @@
 package controller;
 
-import model.DungeonMap;
-import model.Hero;
-import model.Monster;
+import model.*;
 import view.GameWindow;
 
 public class DungeonAdventure {
@@ -18,8 +16,7 @@ public class DungeonAdventure {
     private static void setupGame(String[] theArgs) {
         myLog = new StringBuilder();
         myDungeonMap = new DungeonMap();
-        myHero = new Hero("Test_Hero", 100, 10,
-                30, 60, 85);
+        myHero = new Thief("Test_Priestess");
         GameWindow.main(theArgs);
     }
 

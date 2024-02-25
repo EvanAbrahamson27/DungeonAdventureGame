@@ -12,11 +12,11 @@ public class DungeonMap {
         myRooms.add(new Room(null, null, 0, 0));
         myRooms.add(new Room(null, new Item('h', 10, "Healing Potion"),
                 0, -1));
-        myRooms.add(new Room(new Monster("Skeleton", 50,
-                5, 15, 30, 95, 50)
+        myRooms.add(new Room(new Monster("Skeleton", 100,
+                10, 25, 4, 95, 50)
                 , null, 0, 1));
-        myRooms.add(new Room(new Monster("Skeleton", 50,
-                5, 15, 30, 95, 50)
+        myRooms.add(new Room(new Monster("Skeleton", 150,
+                10, 25, 4, 95, 50)
                 , null, 0, 2));
         myRooms.add(new Room(null, null,
                 1, 0));

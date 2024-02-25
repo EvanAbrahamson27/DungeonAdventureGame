@@ -18,6 +18,7 @@ public class ButtonPanel extends BorderPane {
     private final Font myFont;
     private Button myAttackButton;
     private Button myUseItemButton;
+    private Button mySkillButton;
     private final List<Button> myMovementButtons;
 
     public ButtonPanel(Hero thePlayer) {
@@ -33,13 +34,13 @@ public class ButtonPanel extends BorderPane {
 
         myAttackButton = new Button("Attack");
         myAttackButton.setOnAction(e -> thePlayer.attack(DungeonAdventure.myMonster));
-        myAttackButton.setDisable(true);
-        myAttackButton.setStyle("-fx-opacity: 0.5;");
+        disableButton(myAttackButton);
         myAttackButton.setFont(myFont);
 
-        Button testHealButton = new Button("Test Heal");
-        testHealButton.setOnAction(e -> thePlayer.heal(5));
-        testHealButton.setFont(myFont);
+        mySkillButton = new Button("Use Skill: " + thePlayer.getSkillName() + "!");
+        mySkillButton.setOnAction(e -> thePlayer.performSpecialSkill());
+        disableButton(mySkillButton);
+        mySkillButton.setFont(myFont);
 
         myUseItemButton = new Button("Use Item");
         myUseItemButton.setOnAction(e -> thePlayer.useItem("Healing Potion", thePlayer)); //Temp just heal
@@ -63,7 +64,7 @@ public class ButtonPanel extends BorderPane {
         myMovementButtons.add(SouthButton);
         myMovementButtons.add(EastButton);
 
-        buttonBox.getChildren().addAll(myAttackButton, testHealButton, myUseItemButton, NorthButton,
+        buttonBox.getChildren().addAll(myAttackButton, mySkillButton, myUseItemButton, NorthButton,
                 WestButton, SouthButton, EastButton);
         buttonBox.setAlignment(Pos.CENTER);
 
@@ -82,9 +83,13 @@ public class ButtonPanel extends BorderPane {
     private void updateButtons() {
         final boolean[] canMove = {true};
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
-            if (DungeonAdventure.myMonster != null && !DungeonAdventure.myMonster.getIsDead()
-                    && myAttackButton.isDisabled()) {
-                enableButton(myAttackButton);
+            if (DungeonAdventure.myMonster != null && !DungeonAdventure.myMonster.getIsDead()) {
+                if (myAttackButton.isDisabled()) enableButton(myAttackButton);
+                if (DungeonAdventure.myHero.getSkillCooldown() <= 0) {
+                    enableButton(mySkillButton);
+                } else {
+                    disableButton(mySkillButton);
+                }
                 for (Button button : myMovementButtons) {
                     disableButton(button);
                     canMove[0] = false;
@@ -93,6 +98,7 @@ public class ButtonPanel extends BorderPane {
             else if ((DungeonAdventure.myMonster == null || DungeonAdventure.myMonster.getIsDead())
                     && !myAttackButton.isDisabled()) {
                 disableButton(myAttackButton);
+                disableButton(mySkillButton);
                 for (Button button : myMovementButtons) {
                     enableButton(button);
                     canMove[0] = true;
