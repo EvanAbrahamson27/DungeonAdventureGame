@@ -75,7 +75,6 @@ public class GameWindow extends Application {
         borderPane.setCenter(buttons);
 
         Scene scene = new Scene(borderPane);
-        scene.getStylesheets().add("Style.css");
         theStage.setScene(scene);
 
         theStage.show();
