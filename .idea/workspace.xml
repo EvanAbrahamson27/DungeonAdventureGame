@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing">
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Merged updated files from Evan branch&#10;- Added class selection screen&#10;- Added game over screen&#10;- Added debug options - Class switch, Die">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Priestess.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Thief.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Warrior.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_17_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_17_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_17_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_17_0_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +62,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -57,18 +78,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/jorgeaguilar/IdeaProjects/DungeonAdventureGameOG/src/main/resources",
-    "project.structure.last.edited": "Global Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jorgeaguilar/IdeaProjects/DungeonAdventureGameOG/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -224,14 +245,15 @@
     <MESSAGE value="- Finished updating to JavaFX" />
     <MESSAGE value="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing" />
     <MESSAGE value="- Added debug options&#10;- Changed some class code for simplification" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added debug options&#10;- Changed some class code for simplification" />
+    <MESSAGE value="- Merged updated files from Evan branch&#10;- Added class selection screen&#10;- Added game over screen&#10;- Added debug options - Class switch, Die" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Merged updated files from Evan branch&#10;- Added class selection screen&#10;- Added game over screen&#10;- Added debug options - Class switch, Die" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DungeonAdventureGame$DungeonAdventure.ic" NAME="DungeonAdventure Coverage Results" MODIFIED="1707174410441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DungeonAdventureGame$DungeonAdventure.ic" NAME="DungeonAdventure Coverage Results" MODIFIED="1707877315452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>*</FILTER>
       <FILTER>controller.*</FILTER>
       <FILTER>model.*</FILTER>

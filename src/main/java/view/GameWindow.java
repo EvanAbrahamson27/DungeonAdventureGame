@@ -85,6 +85,8 @@ public class GameWindow extends Application {
     private void startButtonAction(Stage theStage, BorderPane borderPane, Button startButton) {
         borderPane.getChildren().remove(startButton); // Remove the Start Game button
 
+        new CharacterWindow();
+
         // Add game background image
         Image dungeonBackground = new Image("TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
@@ -98,9 +100,9 @@ public class GameWindow extends Application {
         borderPane.getChildren().add(dungeonImageView);
 
         if (buttonPanel == null) {
-            buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
+            buttonPanel = new ButtonPanel();
             logPanel = new LogPanel();
-            statPanel = new StatPanel(DungeonAdventure.myHero);
+            statPanel = new StatPanel();
             roomPanel = new RoomPanel();
         }
         borderPane.setBottom(buttonPanel);
@@ -140,9 +142,9 @@ public class GameWindow extends Application {
         MenuItem dbClassP = new MenuItem("Priestess");
         MenuItem dbClassW = new MenuItem("Warrior");
         MenuItem dbClassT = new MenuItem("Thief");
-        dbClassP.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Priestess"));
-        dbClassW.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Warrior"));
-        dbClassT.setOnAction(actionEvent -> DungeonAdventure.myHero.setClass("Thief"));
+        dbClassP.setOnAction(actionEvent -> DungeonAdventure.setClass("Priestess"));
+        dbClassW.setOnAction(actionEvent -> DungeonAdventure.setClass("Warrior"));
+        dbClassT.setOnAction(actionEvent -> DungeonAdventure.setClass("Thief"));
 
         MenuItem dbDamageBoost = new MenuItem("Damage Boost");
         dbDamageBoost.setOnAction(actionEvent ->
@@ -150,12 +152,15 @@ public class GameWindow extends Application {
         MenuItem dbHealthBoost = new MenuItem("Health Boost");
         dbHealthBoost.setOnAction(actionEvent ->
                 DungeonAdventure.myHero.heal(99999));
+        MenuItem dbDie = new MenuItem("Die");
+        dbDie.setOnAction(actionEvent -> DungeonAdventure.myHero.die());
 
+        restartItem.setOnAction(actionEvent -> DungeonAdventure.setupGame());
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
-        fileMenu.getItems().addAll(saveItem, exitItem);
+        fileMenu.getItems().addAll(saveItem, restartItem, exitItem);
         helpMenu.getItems().addAll(helpItem, debugMenu);
-        debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost);
+        debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost, dbDie);
         debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
 
         menuBar.getMenus().addAll(fileMenu, helpMenu);
@@ -164,5 +169,9 @@ public class GameWindow extends Application {
     }
     public static void main(String[] theArgs) {
         launch(theArgs);
+    }
+
+    public static void openGameOverWindow() {
+        new GameOverWindow();
     }
 }

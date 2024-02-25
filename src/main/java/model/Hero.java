@@ -1,6 +1,7 @@
 package model;
 
 import controller.DungeonAdventure;
+import view.GameWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,8 @@ public abstract class Hero extends DungeonCharacter {
 
     @Override
     public String toString() {
-        return ("Health: " + getHealthPoints() +
+        return (myName +
+                "\nHealth: " + getHealthPoints() +
                 "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
                 "\nAttack Speed: " + myAttackSpeed +
                 "\nChance to Hit: " + myChanceToHit + "%" +
@@ -79,20 +81,6 @@ public abstract class Hero extends DungeonCharacter {
     public void setSkillName(final String theSkill) {
         mySkillName = theSkill;
     }
-    public void setClass(final String theClass) {
-
-        switch (theClass) {
-            case "Priestess" : {
-                DungeonAdventure.myHero = new Priestess(myName);
-            } case "Warrior" : {
-                DungeonAdventure.myHero = new Warrior(myName);
-            } case "Thief" : {
-                DungeonAdventure.myHero = new Thief(myName);
-            }
-        }
-
-        // this will be used for debug/test menu purposes, not working as intended yet
-    }
 
     public int getSkillCooldown() {
         return mySkillCooldown;
@@ -105,5 +93,13 @@ public abstract class Hero extends DungeonCharacter {
     public void setDamageRange(final int theMinDmg, final int theMaxDmg) {
         myDamageMin = theMinDmg;
         myDamageMax = theMaxDmg;
+    }
+
+    public void die() {
+        myIsDead = true;
+        DungeonAdventure.myHero.setSkillCooldown(0);
+        DungeonAdventure.addToLog(myName + " has died.");
+        if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
+        GameWindow.openGameOverWindow();
     }
 }
