@@ -1,6 +1,7 @@
 package com.model;
 
 import com.controller.DungeonAdventure;
+import com.model.Position;
 
 import java.util.Random;
 
