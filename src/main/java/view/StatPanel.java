@@ -46,11 +46,11 @@ public class StatPanel extends BorderPane {
             ImageView imageView;
             Tooltip tooltip;
             switch (item.getMyItemType()) {
-                case 'h' -> {imageView = new ImageView(createImage("/images/HealthPotion.png"));
+                case 'h' -> {imageView = createImage("HealthPotion.png");
                     tooltip = new Tooltip(item.toString());}
-                case 'd' -> {imageView = new ImageView(createImage("/images/DamagePotion.png"));
+                case 'd' -> {imageView = createImage("DamagePotion.png");
                     tooltip = new Tooltip(item.toString());}
-                case 'v' -> {imageView = new ImageView(createImage("/images/VisionPotion.png"));
+                case 'v' -> {imageView = createImage("VisionPotion.png");
                     tooltip = new Tooltip(item.toString());}
                 default -> {return null;}
             }
@@ -62,9 +62,8 @@ public class StatPanel extends BorderPane {
         return myInventoryImages;
     }
 
-    private Image createImage(final String theFileLocation) {
-            return new Image(Objects.requireNonNull(getClass()
-                    .getResource(theFileLocation)).toExternalForm());
+    private ImageView createImage(final String theFileLocation) {
+        return new ImageView(new Image(theFileLocation));
     }
 
     private void updateStats(Hero thePlayer) {

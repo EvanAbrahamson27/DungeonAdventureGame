@@ -4,7 +4,6 @@ import controller.DungeonAdventure;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -17,12 +16,6 @@ public class RoomPanel extends BorderPane {
     private ImageView myMonsterImage;
     private ImageView myItemImage;
     RoomPanel() {
-        Image dungeonBackground = new Image(Objects.requireNonNull(getClass()
-                .getResource("/images/TempDungeonImage.jpg")).toExternalForm());
-        setBackground(new Background(new BackgroundImage(dungeonBackground, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false))));
-
         myContentBox = new VBox();
 
         setCenter(myContentBox);
@@ -33,7 +26,7 @@ public class RoomPanel extends BorderPane {
 
     private ImageView createMonsterImage() {
         switch (DungeonAdventure.myMonster.toString()) {
-            case "Skeleton" -> myMonsterImage = createImage("/images/Skeleton.png");
+            case "Skeleton" -> myMonsterImage = createImage("Skeleton.png");
             default -> {return null;}
         }
 
@@ -45,9 +38,9 @@ public class RoomPanel extends BorderPane {
 
     private ImageView createItemImage() {
         switch (DungeonAdventure.myHero.getRoom().getItem().toString()) {
-            case "Health Potion" -> myItemImage = createImage("/images/HealthPotion.png");
-            case "Vision Potion" -> myItemImage = createImage("/images/VisionPotion.png");
-            case "Damage Potion" -> myItemImage = createImage("/images/DamagePotion.png");
+            case "Health Potion" -> myItemImage = createImage("HealthPotion.png");
+            case "Vision Potion" -> myItemImage = createImage("VisionPotion.png");
+            case "Damage Potion" -> myItemImage = createImage("DamagePotion.png");
             default -> {return null;}
         }
 
@@ -58,8 +51,7 @@ public class RoomPanel extends BorderPane {
     }
 
     private ImageView createImage(final String theFileLocation) {
-        return new ImageView(new Image(Objects.requireNonNull(getClass()
-                .getResource(theFileLocation)).toExternalForm()));
+        return new ImageView(new Image(theFileLocation));
     }
 
     private void updateRoom() {
