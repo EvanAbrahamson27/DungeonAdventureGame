@@ -39,7 +39,7 @@ public class GameWindow extends Application {
         borderPane.getChildren().add(dungeonImageView);
 
         Label title = new Label("Dungeon Adventure");
-        title.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 50px; -fx-padding: 40 50 10 50; -fx-text-fill: white; -fx-effect: null;");
+        title.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 50px; -fx-padding: 40 50 10 50; -fx-text-fill: white; -fx-effect: null; -fx-background-color: rgba(0, 0, 0, 0.0);");
 
         borderPane.setTop(title);
         BorderPane.setAlignment(title, Pos.CENTER);
@@ -75,6 +75,7 @@ public class GameWindow extends Application {
         borderPane.setCenter(buttons);
 
         Scene scene = new Scene(borderPane);
+        scene.getStylesheets().add("Style.css");
         theStage.setScene(scene);
 
         theStage.show();
@@ -83,6 +84,18 @@ public class GameWindow extends Application {
 
     private void startButtonAction(Stage theStage, BorderPane borderPane, Button startButton) {
         borderPane.getChildren().remove(startButton); // Remove the Start Game button
+
+        // Add game background image
+        Image dungeonBackground = new Image("TempDungeonImage.jpg");
+        ImageView dungeonImageView = new ImageView(dungeonBackground);
+
+        // Adjust the image to fill the game window
+        dungeonImageView.fitWidthProperty().bind(borderPane.widthProperty());
+        dungeonImageView.fitHeightProperty().bind(borderPane.heightProperty());
+        dungeonImageView.setPreserveRatio(false);
+
+        // Add image and updated properties to the borderPane to display in the background
+        borderPane.getChildren().add(dungeonImageView);
 
         if (buttonPanel == null) {
             buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
