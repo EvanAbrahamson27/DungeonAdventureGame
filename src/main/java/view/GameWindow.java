@@ -1,13 +1,11 @@
 package view;
 
 import controller.DungeonAdventure;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -29,7 +27,7 @@ public class GameWindow extends Application {
         BorderPane borderPane = new BorderPane();
 
         // Add game background image
-        Image dungeonBackground = new Image("images/TempDungeonImage.jpg");
+        Image dungeonBackground = new Image("TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
