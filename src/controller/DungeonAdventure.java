@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import view.CharacterWindow;
 import view.GameWindow;
 
 public class DungeonAdventure {
@@ -21,10 +22,12 @@ public class DungeonAdventure {
         myName = "Adventurer";
         myLog = new StringBuilder();
         myDungeonMap = new DungeonMap();
-        myHero = new Thief(myName);
         if (myFirstLaunch) {
             myFirstLaunch = false;
             GameWindow.main(myArgs);
+        } else {
+            myMonster = null;
+            new CharacterWindow();
         }
     }
 

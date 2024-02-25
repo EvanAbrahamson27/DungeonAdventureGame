@@ -44,7 +44,8 @@ public abstract class Hero extends DungeonCharacter {
 
     @Override
     public String toString() {
-        return ("Health: " + getHealthPoints() +
+        return (myName +
+                "\nHealth: " + getHealthPoints() +
                 "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
                 "\nAttack Speed: " + myAttackSpeed +
                 "\nChance to Hit: " + myChanceToHit + "%" +
@@ -98,6 +99,7 @@ public abstract class Hero extends DungeonCharacter {
         myIsDead = true;
         DungeonAdventure.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(myName + " has died.");
+        if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
         GameWindow.openGameOverWindow();
     }
 }

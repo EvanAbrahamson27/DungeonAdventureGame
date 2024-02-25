@@ -85,6 +85,8 @@ public class GameWindow extends Application {
     private void startButtonAction(Stage theStage, BorderPane borderPane, Button startButton) {
         borderPane.getChildren().remove(startButton); // Remove the Start Game button
 
+        new CharacterWindow();
+
         if (buttonPanel == null) {
             buttonPanel = new ButtonPanel();
             logPanel = new LogPanel();
@@ -141,9 +143,10 @@ public class GameWindow extends Application {
         MenuItem dbDie = new MenuItem("Die");
         dbDie.setOnAction(actionEvent -> DungeonAdventure.myHero.die());
 
+        restartItem.setOnAction(actionEvent -> DungeonAdventure.setupGame());
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
-        fileMenu.getItems().addAll(saveItem, exitItem);
+        fileMenu.getItems().addAll(saveItem, restartItem, exitItem);
         helpMenu.getItems().addAll(helpItem, debugMenu);
         debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost, dbDie);
         debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);

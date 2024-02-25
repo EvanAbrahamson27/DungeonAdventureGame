@@ -87,6 +87,11 @@ public class ButtonPanel extends BorderPane {
     private void updateButtons() {
         final boolean[] canMove = {true};
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            if (!mySkillButton.getText().equals(
+                    "Use Skill: " + DungeonAdventure.myHero.getSkillName() + "!")) {
+                mySkillButton.setText("Use Skill: " + DungeonAdventure.myHero.getSkillName() + "!");
+            }
+
             if (DungeonAdventure.myHero.getIsDead()) {
                 for (Button button : myMovementButtons) {
                     disableButton(button);
@@ -108,14 +113,15 @@ public class ButtonPanel extends BorderPane {
                     canMove[0] = false;
                 }
             }
-            else if ((DungeonAdventure.myMonster == null || DungeonAdventure.myMonster.getIsDead())
-                    && !myAttackButton.isDisabled()) {
-                disableButton(myAttackButton);
-                disableButton(mySkillButton);
-                for (Button button : myMovementButtons) {
-                    enableButton(button);
-                    canMove[0] = true;
+            else if ((DungeonAdventure.myMonster == null || DungeonAdventure.myMonster.getIsDead())) {
+                if (!myAttackButton.isDisabled()) {
+                    disableButton(myAttackButton);
+                    disableButton(mySkillButton);
+                    for (Button button : myMovementButtons) {
+                        enableButton(button);
+                    }
                 }
+                canMove[0] = true;
             }
 
             if (DungeonAdventure.myHero.getInventory().size() == 0 && !myUseItemButton.isDisabled())
