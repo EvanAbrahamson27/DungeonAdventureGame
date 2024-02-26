@@ -40,7 +40,7 @@ public class StatPanel extends BorderPane {
 
     private HBox createItemImages() {
         myInventoryImages = new HBox(5);
-        for (Item item : DungeonAdventure.myHero.getInventory()) {
+        for (Item item : CharacterWindow.myHero.getInventory()) {
             ImageView imageView;
             Tooltip tooltip;
             switch (item.getMyItemType()) {
@@ -66,9 +66,9 @@ public class StatPanel extends BorderPane {
 
     private void updateStats() {
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
-            if (!statsArea.getText().equals(DungeonAdventure.myHero.toString()))
-                statsArea.setText(DungeonAdventure.myHero.toString());
-            if (DungeonAdventure.myHero.getInventory().size() != myInventoryImages.getChildren().size()) {
+            if (!statsArea.getText().equals(CharacterWindow.myHero.toString()))
+                statsArea.setText(CharacterWindow.myHero.toString());
+            if (CharacterWindow.myHero.getInventory().size() != myInventoryImages.getChildren().size()) {
                 myContentBox.getChildren().remove(myInventoryImages);
                 myContentBox.getChildren().add(createItemImages());
             }

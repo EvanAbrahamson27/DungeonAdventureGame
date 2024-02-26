@@ -1,6 +1,7 @@
 package model;
 
 import controller.DungeonAdventure;
+import view.CharacterWindow;
 
 import java.util.Random;
 
@@ -76,7 +77,7 @@ public abstract class DungeonCharacter {
 
     public void die() {
         myIsDead = true;
-        DungeonAdventure.myHero.setSkillCooldown(0);
+        CharacterWindow.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(myName + " has died.");
     }
 

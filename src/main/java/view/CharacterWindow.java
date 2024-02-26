@@ -1,5 +1,6 @@
 package view;
 
+import model.*;
 import controller.DungeonAdventure;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,12 +13,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.DungeonMap;
 import model.Priestess;
 import model.Thief;
 import model.Warrior;
 
 public class CharacterWindow extends Stage {
     private String myName = "";
+    private String characterSelect = "";
+    public static DungeonMap myDungeonMap;
+    public static Hero myHero;
     public CharacterWindow() {
         setTitle("Character Select");
         setWidth(800);
@@ -34,13 +39,13 @@ public class CharacterWindow extends Stage {
         if (myName.equals("")) myName = "Adventurer";
 
         Button warriorButton = new Button("Warrior");
-        warriorButton.setOnAction(actionEvent -> {DungeonAdventure.myHero = new Warrior(myName); close();});
+        warriorButton.setOnAction(actionEvent -> {this.characterSelect = "Warrior"; close();});
 
         Button priestessButton = new Button("Priestess");
-        priestessButton.setOnAction(actionEvent -> {DungeonAdventure.myHero = new Priestess(myName); close();});
+        priestessButton.setOnAction(actionEvent -> {this.characterSelect = "Priestess"; close();});
 
         Button thiefButton = new Button("Thief");
-        thiefButton.setOnAction(actionEvent -> {DungeonAdventure.myHero = new Thief(myName); close();});
+        thiefButton.setOnAction(actionEvent -> {this.characterSelect = "Thief"; close();});
 
         ImageView warriorImage = new ImageView(new Image("Warrior.png"));
         ImageView priestessImage = new ImageView(new Image("Priestess.png"));
@@ -71,5 +76,9 @@ public class CharacterWindow extends Stage {
         setScene(characterScene);
 
         showAndWait();
+
+        myDungeonMap = new DungeonMap(characterSelect);
+        myHero = myDungeonMap.getHero();
+        myHero.setRoom(myDungeonMap.getRoomAtLocation(myHero.getX(), myHero.getY()));
     }
 }

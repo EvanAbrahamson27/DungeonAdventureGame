@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Item {
     final private int myUseAmt;
     final private char myItemType;
@@ -34,5 +37,14 @@ public class Item {
     @Override
     public String toString() {
         return myName;
+    }
+
+    public ImageView getImage() {
+        Image itemImage = new Image("HealthPotion.png");
+        ImageView itemImageView = new ImageView(itemImage);
+        itemImageView.setFitWidth(50);
+        itemImageView.setPreserveRatio(true);
+
+        return itemImageView;
     }
 }
