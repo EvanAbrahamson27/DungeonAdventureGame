@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Merged updated files from Evan branch&#10;- Added class selection screen&#10;- Added game over screen&#10;- Added debug options - Class switch, Die">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
     </list>
