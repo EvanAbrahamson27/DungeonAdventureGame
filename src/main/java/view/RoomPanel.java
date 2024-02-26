@@ -37,7 +37,7 @@ public class RoomPanel extends BorderPane {
     }
 
     private ImageView createItemImage() {
-        switch (DungeonAdventure.myHero.getRoom().getItem().toString()) {
+        switch (CharacterWindow.myHero.getRoom().getItem().toString()) {
             case "Health Potion" -> myItemImage = createImage("HealthPotion.png");
             case "Vision Potion" -> myItemImage = createImage("VisionPotion.png");
             case "Damage Potion" -> myItemImage = createImage("DamagePotion.png");
@@ -62,10 +62,10 @@ public class RoomPanel extends BorderPane {
                 myContentBox.getChildren().add(createMonsterImage());
             }
 
-            if (DungeonAdventure.myHero.getRoom().getItem() != null) {
+            if (CharacterWindow.myHero.getRoom().getItem() != null) {
                 myContentBox.getChildren().add(createItemImage());
             } else if (!myContentBox.getChildren().contains(myItemImage) &&
-                    DungeonAdventure.myHero.getRoom().getItem() == null) {
+                    CharacterWindow.myHero.getRoom().getItem() == null) {
                 myContentBox.getChildren().remove(myItemImage);
             }
 

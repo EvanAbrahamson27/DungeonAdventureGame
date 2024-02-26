@@ -1,6 +1,7 @@
 package model;
 
 import controller.DungeonAdventure;
+import view.CharacterWindow;
 import view.GameWindow;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Hero extends DungeonCharacter {
     private Room myRoom;
     private String mySkillName;
     private int mySkillCooldown = 0;
+    private String heroClass = "";
 
     public Hero(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
                 double theChanceToHit, int theX, int theY) {
@@ -62,7 +64,7 @@ public class Hero extends DungeonCharacter {
         return myRoom;
     }
     public void move(final int theX, final int theY) {
-        Room newRoom = DungeonAdventure.myDungeonMap.getRoomAtLocation(theX, theY);
+        Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
         if (newRoom != null) {
             myRoom = newRoom;
             DungeonAdventure.addToLog(myName + " moved to [" + getX() + "," + getY() + "]");
@@ -87,17 +89,24 @@ public class Hero extends DungeonCharacter {
     }
 
     public void setClass(final String theClass) {
-
-//        switch (theClass) {
-//            case "Priestess" : {
-//                DungeonAdventure.myHero = new Priestess(myName);
-//            } case "Warrior" : {
-//                DungeonAdventure.myHero = new Warrior(myName);
-//            } case "Thief" : {
-//                DungeonAdventure.myHero = new Thief(myName);
-//            }
-//        }
+        switch (theClass) {
+            case "Priestess" : {
+                this.heroClass = "Priestess";
+            } case "Warrior" : {
+                this.heroClass = "Warrior";
+            } case "Thief" : {
+                this.heroClass = "Thief";
+            }
+            default: {
+                CharacterWindow.myHero = new Hero(myName, 75, 25, 45, 5, 70, getX(), getY());
+                this.heroClass = "Warrior";
+            }
+        }
         // this will be used for debug/test menu purposes, not working as intended yet
+    }
+
+    public String getHeroClass() {
+        return this.heroClass;
     }
 
     public int getSkillCooldown() {
@@ -115,7 +124,7 @@ public class Hero extends DungeonCharacter {
 
     public void die() {
         myIsDead = true;
-        DungeonAdventure.myHero.setSkillCooldown(0);
+        CharacterWindow.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(myName + " has died.");
         if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
         GameWindow.openGameOverWindow();

@@ -27,4 +27,8 @@ public class Priestess extends Hero {
         }
     }
 
+    public String getHeroClass() {
+        return "Priestess";
+    }
+
 }

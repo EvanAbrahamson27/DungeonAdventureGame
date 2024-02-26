@@ -3,6 +3,7 @@ package model;
 import controller.DungeonAdventure;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import view.CharacterWindow;
 
 public class Room {
     private Monster myMonster;
@@ -39,7 +40,7 @@ public class Room {
     public void encounterMonster() {
         if (myMonster != null && !myMonster.getIsDead()) {
             DungeonAdventure.myMonster = myMonster;
-            DungeonAdventure.myHero.startBattle(DungeonAdventure.myMonster);
+            CharacterWindow.myHero.startBattle(DungeonAdventure.myMonster);
         }
     }
 
@@ -51,7 +52,7 @@ public class Room {
 
     public void encounterItem() {
         if (myItem != null) {
-            DungeonAdventure.myHero.addToInventory(myItem);
+            CharacterWindow.myHero.addToInventory(myItem);
             myItem = null;
         }
     }
@@ -81,13 +82,31 @@ public class Room {
     }
 
     public ImageView getImage() {
-        if (DungeonAdventure.myHero.getRoom().getXLocation() == myXLocation && DungeonAdventure.myHero.getRoom().getYLocation() == myYLocation) {
-            Image emptySpace = new Image("Warrior.png");
-            ImageView emptySpaceImageView = new ImageView(emptySpace);
-            emptySpaceImageView.setFitWidth(50);
-            emptySpaceImageView.setPreserveRatio(true);
+        if (CharacterWindow.myHero.getRoom().getXLocation() == myXLocation && CharacterWindow.myHero.getRoom().getYLocation() == myYLocation) {
+            if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Priestess")) {
+                Image heroImage = new Image("Priestess.png");
+                ImageView heroImageView = new ImageView(heroImage);
+                heroImageView.setFitWidth(50);
+                heroImageView.setPreserveRatio(true);
 
-            return emptySpaceImageView;
+                return heroImageView;
+            } else if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Warrior")) {
+                Image heroImage = new Image("Warrior.png");
+                ImageView heroImageView = new ImageView(heroImage);
+                heroImageView.setFitWidth(50);
+                heroImageView.setPreserveRatio(true);
+
+                return heroImageView;
+            } else if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Thief")) {
+                Image heroImage = new Image("Thief.png");
+                ImageView heroImageView = new ImageView(heroImage);
+                heroImageView.setFitWidth(50);
+                heroImageView.setPreserveRatio(true);
+
+                return heroImageView;
+            } else {
+                return null;
+            }
         } else if (myMonster != null) {
             return myMonster.getImage();
         } else if (myItem != null) {

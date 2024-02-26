@@ -40,7 +40,7 @@ public class MapPanel extends BorderPane {
 
     private void drawMap() {
         // Display the entire map with all rooms
-        Room[][] roomMap = DungeonAdventure.myDungeonMap.getMap();
+        Room[][] roomMap = CharacterWindow.myDungeonMap.getMap();
 
         for (int i = 0; i < roomMap.length; i++) {
             for (int j = 0; j < roomMap[i].length; j++) {

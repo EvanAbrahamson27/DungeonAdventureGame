@@ -21,9 +21,10 @@ public class ButtonPanel extends BorderPane {
     private Button mySkillButton;
     private final List<Button> myMovementButtons;
     private MapPanel myMapPanel;
-    private Hero thePlayer;
+    private Hero myPlayer;
 
     public ButtonPanel(Hero thePlayer, MapPanel mapPanel) {
+        this.myPlayer = thePlayer;
         this.myMapPanel = mapPanel;
         myMovementButtons = new ArrayList<>();
         setStyle("-fx-border-color: black;");
@@ -36,41 +37,41 @@ public class ButtonPanel extends BorderPane {
         HBox buttonBox = new HBox(5);
 
         myAttackButton = new Button("Attack");
-        myAttackButton.setOnAction(e -> DungeonAdventure.myHero.attack(DungeonAdventure.myMonster));
+        myAttackButton.setOnAction(e -> CharacterWindow.myHero.attack(DungeonAdventure.myMonster));
         disableButton(myAttackButton);
         myAttackButton.setFont(myFont);
 
-        mySkillButton = new Button("Use Skill: " + DungeonAdventure.myHero.getSkillName() + "!");
-        mySkillButton.setOnAction(e -> DungeonAdventure.myHero.performSpecialSkill());
+        mySkillButton = new Button("Use Skill: " + CharacterWindow.myHero.getSkillName() + "!");
+        mySkillButton.setOnAction(e -> CharacterWindow.myHero.performSpecialSkill());
         disableButton(mySkillButton);
         mySkillButton.setFont(myFont);
 
         myUseItemButton = new Button("Use Item");
-        myUseItemButton.setOnAction(e -> DungeonAdventure.myHero.useItem(
-                "Healing Potion", DungeonAdventure.myHero)); //Temp just heal
+        myUseItemButton.setOnAction(e -> CharacterWindow.myHero.useItem(
+                "Healing Potion", CharacterWindow.myHero)); //Temp just heal
         myUseItemButton.setFont(myFont);
 
         Button NorthButton = new Button("Move North");
         NorthButton.setOnAction(e -> {
-            thePlayer.move(thePlayer.getX(), thePlayer.getY() - 1);
+            this.myPlayer.move(this.myPlayer.getX(), this.myPlayer.getY() - 1);
             myMapPanel.refreshMap();
         });
         NorthButton.setFont(myFont);
         Button WestButton = new Button("Move West");
         WestButton.setOnAction(e -> {
-            thePlayer.move(thePlayer.getX() - 1, thePlayer.getY());
+            this.myPlayer.move(this.myPlayer.getX() - 1, this.myPlayer.getY());
             myMapPanel.refreshMap();
         });
         WestButton.setFont(myFont);
         Button SouthButton = new Button("Move South");
         SouthButton.setOnAction(e -> {
-            thePlayer.move(thePlayer.getX(), thePlayer.getY() + 1);
+            this.myPlayer.move(this.myPlayer.getX(), this.myPlayer.getY() + 1);
             myMapPanel.refreshMap();
         });
         SouthButton.setFont(myFont);
         Button EastButton = new Button("Move East");
         EastButton.setOnAction(e -> {
-            thePlayer.move(thePlayer.getX() + 1, thePlayer.getY());
+            this.myPlayer.move(this.myPlayer.getX() + 1, this.myPlayer.getY());
             myMapPanel.refreshMap();
         });
         EastButton.setFont(myFont);
@@ -100,11 +101,11 @@ public class ButtonPanel extends BorderPane {
         final boolean[] canMove = {true};
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
             if (!mySkillButton.getText().equals(
-                    "Use Skill: " + DungeonAdventure.myHero.getSkillName() + "!")) {
-                mySkillButton.setText("Use Skill: " + DungeonAdventure.myHero.getSkillName() + "!");
+                    "Use Skill: " + CharacterWindow.myHero.getSkillName() + "!")) {
+                mySkillButton.setText("Use Skill: " + CharacterWindow.myHero.getSkillName() + "!");
             }
 
-            if (DungeonAdventure.myHero.getIsDead()) {
+            if (CharacterWindow.myHero.getIsDead()) {
                 for (Button button : myMovementButtons) {
                     disableButton(button);
                 }
@@ -113,9 +114,9 @@ public class ButtonPanel extends BorderPane {
                 disableButton(myUseItemButton);
             }
             if (DungeonAdventure.myMonster != null && !DungeonAdventure.myMonster.getIsDead() &&
-                !DungeonAdventure.myHero.getIsDead()) {
+                !CharacterWindow.myHero.getIsDead()) {
                 if (myAttackButton.isDisabled()) enableButton(myAttackButton);
-                if (DungeonAdventure.myHero.getSkillCooldown() <= 0 && !DungeonAdventure.myHero.getIsDead()) {
+                if (CharacterWindow.myHero.getSkillCooldown() <= 0 && !CharacterWindow.myHero.getIsDead()) {
                     enableButton(mySkillButton);
                 } else {
                     disableButton(mySkillButton);
@@ -136,24 +137,24 @@ public class ButtonPanel extends BorderPane {
                 canMove[0] = true;
             }
 
-            if (DungeonAdventure.myHero.getInventory().size() == 0 && !myUseItemButton.isDisabled())
+            if (CharacterWindow.myHero.getInventory().size() == 0 && !myUseItemButton.isDisabled())
                 disableButton(myUseItemButton);
-            else if (DungeonAdventure.myHero.getInventory().size() > 0 && myUseItemButton.isDisabled()
-            && !DungeonAdventure.myHero.getIsDead())
+            else if (CharacterWindow.myHero.getInventory().size() > 0 && myUseItemButton.isDisabled()
+            && !CharacterWindow.myHero.getIsDead())
                 enableButton(myUseItemButton);
 
-            if (canMove[0] && !DungeonAdventure.myHero.getIsDead()) {
-                if (DungeonAdventure.myDungeonMap.getRoomAtLocation(DungeonAdventure.myHero.getX(),
-                        DungeonAdventure.myHero.getY() + 1) == null) disableButton(myMovementButtons.get(0));
+            if (canMove[0] && !CharacterWindow.myHero.getIsDead()) {
+                if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
+                        CharacterWindow.myHero.getY() + 1) == null) disableButton(myMovementButtons.get(0));
                 else enableButton(myMovementButtons.get(0));
-                if (DungeonAdventure.myDungeonMap.getRoomAtLocation(DungeonAdventure.myHero.getX() - 1,
-                        DungeonAdventure.myHero.getY()) == null) disableButton(myMovementButtons.get(1));
+                if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() - 1,
+                        CharacterWindow.myHero.getY()) == null) disableButton(myMovementButtons.get(1));
                 else enableButton(myMovementButtons.get(1));
-                if (DungeonAdventure.myDungeonMap.getRoomAtLocation(DungeonAdventure.myHero.getX(),
-                        DungeonAdventure.myHero.getY() - 1) == null) disableButton(myMovementButtons.get(2));
+                if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
+                        CharacterWindow.myHero.getY() - 1) == null) disableButton(myMovementButtons.get(2));
                 else enableButton(myMovementButtons.get(2));
-                if (DungeonAdventure.myDungeonMap.getRoomAtLocation(DungeonAdventure.myHero.getX() + 1,
-                        DungeonAdventure.myHero.getY()) == null) disableButton(myMovementButtons.get(3));
+                if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() + 1,
+                        CharacterWindow.myHero.getY()) == null) disableButton(myMovementButtons.get(3));
                 else enableButton(myMovementButtons.get(3));
             }
         }));

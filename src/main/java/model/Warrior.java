@@ -30,4 +30,7 @@ public class Warrior extends Hero {
         }
     }
 
+    public String getHeroClass() {
+        return "Warrior";
+    }
 }

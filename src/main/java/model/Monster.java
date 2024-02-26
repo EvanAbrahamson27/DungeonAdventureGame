@@ -3,6 +3,7 @@ package model;
 import controller.DungeonAdventure;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import view.CharacterWindow;
 
 import java.util.Random;
 
@@ -25,12 +26,12 @@ public class Monster extends DungeonCharacter {
             while (myTurns > 0) {
                 Random movePicker = new Random();
                 switch (movePicker.nextInt(3)) {
-                    case 0, 1 -> {attack(DungeonAdventure.myHero);usingTurn = 'a';}
+                    case 0, 1 -> {attack(CharacterWindow.myHero);usingTurn = 'a';}
                     case 2 -> {heal(5);myTurns--;usingTurn = 'h';}
                 }
             }
-            DungeonAdventure.myHero.setSkillCooldown(DungeonAdventure.myHero.getSkillCooldown() - 1);
-            DungeonAdventure.myHero.startBattle(this);
+            CharacterWindow.myHero.setSkillCooldown(CharacterWindow.myHero.getSkillCooldown() - 1);
+            CharacterWindow.myHero.startBattle(this);
         }
     }
 

@@ -105,7 +105,7 @@ public class GameWindow extends Application {
             statPanel = new StatPanel();
             roomPanel = new RoomPanel();
             mapPanel = new MapPanel();
-            buttonPanel = new ButtonPanel(DungeonAdventure.myHero, mapPanel);
+            buttonPanel = new ButtonPanel(CharacterWindow.myHero, mapPanel);
         }
 
         borderPane.setBottom(buttonPanel);
@@ -145,18 +145,18 @@ public class GameWindow extends Application {
         MenuItem dbClassP = new MenuItem("Priestess");
         MenuItem dbClassW = new MenuItem("Warrior");
         MenuItem dbClassT = new MenuItem("Thief");
-        dbClassP.setOnAction(actionEvent -> DungeonAdventure.setClass("Priestess"));
-        dbClassW.setOnAction(actionEvent -> DungeonAdventure.setClass("Warrior"));
-        dbClassT.setOnAction(actionEvent -> DungeonAdventure.setClass("Thief"));
+        dbClassP.setOnAction(actionEvent -> CharacterWindow.myDungeonMap.getHero().setClass("Priestess"));
+        dbClassW.setOnAction(actionEvent -> CharacterWindow.myDungeonMap.getHero().setClass("Warrior"));
+        dbClassT.setOnAction(actionEvent -> CharacterWindow.myDungeonMap.getHero().setClass("Thief"));
 
         MenuItem dbDamageBoost = new MenuItem("Damage Boost");
         dbDamageBoost.setOnAction(actionEvent ->
-                DungeonAdventure.myHero.setDamageRange(99999, 100000));
+                CharacterWindow.myHero.setDamageRange(99999, 100000));
         MenuItem dbHealthBoost = new MenuItem("Health Boost");
         dbHealthBoost.setOnAction(actionEvent ->
-                DungeonAdventure.myHero.heal(99999));
+                CharacterWindow.myHero.heal(99999));
         MenuItem dbDie = new MenuItem("Die");
-        dbDie.setOnAction(actionEvent -> DungeonAdventure.myHero.die());
+        dbDie.setOnAction(actionEvent -> CharacterWindow.myHero.die());
 
         restartItem.setOnAction(actionEvent -> DungeonAdventure.setupGame());
         exitItem.setOnAction(actionEvent -> System.exit(0));

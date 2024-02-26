@@ -38,4 +38,7 @@ public class Thief extends Hero {
         }
     }
 
+    public String getHeroClass() {
+        return "Thief";
+    }
 }
