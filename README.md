@@ -18,5 +18,6 @@ To run the application, please follow the steps below:
 
 ## Contributors
 - Aaniyah Alyes
-- Isabelle
+- Belle
 - Evan Abrahamson
+- Isabelle
