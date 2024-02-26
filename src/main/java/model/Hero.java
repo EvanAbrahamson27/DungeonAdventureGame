@@ -5,18 +5,22 @@ import controller.DungeonAdventure;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Hero extends DungeonCharacter {
+public class Hero extends DungeonCharacter {
     private final List<Item> myInventory;
     private Room myRoom;
     private String mySkillName;
     private int mySkillCooldown = 0;
 
     public Hero(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
-                     double theChanceToHit) {
+                double theChanceToHit, int theX, int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
-        myRoom = DungeonAdventure.myDungeonMap.getRoomAtLocation(0, 0);
+        myRoom = new Room(null, this, null, theX, theY);
         mySkillName = "Heal";
+    }
+
+    public void setRoom(Room theRoom) {
+        myRoom = theRoom;
     }
 
     public void blockAttack() {
@@ -81,15 +85,15 @@ public abstract class Hero extends DungeonCharacter {
     }
     public void setClass(final String theClass) {
 
-        switch (theClass) {
-            case "Priestess" : {
-                DungeonAdventure.myHero = new Priestess(myName);
-            } case "Warrior" : {
-                DungeonAdventure.myHero = new Warrior(myName);
-            } case "Thief" : {
-                DungeonAdventure.myHero = new Thief(myName);
-            }
-        }
+//        switch (theClass) {
+//            case "Priestess" : {
+//                DungeonAdventure.myHero = new Priestess(myName);
+//            } case "Warrior" : {
+//                DungeonAdventure.myHero = new Warrior(myName);
+//            } case "Thief" : {
+//                DungeonAdventure.myHero = new Thief(myName);
+//            }
+//        }
 
         // this will be used for debug/test menu purposes, not working as intended yet
     }

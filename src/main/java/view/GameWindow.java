@@ -15,8 +15,9 @@ public class GameWindow extends Application {
     protected ButtonPanel buttonPanel;
     protected StatPanel statPanel;
     protected LogPanel logPanel;
-    protected MapPanel mapPanel;
+    protected static MapPanel mapPanel;
     protected RoomPanel roomPanel;
+    protected static BorderPane borderPane;
 
     @Override
     public void start(Stage theStage) {
@@ -98,15 +99,17 @@ public class GameWindow extends Application {
         borderPane.getChildren().add(dungeonImageView);
 
         if (buttonPanel == null) {
-            buttonPanel = new ButtonPanel(DungeonAdventure.myHero);
             logPanel = new LogPanel();
             statPanel = new StatPanel(DungeonAdventure.myHero);
             roomPanel = new RoomPanel();
+            mapPanel = new MapPanel();
+            buttonPanel = new ButtonPanel(DungeonAdventure.myHero, mapPanel);
         }
+
         borderPane.setBottom(buttonPanel);
-        borderPane.setRight(statPanel);
+        borderPane.setLeft(mapPanel);
         borderPane.setTop(logPanel);
-//        borderPane.setLeft(mapPanel);
+        borderPane.setRight(statPanel);
         borderPane.setCenter(roomPanel);
 
         MenuBar menuBar = createMenuBar();

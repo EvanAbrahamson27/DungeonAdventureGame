@@ -20,8 +20,10 @@ public class ButtonPanel extends BorderPane {
     private Button myUseItemButton;
     private Button mySkillButton;
     private final List<Button> myMovementButtons;
+    private MapPanel myMapPanel;
 
-    public ButtonPanel(Hero thePlayer) {
+    public ButtonPanel(Hero thePlayer, MapPanel mapPanel) {
+        this.myMapPanel = mapPanel;
         myMovementButtons = new ArrayList<>();
         setStyle("-fx-border-color: black;");
         myFont = new Font("Times New Roman", 30);
@@ -47,21 +49,33 @@ public class ButtonPanel extends BorderPane {
         myUseItemButton.setFont(myFont);
 
         Button NorthButton = new Button("Move North");
-        NorthButton.setOnAction(e -> thePlayer.move(thePlayer.getX(), thePlayer.getY() + 1));
+        NorthButton.setOnAction(e -> {
+            thePlayer.move(thePlayer.getX(), thePlayer.getY() - 1);
+            myMapPanel.refreshMap();
+        });
         NorthButton.setFont(myFont);
         Button WestButton = new Button("Move West");
-        WestButton.setOnAction(e -> thePlayer.move(thePlayer.getX() - 1, thePlayer.getY()));
+        WestButton.setOnAction(e -> {
+            thePlayer.move(thePlayer.getX() - 1, thePlayer.getY());
+            myMapPanel.refreshMap();
+        });
         WestButton.setFont(myFont);
         Button SouthButton = new Button("Move South");
-        SouthButton.setOnAction(e -> thePlayer.move(thePlayer.getX(), thePlayer.getY() - 1));
+        SouthButton.setOnAction(e -> {
+            thePlayer.move(thePlayer.getX(), thePlayer.getY() + 1);
+            myMapPanel.refreshMap();
+        });
         SouthButton.setFont(myFont);
         Button EastButton = new Button("Move East");
-        EastButton.setOnAction(e -> thePlayer.move(thePlayer.getX() + 1, thePlayer.getY()));
+        EastButton.setOnAction(e -> {
+            thePlayer.move(thePlayer.getX() + 1, thePlayer.getY());
+            myMapPanel.refreshMap();
+        });
         EastButton.setFont(myFont);
 
-        myMovementButtons.add(NorthButton);
-        myMovementButtons.add(WestButton);
         myMovementButtons.add(SouthButton);
+        myMovementButtons.add(WestButton);
+        myMovementButtons.add(NorthButton);
         myMovementButtons.add(EastButton);
 
         buttonBox.getChildren().addAll(myAttackButton, mySkillButton, myUseItemButton, NorthButton,

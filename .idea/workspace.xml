@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Added Monster class&#10;- Changed TestDamage to Attack button&#10;- Fight against Zombie for testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ogre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Priestess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Priestess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Thief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/HealthPotion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/HealthPotion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Skeleton.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Skeleton.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

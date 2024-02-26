@@ -8,8 +8,10 @@ public class Thief extends Hero {
     final static int DAMAGE_MIN = 20;
     final static int DAMAGE_MAX = 40;
 
-    public Thief (String theName) {
-        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 6, 80);
+    public Thief (String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
+                  double theChanceToHit, int theX, int theY) {
+//        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 6, 80);
+        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theX, theY);
         setSkillName("Surprise Attack");
     }
 

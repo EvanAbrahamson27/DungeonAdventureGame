@@ -16,7 +16,8 @@ public class DungeonAdventure {
     private static void setupGame(String[] theArgs) {
         myLog = new StringBuilder();
         myDungeonMap = new DungeonMap();
-        myHero = new Thief("Test_Priestess");
+        myHero = myDungeonMap.getHero();
+        myHero.setRoom(myDungeonMap.getRoomAtLocation(myHero.getX(), myHero.getY()));
         GameWindow.main(theArgs);
     }
 
