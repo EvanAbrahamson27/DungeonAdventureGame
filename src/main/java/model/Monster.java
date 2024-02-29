@@ -1,6 +1,5 @@
 package model;
 
-import controller.DungeonAdventure;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.CharacterWindow;
@@ -26,7 +25,11 @@ public class Monster extends DungeonCharacter {
             while (myTurns > 0) {
                 Random movePicker = new Random();
                 switch (movePicker.nextInt(3)) {
-                    case 0, 1 -> {attack(CharacterWindow.myHero);usingTurn = 'a';}
+                    case 0, 1 -> {
+                        if (!CharacterWindow.myHero.blockAttack()) {
+                            attack(CharacterWindow.myHero);
+                            usingTurn = 'a';} else myTurns--;
+                        }
                     case 2 -> {heal(5);myTurns--;usingTurn = 'h';}
                 }
             }
