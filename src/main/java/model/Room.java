@@ -121,11 +121,11 @@ public class Room {
         }
     }
 
-    public void setIsVisited(Boolean theIsVisited) {
+    public void setIsVisited(final Boolean theIsVisited) {
         this.isVisited = theIsVisited;
     }
 
-    public void topNeighbor(Room neighbor) {
+    public void topNeighbor(final Room neighbor) {
         if (neighbor != null) {
             this.topNeighbor = neighbor;
         }
@@ -135,7 +135,7 @@ public class Room {
         return this.topNeighbor;
     }
 
-    public void bottomNeighbor(Room neighbor) {
+    public void bottomNeighbor(final Room neighbor) {
         if (neighbor != null) {
             this.bottomNeighbor = neighbor;
         }
@@ -145,7 +145,7 @@ public class Room {
         return this.bottomNeighbor;
     }
 
-    public void leftNeighbor(Room neighbor) {
+    public void leftNeighbor(final Room neighbor) {
         if (neighbor != null) {
             this.leftNeighbor = neighbor;
         }
@@ -155,7 +155,7 @@ public class Room {
         return this.leftNeighbor;
     }
 
-    public void rightNeighbor(Room neighbor) {
+    public void rightNeighbor(final Room neighbor) {
         if (neighbor != null) {
             this.rightNeighbor = neighbor;
         }

@@ -14,25 +14,25 @@ public class Hero extends DungeonCharacter {
     private int mySkillCooldown = 0;
     private String heroClass = "";
 
-    public Hero(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
-                double theChanceToHit, int theX, int theY) {
+    public Hero(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
+                final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
         myRoom = new Room(null, this, null, theX, theY);
         mySkillName = "Heal";
     }
 
-    public void setRoom(Room theRoom) {
+    public void setRoom(final Room theRoom) {
         myRoom = theRoom;
     }
 
     public void blockAttack() {
 
     }
-    public void useItem(String theItem, DungeonCharacter theTarget) {
+    public void useItem(final String theItem, final DungeonCharacter theTarget) {
         for (Item item : myInventory) {
             if (item.toString().equals(theItem)) {
-                DungeonAdventure.addToLog(myName + " used a " + item + "!");
+                DungeonAdventure.addToLog(getName() + " used a " + item + "!");
                 item.itemControl(theTarget);
                 myInventory.remove(item);
                 return;
@@ -40,7 +40,7 @@ public class Hero extends DungeonCharacter {
         }
         DungeonAdventure.addToLog("No item found");
     }
-    public void addToInventory(Item theItem) {
+    public void addToInventory(final Item theItem) {
         myInventory.add(theItem);
         DungeonAdventure.addToLog("Picked up a " + theItem);
     }
@@ -50,11 +50,11 @@ public class Hero extends DungeonCharacter {
 
     @Override
     public String toString() {
-        return (myName +
+        return (getName() +
                 "\nHealth: " + getHealthPoints() +
-                "\nAttack Range: " + myDamageMin + " - " + myDamageMax +
-                "\nAttack Speed: " + myAttackSpeed +
-                "\nChance to Hit: " + myChanceToHit + "%" +
+                "\nAttack Range: " + getDamageMin() + " - " + getDamageMax() +
+                "\nAttack Speed: " + getAttackSpeed() +
+                "\nChance to Hit: " + getChanceToHit() + "%" +
                 "\n\nClass: " + this.getClass().toString().substring(12) +
                 " \nSpecial Skill: " + mySkillName +
                 "\n\nItems: ");
@@ -67,7 +67,7 @@ public class Hero extends DungeonCharacter {
         Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
         if (newRoom != null) {
             myRoom = newRoom;
-            DungeonAdventure.addToLog(myName + " moved to [" + getX() + "," + getY() + "]");
+            DungeonAdventure.addToLog(getName() + " moved to [" + getX() + "," + getY() + "]");
             myRoom.encounterMonster();
             myRoom.encounterItem();
         }
@@ -98,7 +98,7 @@ public class Hero extends DungeonCharacter {
                 this.heroClass = "Thief";
             }
             default: {
-                CharacterWindow.myHero = new Hero(myName, 75, 25, 45, 5, 70, getX(), getY());
+                CharacterWindow.myHero = new Hero(getName(), 75, 25, 45, 5, 70, getX(), getY());
                 this.heroClass = "Warrior";
             }
         }
@@ -117,15 +117,12 @@ public class Hero extends DungeonCharacter {
         this.mySkillCooldown = theSkillCooldown;
     }
 
-    public void setDamageRange(final int theMinDmg, final int theMaxDmg) {
-        myDamageMin = theMinDmg;
-        myDamageMax = theMaxDmg;
-    }
+
 
     public void die() {
-        myIsDead = true;
+        setIsDead(true);
         CharacterWindow.myHero.setSkillCooldown(0);
-        DungeonAdventure.addToLog(myName + " has died.");
+        DungeonAdventure.addToLog(getName() + " has died.");
         if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
         GameWindow.openGameOverWindow();
     }

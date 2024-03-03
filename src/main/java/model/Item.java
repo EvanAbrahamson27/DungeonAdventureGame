@@ -8,13 +8,13 @@ public class Item {
     final private char myItemType;
     final private String myName;
 
-    public Item(char theItemType, int theItemUseAmt, String theName) {
+    public Item(final char theItemType, final int theItemUseAmt, final String theName) {
         myUseAmt = theItemUseAmt;
         myItemType = theItemType;
         myName = theName;
     }
 
-    public void itemControl(DungeonCharacter theTarget) {
+    public void itemControl(final DungeonCharacter theTarget) {
         switch (myItemType) {
             case 'h' -> heal(theTarget);
             case 'd' -> dealDamage(theTarget);
@@ -22,10 +22,10 @@ public class Item {
             default -> System.out.println("ERROR: Invalid Item Usage");
         }
     }
-    private void heal(DungeonCharacter theTarget) {
+    private void heal(final DungeonCharacter theTarget) {
         theTarget.heal(myUseAmt);
     }
-    private void dealDamage(DungeonCharacter theTarget) {
+    private void dealDamage(final DungeonCharacter theTarget) {
         theTarget.takeDamage(myUseAmt);
     }
     private void giveVision() {

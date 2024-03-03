@@ -6,18 +6,18 @@ import view.CharacterWindow;
 import java.util.Random;
 
 public abstract class DungeonCharacter {
-    final protected String myName;
-    protected int myHealthPoints;
-    protected int myDamageMin;
-    protected int myDamageMax;
-    protected int myAttackSpeed;
-    protected double myChanceToHit;
-    protected int myTurns;
-    protected boolean myIsDead;
-    protected Position myPosition;
+    final private String myName;
+    private int myHealthPoints;
+    private int myDamageMin;
+    private int myDamageMax;
+    private final int myAttackSpeed;
+    private final double myChanceToHit;
+    private int myTurns;
+    private boolean myIsDead;
+    private final Position myPosition;
 
-    DungeonCharacter(String theName, int theHealthPoints, int theDamageMin, int theDamageMax, int theAttackSpeed,
-                     double theChanceToHit) {
+    DungeonCharacter(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
+                     final int theAttackSpeed, final double theChanceToHit) {
         myName = theName;
         myHealthPoints = theHealthPoints;
         myDamageMin = theDamageMin;
@@ -28,7 +28,7 @@ public abstract class DungeonCharacter {
         myPosition = new Position(0,0);
     }
 
-    public void attack(DungeonCharacter theCh) {
+    public void attack(final DungeonCharacter theCh) {
         if (!myIsDead && !theCh.getIsDead()) {
             Random r = new Random();
             if (myTurns > 0) {
@@ -47,7 +47,7 @@ public abstract class DungeonCharacter {
         }
     }
 
-    public void takeDamage(int theDamage) {
+    public void takeDamage(final int theDamage) {
         if (!myIsDead) {
             this.myHealthPoints -= theDamage;
             String message = ("Ouch! " + myName + " took " + theDamage + " damage!");
@@ -61,14 +61,14 @@ public abstract class DungeonCharacter {
         }
     }
 
-    public void heal(int theHealAmt) {
+    public void heal(final int theHealAmt) {
         if (!myIsDead) {
             this.myHealthPoints += theHealAmt;
             DungeonAdventure.addToLog(myName + " has been healed for " + theHealAmt + " damage!");
         }
     }
 
-    public void startBattle(DungeonCharacter theCh) {
+    public void startBattle(final DungeonCharacter theCh) {
         if (!myIsDead && !theCh.getIsDead()) {
             myTurns = (this.myAttackSpeed / theCh.myAttackSpeed);
             if (myTurns == 0) myTurns++;
@@ -80,7 +80,9 @@ public abstract class DungeonCharacter {
         CharacterWindow.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(myName + " has died.");
     }
-
+    public String getName() {
+        return myName;
+    }
     public int getHealthPoints() {
         return myHealthPoints;
     }
@@ -88,7 +90,32 @@ public abstract class DungeonCharacter {
     public boolean getIsDead() {
         return myIsDead;
     }
+    public void setIsDead(final boolean theIsDead) {
+        myIsDead = theIsDead;
+    }
 
+    public int getTurns() {
+        return myTurns;
+    }
+    public void setTurns(final int theTurns) {
+        myTurns = theTurns;
+    }
+    public void setDamageRange(final int theMinDmg, final int theMaxDmg) {
+        myDamageMin = theMinDmg;
+        myDamageMax = theMaxDmg;
+    }
+    public double getChanceToHit() {
+        return myChanceToHit;
+    }
+    public int getDamageMin() {
+        return myDamageMin;
+    }
+    public int getDamageMax() {
+        return myDamageMax;
+    }
+    public int getAttackSpeed() {
+        return myAttackSpeed;
+    }
     @Override
     public String toString() {
         return myName;

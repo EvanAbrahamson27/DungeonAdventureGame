@@ -10,13 +10,13 @@ public class DungeonMap {
     private final int WIDTH = 5;
     private final int HEIGHT = 5;
 
-    private Map<Room, List<Room>> adjacenyList;
-    private Hero myHero;
+    private final Map<Room, List<Room>> adjacenyList;
+    private final Hero myHero;
 
-    private int SKELETONS = 5;
-    private int POTIONS = 2;
+    private final int SKELETONS = 5;
+    private final int POTIONS = 2;
 
-    public DungeonMap(String characterSelect) {
+    public DungeonMap(final String characterSelect) {
 
         if (characterSelect.equalsIgnoreCase("Warrior")) {
             this.myHero = new Warrior("Test_Hero", 100, 10, 30, 60, 85,0, 0);

@@ -10,7 +10,7 @@ public class DungeonAdventure {
     private static boolean myFirstLaunch = true;
     private static String myName;
 
-    public static void main(String[] theArgs) {
+    public static void main(final String[] theArgs) {
         myArgs = theArgs;
         setupGame();
     }
@@ -34,7 +34,7 @@ public class DungeonAdventure {
     public static String getLog() {
         return myLog.toString();
     }
-    public static void addToLog(String theMessage) {
+    public static void addToLog(final String theMessage) {
         myLog.append(theMessage).append("\n");
     }
 }

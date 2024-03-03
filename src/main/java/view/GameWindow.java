@@ -20,30 +20,30 @@ public class GameWindow extends Application {
     protected static BorderPane borderPane;
 
     @Override
-    public void start(Stage theStage) {
+    public void start(final Stage theStage) {
 
         theStage.setTitle("Dungeon Adventure");
         theStage.setWidth(1200);
         theStage.setHeight(600);
 
-        this.borderPane = new BorderPane();
+        borderPane = new BorderPane();
 
         // Add game background image
         Image dungeonBackground = new Image("TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
-        dungeonImageView.fitWidthProperty().bind(this.borderPane.widthProperty());
-        dungeonImageView.fitHeightProperty().bind(this.borderPane.heightProperty());
+        dungeonImageView.fitWidthProperty().bind(borderPane.widthProperty());
+        dungeonImageView.fitHeightProperty().bind(borderPane.heightProperty());
         dungeonImageView.setPreserveRatio(false);
 
         // Add image and updated properties to the borderPane to display in the background
-        this.borderPane.getChildren().add(dungeonImageView);
+        borderPane.getChildren().add(dungeonImageView);
 
         Label title = new Label("Dungeon Adventure");
         title.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 50px; -fx-padding: 40 50 10 50; -fx-text-fill: white; -fx-effect: null; -fx-background-color: rgba(0, 0, 0, 0.0);");
 
-        this.borderPane.setTop(title);
+        borderPane.setTop(title);
         BorderPane.setAlignment(title, Pos.CENTER);
 
         VBox buttons = new VBox(5);
@@ -52,20 +52,20 @@ public class GameWindow extends Application {
 
         Button startButton = new Button("Start Game");
         startButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        startButton.setOnAction(e -> {startButtonAction(theStage, this.borderPane, startButton);
-            this.borderPane.getChildren().remove(dungeonImageView);});
+        startButton.setOnAction(e -> {startButtonAction(theStage, borderPane, startButton);
+            borderPane.getChildren().remove(dungeonImageView);});
 //        borderPane.setCenter(startButton);
 //        BorderPane.setAlignment(startButton, Pos.CENTER);
 
         Button loadGame = new Button("Load Game");
         loadGame.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        loadGame.setOnAction(e -> loadGameAction(theStage, this.borderPane, loadGame));
+        loadGame.setOnAction(e -> loadGameAction(theStage, borderPane, loadGame));
 //        borderPane.setCenter(loadGame);
 //        BorderPane.setAlignment(loadGame, Pos.TOP_CENTER);
 
         Button helpButton = new Button("Help");
         helpButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        helpButton.setOnAction(e -> helpButtonAction(theStage, this.borderPane, helpButton));
+        helpButton.setOnAction(e -> helpButtonAction(theStage, borderPane, helpButton));
 
         Button exitButton = new Button("Exit Game");
         exitButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
@@ -74,9 +74,9 @@ public class GameWindow extends Application {
 
         helpButton.setMinWidth(185);
         buttons.getChildren().addAll(startButton, loadGame, helpButton, exitButton);
-        this.borderPane.setCenter(buttons);
+        borderPane.setCenter(buttons);
 
-        Scene scene = new Scene(this.borderPane);
+        Scene scene = new Scene(borderPane);
         scene.getStylesheets().add("Style.css");
         theStage.setScene(scene);
 
@@ -84,8 +84,8 @@ public class GameWindow extends Application {
 
     }
 
-    private void startButtonAction(Stage theStage, BorderPane borderPane, Button startButton) {
-        this.borderPane.getChildren().remove(startButton); // Remove the Start Game button
+    private void startButtonAction(final Stage theStage, final BorderPane borderPane, final Button startButton) {
+        GameWindow.borderPane.getChildren().remove(startButton); // Remove the Start Game button
 
         new CharacterWindow();
 
@@ -94,12 +94,12 @@ public class GameWindow extends Application {
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
-        dungeonImageView.fitWidthProperty().bind(this.borderPane.widthProperty());
-        dungeonImageView.fitHeightProperty().bind(this.borderPane.heightProperty());
+        dungeonImageView.fitWidthProperty().bind(GameWindow.borderPane.widthProperty());
+        dungeonImageView.fitHeightProperty().bind(GameWindow.borderPane.heightProperty());
         dungeonImageView.setPreserveRatio(false);
 
         // Add image and updated properties to the borderPane to display in the background
-        this.borderPane.getChildren().add(dungeonImageView);
+        GameWindow.borderPane.getChildren().add(dungeonImageView);
 
         if (buttonPanel == null) {
             logPanel = new LogPanel();
@@ -109,25 +109,25 @@ public class GameWindow extends Application {
             buttonPanel = new ButtonPanel(CharacterWindow.myHero, mapPanel);
         }
 
-        this.borderPane.setBottom(buttonPanel);
-        this.borderPane.setLeft(mapPanel);
-        this.borderPane.setTop(logPanel);
-        this.borderPane.setRight(statPanel);
-        this.borderPane.setCenter(roomPanel);
+        GameWindow.borderPane.setBottom(buttonPanel);
+        GameWindow.borderPane.setLeft(mapPanel);
+        GameWindow.borderPane.setTop(logPanel);
+        GameWindow.borderPane.setRight(statPanel);
+        GameWindow.borderPane.setCenter(roomPanel);
 
         MenuBar menuBar = createMenuBar();
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(menuBar, logPanel);
 
-        this.borderPane.setTop(vBox);
+        GameWindow.borderPane.setTop(vBox);
 
     }
 
-    private void loadGameAction(Stage theStage, BorderPane borderPane, Button loadGame) {
+    private void loadGameAction(final Stage theStage, final BorderPane borderPane, final Button loadGame) {
     }
 
-    private void helpButtonAction(Stage theStage, BorderPane borderPane, Button helpButton) {
+    private void helpButtonAction(final Stage theStage, final BorderPane borderPane, final Button helpButton) {
     }
 
     private MenuBar createMenuBar() {
@@ -175,19 +175,19 @@ public class GameWindow extends Application {
     public void restartWindow() {
 
         // Restart the game
-        this.borderPane.getChildren().clear();
+        borderPane.getChildren().clear();
 
         // Add game background image
         Image dungeonBackground = new Image("TempDungeonImage.jpg");
         ImageView dungeonImageView = new ImageView(dungeonBackground);
 
         // Adjust the image to fill the game window
-        dungeonImageView.fitWidthProperty().bind(this.borderPane.widthProperty());
-        dungeonImageView.fitHeightProperty().bind(this.borderPane.heightProperty());
+        dungeonImageView.fitWidthProperty().bind(borderPane.widthProperty());
+        dungeonImageView.fitHeightProperty().bind(borderPane.heightProperty());
         dungeonImageView.setPreserveRatio(false);
 
         // Add image and updated properties to the borderPane to display in the background
-        this.borderPane.getChildren().add(dungeonImageView);
+        borderPane.getChildren().add(dungeonImageView);
 
         new CharacterWindow();
 
@@ -199,21 +199,21 @@ public class GameWindow extends Application {
             buttonPanel = new ButtonPanel(CharacterWindow.myHero, mapPanel);
         }
 
-        this.borderPane.setBottom(buttonPanel);
-        this.borderPane.setLeft(mapPanel);
-        this.borderPane.setTop(logPanel);
-        this.borderPane.setRight(statPanel);
-        this.borderPane.setCenter(roomPanel);
+        borderPane.setBottom(buttonPanel);
+        borderPane.setLeft(mapPanel);
+        borderPane.setTop(logPanel);
+        borderPane.setRight(statPanel);
+        borderPane.setCenter(roomPanel);
 
         MenuBar menuBar = createMenuBar();
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(menuBar, logPanel);
 
-        this.borderPane.setTop(vBox);
+        borderPane.setTop(vBox);
     }
 
-    public static void main(String[] theArgs) {
+    public static void main(final String[] theArgs) {
         launch(theArgs);
     }
 

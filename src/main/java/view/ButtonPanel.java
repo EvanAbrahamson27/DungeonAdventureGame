@@ -20,10 +20,10 @@ public class ButtonPanel extends BorderPane {
     private Button myUseItemButton;
     private Button mySkillButton;
     private final List<Button> myMovementButtons;
-    private MapPanel myMapPanel;
-    private Hero myPlayer;
+    private final MapPanel myMapPanel;
+    private final Hero myPlayer;
 
-    public ButtonPanel(Hero thePlayer, MapPanel mapPanel) {
+    public ButtonPanel(final Hero thePlayer, final MapPanel mapPanel) {
         this.myPlayer = thePlayer;
         this.myMapPanel = mapPanel;
         myMovementButtons = new ArrayList<>();
