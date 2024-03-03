@@ -6,6 +6,7 @@ import view.GameWindow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Hero extends DungeonCharacter {
     private final List<Item> myInventory;
@@ -26,8 +27,13 @@ public class Hero extends DungeonCharacter {
         myRoom = theRoom;
     }
 
-    public void blockAttack() {
-
+    public boolean blockAttack() {
+        Random r = new Random();
+        if (r.nextInt(101) < 15) {
+            DungeonAdventure.addToLog("Blocked attack!");
+            return true;
+        }
+        return false;
     }
     public void useItem(final String theItem, final DungeonCharacter theTarget) {
         for (Item item : myInventory) {
