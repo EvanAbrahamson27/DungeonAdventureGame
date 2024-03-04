@@ -17,7 +17,7 @@ To run the application, please follow the steps below:
 - GUI: JavaFX
 
 ## Contributors
-- Aaniyah Alyes
-- Belle
 - Evan Abrahamson
-- Isabelle
+- Aaniyah Alyes
+- Belle Kim
+- Isabelle del Castillo
