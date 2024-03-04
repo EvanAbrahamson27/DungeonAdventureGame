@@ -1,6 +1,5 @@
 package model;
 
-import controller.DungeonAdventure;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.CharacterWindow;
@@ -30,9 +29,9 @@ public class Monster extends DungeonCharacter {
                     case 0, 1 -> {
                         if (!CharacterWindow.myHero.blockAttack()) {
                             attack(CharacterWindow.myHero);
-                            usingTurn = 'a';} else myTurns--;
+                            usingTurn = 'a';} else setTurns(getTurns() - 1);
                         }
-                    case 2 -> {heal(5);myTurns--;usingTurn = 'h';}
+                    case 2 -> {heal(5);setTurns(getTurns() - 1);usingTurn = 'h';}
                 }
             }
             CharacterWindow.myHero.setSkillCooldown(CharacterWindow.myHero.getSkillCooldown() - 1);
