@@ -14,6 +14,7 @@ public class Hero extends DungeonCharacter {
     private String mySkillName;
     private int mySkillCooldown = 0;
     private String heroClass = "";
+    private int myPillars = 0;
 
     public Hero(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
                 final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
@@ -49,6 +50,10 @@ public class Hero extends DungeonCharacter {
     public void addToInventory(final Item theItem) {
         myInventory.add(theItem);
         DungeonAdventure.addToLog("Picked up a " + theItem);
+        if (theItem.getMyItemType() == 'p') {
+            theItem.usePillar();
+            myInventory.remove(theItem);
+        }
     }
     public List<Item> getInventory() {
         return myInventory;
@@ -71,7 +76,7 @@ public class Hero extends DungeonCharacter {
     }
     public void move(final int theX, final int theY) {
         Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
-        if (newRoom != null && newRoom.isWall() == false) {
+        if (newRoom != null && !newRoom.isWall()) {
             myRoom = newRoom;
             DungeonAdventure.addToLog(getName() + " moved to [" + getX() + "," + getY() + "]");
             myRoom.encounterMonster();
@@ -108,7 +113,6 @@ public class Hero extends DungeonCharacter {
                 this.heroClass = "Warrior";
             }
         }
-        // this will be used for debug/test menu purposes, not working as intended yet
     }
 
     public String getHeroClass() {
@@ -122,14 +126,19 @@ public class Hero extends DungeonCharacter {
     public void setSkillCooldown(final int theSkillCooldown) {
         this.mySkillCooldown = theSkillCooldown;
     }
-
-
-
     public void die() {
         setIsDead(true);
         CharacterWindow.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(getName() + " has died.");
         if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
-        GameWindow.openGameOverWindow();
+        GameWindow.openGameOverWindow(true);
+    }
+
+    public int getPillars() {
+        return myPillars;
+    }
+
+    public void setPillars(int thePillars) {
+        myPillars = thePillars;
     }
 }

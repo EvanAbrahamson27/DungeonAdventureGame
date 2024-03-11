@@ -166,8 +166,8 @@ public class GameWindow extends Application {
         helpMenu.getItems().addAll(helpItem, debugMenu);
         debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost, dbDie);
         debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
-
         menuBar.getMenus().addAll(fileMenu, helpMenu);
+        menuBar.setStyle("-fx-background-color: black;");
 
         return menuBar;
     }
@@ -217,7 +217,7 @@ public class GameWindow extends Application {
         launch(theArgs);
     }
 
-    public static void openGameOverWindow() {
-        new GameOverWindow();
+    public static void openGameOverWindow(final boolean theLoss) {
+        new GameOverWindow(theLoss);
     }
 }

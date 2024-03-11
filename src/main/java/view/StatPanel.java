@@ -1,6 +1,5 @@
 package view;
 
-import controller.DungeonAdventure;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Label;
@@ -53,6 +52,8 @@ public class StatPanel extends BorderPane {
                 case 'd' -> {imageView = createImage("DamagePotion.png");
                     tooltip = new Tooltip(item.toString());}
                 case 'v' -> {imageView = createImage("VisionPotion.png");
+                    tooltip = new Tooltip(item.toString());}
+                case 'p' -> {imageView = createImage("Pillar.png");
                     tooltip = new Tooltip(item.toString());}
                 default -> {return null;}
             }

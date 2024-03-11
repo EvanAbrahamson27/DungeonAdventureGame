@@ -180,6 +180,9 @@ public class DungeonMap {
 
         // Generate potions on the map randomly
         generatePotions();
+
+        // Generate pillars on the map randomly
+        generatePillars();
     }
 
     public Hero getHero() {
@@ -204,6 +207,18 @@ public class DungeonMap {
             int y = (int) (Math.random() * BIG_HEIGHT);
             if (this.myMap[x][y].isEmptySpace() == true && !(x == 1 && y == 0) && this.myMap[x][y].isWall() == false) {
                 this.myMap[x][y] = new Room(null, null, new Item('h', 10, "Healing Potion"), x, y, false);
+            } else {
+                i--;
+            }
+        }
+    }
+
+    private void generatePillars() {
+        for (int i = 0; i < 4; i++) {
+            int x = (int) (Math.random() * BIG_WIDTH);
+            int y = (int) (Math.random() * BIG_HEIGHT);
+            if (this.myMap[x][y].isEmptySpace() == true && !(x == 1 && y == 0) && this.myMap[x][y].isWall() == false) {
+                this.myMap[x][y] = new Room(null, null, new Item('p', 0, "Pillar"), x, y, false);
             } else {
                 i--;
             }

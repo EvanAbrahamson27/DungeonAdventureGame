@@ -145,16 +145,28 @@ public class ButtonPanel extends BorderPane {
 
             if (canMove[0] && !CharacterWindow.myHero.getIsDead()) {
                 if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
-                        CharacterWindow.myHero.getY() + 1) == null) disableButton(myMovementButtons.get(0));
+                        CharacterWindow.myHero.getY() + 1) == null ||
+                        (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
+                                CharacterWindow.myHero.getY() + 1).isWall()))
+                    disableButton(myMovementButtons.get(0));
                 else enableButton(myMovementButtons.get(0));
                 if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() - 1,
-                        CharacterWindow.myHero.getY()) == null) disableButton(myMovementButtons.get(1));
+                        CharacterWindow.myHero.getY()) == null ||
+                        (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() - 1,
+                                CharacterWindow.myHero.getY()).isWall()))
+                    disableButton(myMovementButtons.get(1));
                 else enableButton(myMovementButtons.get(1));
                 if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
-                        CharacterWindow.myHero.getY() - 1) == null) disableButton(myMovementButtons.get(2));
+                        CharacterWindow.myHero.getY() - 1) == null ||
+                        (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX(),
+                        CharacterWindow.myHero.getY() - 1).isWall()))
+                    disableButton(myMovementButtons.get(2));
                 else enableButton(myMovementButtons.get(2));
                 if (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() + 1,
-                        CharacterWindow.myHero.getY()) == null) disableButton(myMovementButtons.get(3));
+                        CharacterWindow.myHero.getY()) == null ||
+                        (CharacterWindow.myDungeonMap.getRoomAtLocation(CharacterWindow.myHero.getX() + 1,
+                                CharacterWindow.myHero.getY()).isWall()))
+                    disableButton(myMovementButtons.get(3));
                 else enableButton(myMovementButtons.get(3));
             }
         }));
