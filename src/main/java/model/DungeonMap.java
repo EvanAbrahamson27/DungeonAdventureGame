@@ -9,10 +9,8 @@ public class DungeonMap {
     private final int BIG_WIDTH = SMALL_WIDTH * 2 + 1;
     private final int BIG_HEIGHT = SMALL_HEIGHT * 2 + 1;
 
-    private final Map<Room, List<Room>> adjacenyList;
+    private final Map<Room, List<Room>> adjacencyList;
     private final Hero myHero;
-    private final Map<Room, List<Room>> adjacenyList;
-    private Hero myHero;
 
     private final int SKELETONS = 5;
     private final int POTIONS = 2;
@@ -29,7 +27,7 @@ public class DungeonMap {
             this.myHero = null;
         }
 
-        this.adjacenyList = new HashMap<>();
+        this.adjacencyList = new HashMap<>();
 
         // 10 x 10 2d array of rooms
         Room[][] tempMap = new Room[SMALL_WIDTH][SMALL_HEIGHT];
@@ -37,7 +35,7 @@ public class DungeonMap {
         for (int i = 0; i < SMALL_WIDTH; i++) {
             for (int j = 0; j < SMALL_HEIGHT; j++) {
                 tempMap[i][j] = new Room(null, null, null, i, j, false);
-                this.adjacenyList.put(tempMap[i][j], new ArrayList<>());
+                this.adjacencyList.put(tempMap[i][j], new ArrayList<>());
             }
         }
 
@@ -58,33 +56,33 @@ public class DungeonMap {
 
                 // Inserts our node into our adjacency list map and initializes an empty arraylist
                 // to store the left, top, right, and bottom neighbors.
-                this.adjacenyList.put(tempMap[i][j], new ArrayList<>());
+                this.adjacencyList.put(tempMap[i][j], new ArrayList<>());
 
                 // Left
                 if ((j - 1) >= 0 && tempMap[i][j - 1] != null) {
                     Room left = tempMap[i][j - 1];
-                    this.adjacenyList.get(tempMap[i][j]).add(left); // Add neighbor to adjacency list
+                    this.adjacencyList.get(tempMap[i][j]).add(left); // Add neighbor to adjacency list
                     tempMap[i][j].leftNeighbor(left);
                 }
 
                 // Right
                 if ((j + 1) < tempMap[0].length && tempMap[i][j + 1] != null) {
                     Room right = tempMap[i][j + 1];
-                    this.adjacenyList.get(tempMap[i][j]).add(right); // Add neighbor to adjacency list
+                    this.adjacencyList.get(tempMap[i][j]).add(right); // Add neighbor to adjacency list
                     tempMap[i][j].rightNeighbor(right);
                 }
 
                 // Bottom
                 if ((i + 1) < tempMap.length && tempMap[i + 1][j] != null) {
                     Room bottom = tempMap[i + 1][j];
-                    this.adjacenyList.get(tempMap[i][j]).add(bottom); // Add neighbor to adjacency list
+                    this.adjacencyList.get(tempMap[i][j]).add(bottom); // Add neighbor to adjacency list
                     tempMap[i][j].bottomNeighbor(bottom);
                 }
 
                 // Top
                 if ((i - 1) >= 0 && tempMap[i - 1][j] != null) {
                     Room top = tempMap[i - 1][j];
-                    this.adjacenyList.get(tempMap[i][j]).add(top); // Add neighbor to adjacency list
+                    this.adjacencyList.get(tempMap[i][j]).add(top); // Add neighbor to adjacency list
                     tempMap[i][j].topNeighbor(top);
                 }
             }
@@ -125,7 +123,7 @@ public class DungeonMap {
             while(r.size() > 0) {
                 Room currRoom = r.pop();
 
-                List<Room> neighbors = this.adjacenyList.get(currRoom);
+                List<Room> neighbors = this.adjacencyList.get(currRoom);
 
                 // Shuffle neighbors to create a random traversal of the maze
                 Collections.shuffle(neighbors);
