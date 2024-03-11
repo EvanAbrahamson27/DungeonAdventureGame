@@ -28,7 +28,7 @@ public class ButtonPanel extends BorderPane {
         this.myMapPanel = mapPanel;
         myMovementButtons = new ArrayList<>();
         setStyle("-fx-border-color: black;");
-        myFont = new Font("Times New Roman", 30);
+        myFont = new Font("Times New Roman", 20);
         setCenter(addButtons());
         updateButtons();
     }

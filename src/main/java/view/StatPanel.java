@@ -20,10 +20,12 @@ public class StatPanel extends BorderPane {
     final private VBox myContentBox;
 
     StatPanel() {
-        setStyle("-fx-border-color: black;");
+        // setStyle("-fx-border-color: black;");
+        setStyle("-fx-background-opacity: 0.0;");
 
         myContentBox = new VBox();
         myContentBox.getChildren().addAll(createStatsList(), createItemImages());
+        myContentBox.setStyle("-fx-background-opacity: 0.0;");
 
         setCenter(myContentBox);
 
@@ -34,6 +36,8 @@ public class StatPanel extends BorderPane {
         statsArea = new Label();
         statsArea.setText("Test!");
         statsArea.setFont(new Font("Times New Roman", 20));
+
+        statsArea.setStyle("-fx-padding: 10;");
 
         return statsArea;
     }

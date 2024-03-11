@@ -16,10 +16,12 @@ public class  LogPanel extends BorderPane {
     LogPanel() {
         myLog = new TextArea();
         myScrollPane = new ScrollPane(myLog);
-        setStyle("-fx-border-color: black;");
+        // setStyle("-fx-border-color: black;");
         VBox contentBox = new VBox();
-        contentBox.getChildren().addAll(new Label("Game Log:"), createLog());
-        contentBox.setMaxSize(500, 100);
+        Label gameLog = new Label("Game Log:");
+        gameLog.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15; -fx-padding: 0 10 0 5;");
+        contentBox.getChildren().addAll(gameLog, createLog());
+        contentBox.setMaxSize(500, 120);
 
         setCenter(contentBox);
 
@@ -29,7 +31,7 @@ public class  LogPanel extends BorderPane {
     private TextArea createLog() {
         myLog.setEditable(false);
         myLog.setFocusTraversable(false);
-        myLog.setFont(new Font("Times New Roman", 18));
+        myLog.setFont(new Font("Times New Roman", 14));
         myLog.setWrapText(true);
 
         myScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);

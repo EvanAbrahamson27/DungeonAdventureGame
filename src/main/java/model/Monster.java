@@ -38,7 +38,7 @@ public class Monster extends DungeonCharacter {
     public ImageView getImage() {
         Image monsterImage = new Image("Skeleton.png");
         ImageView monsterImageView = new ImageView(monsterImage);
-        monsterImageView.setFitWidth(50);
+        monsterImageView.setFitWidth(25);
         monsterImageView.setPreserveRatio(true);
 
         return monsterImageView;
