@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="Fixed issues with running">
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="- Fixed character naming&#10;- Re-added class stats&#10;- Added block chance&#10;- Nerfed pillar 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Priestess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Priestess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Thief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,17 +75,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jorgeaguilar/IdeaProjects/DungeonAdventureGameOG/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/jorgeaguilar/IdeaProjects/DungeonAdventureGameOG/src/main/resources",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -253,7 +262,8 @@
     <MESSAGE value="- Added debug options&#10;- Changed some class code for simplification" />
     <MESSAGE value="- Merged updated files from Evan branch&#10;- Added class selection screen&#10;- Added game over screen&#10;- Added debug options - Class switch, Die" />
     <MESSAGE value="Fixed issues with running" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues with running" />
+    <MESSAGE value="- Fixed character naming&#10;- Re-added class stats&#10;- Added block chance&#10;- Nerfed pillar 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed character naming&#10;- Re-added class stats&#10;- Added block chance&#10;- Nerfed pillar 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

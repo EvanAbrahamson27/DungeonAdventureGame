@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 import javafx.scene.layout.*;
 
 public class GameWindow extends Application {
-    protected ButtonPanel buttonPanel;
-    protected StatPanel statPanel;
-    protected LogPanel logPanel;
-    protected static MapPanel mapPanel;
-    protected RoomPanel roomPanel;
-    protected static BorderPane borderPane;
+    private ButtonPanel buttonPanel;
+    private StatPanel statPanel;
+    private LogPanel logPanel;
+    private static MapPanel mapPanel;
+    private RoomPanel roomPanel;
+    private static BorderPane borderPane;
 
     @Override
     public void start(final Stage theStage) {

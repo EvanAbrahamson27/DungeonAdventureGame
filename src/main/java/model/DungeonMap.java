@@ -15,14 +15,14 @@ public class DungeonMap {
     private final int SKELETONS = 5;
     private final int POTIONS = 2;
 
-    public DungeonMap(final String characterSelect) {
+    public DungeonMap(final String theCharacterSelect, final String theName) {
 
-        if (characterSelect.equalsIgnoreCase("Warrior")) {
-            this.myHero = new Warrior("Test_Hero", 100, 10, 30, 60, 85,1, 0);
-        } else if (characterSelect.equalsIgnoreCase("Priestess")) {
-            this.myHero = new Priestess("Test_Hero", 100, 10, 30, 60, 85,1, 0);
-        } else if (characterSelect.equalsIgnoreCase("Thief")) {
-            this.myHero = new Thief("Test_Hero", 100, 10, 30, 60, 85,1, 0);
+        if (theCharacterSelect.equalsIgnoreCase("Warrior")) {
+            this.myHero = new Warrior(theName, 125, 35, 60, 4, 80, 20,1, 0);
+        } else if (theCharacterSelect.equalsIgnoreCase("Priestess")) {
+            this.myHero = new Priestess(theName, 75, 25, 45, 5, 70, 30,1, 0);
+        } else if (theCharacterSelect.equalsIgnoreCase("Thief")) {
+            this.myHero = new Thief(theName, 75, 20, 40, 6, 80, 40,1, 0);
         } else {
             this.myHero = null;
         }
@@ -194,7 +194,7 @@ public class DungeonMap {
             int x = (int) (Math.random() * (BIG_WIDTH));
             int y = (int) (Math.random() * (BIG_HEIGHT));
             if (this.myMap[x][y].isEmptySpace() == true && !(x == 1 && y == 0) && this.myMap[x][y].isWall() == false) {
-                this.myMap[x][y] = new Room(new Monster("Skeleton", 50, 5, 15, 30, 95, 50, x, y), null, null, x, y, false);
+                this.myMap[x][y] = new Room(new Monster("Skeleton", 60, 5, 15, 3, 95, 50, x, y), null, null, x, y, false);
             } else {
                 i--;
             }

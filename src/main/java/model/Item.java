@@ -45,10 +45,10 @@ public class Item {
     public void usePillar() {
         switch(CharacterWindow.myHero.getPillars()) {
             case 0 -> {
-                CharacterWindow.myHero.setDamageRange(CharacterWindow.myHero.getDamageMin() + 30,
-                        CharacterWindow.myHero.getDamageMax() + 30);
+                CharacterWindow.myHero.setDamageRange(CharacterWindow.myHero.getDamageMin() + 15,
+                        CharacterWindow.myHero.getDamageMax() + 15);
                 CharacterWindow.myHero.setPillars(1);
-                DungeonAdventure.addToLog("You found the Pillar of Encapsulation! +30 Damage");
+                DungeonAdventure.addToLog("You found the Pillar of Encapsulation! +15 Damage");
             }
             case 1 -> {
                 CharacterWindow.myHero.setChanceToHit(CharacterWindow.myHero.getChanceToHit() + 10);

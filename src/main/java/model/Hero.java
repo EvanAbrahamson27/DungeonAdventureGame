@@ -15,11 +15,13 @@ public class Hero extends DungeonCharacter {
     private int mySkillCooldown = 0;
     private String heroClass = "";
     private int myPillars = 0;
+    private final int myChanceToBlock;
 
     public Hero(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
-                final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
+                final int theAttackSpeed, final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
+        myChanceToBlock = theChanceToBlock;
         myRoom = new Room(null, this, null, theX, theY, false);
         mySkillName = "Heal";
     }
@@ -30,7 +32,7 @@ public class Hero extends DungeonCharacter {
 
     public boolean blockAttack() {
         Random r = new Random();
-        if (r.nextInt(101) < 15) {
+        if (r.nextInt(101) < myChanceToBlock) {
             DungeonAdventure.addToLog("Blocked attack!");
             return true;
         }
@@ -109,7 +111,7 @@ public class Hero extends DungeonCharacter {
                 this.heroClass = "Thief";
             }
             default: {
-                CharacterWindow.myHero = new Hero(getName(), 75, 25, 45, 5, 70, getX(), getY());
+                CharacterWindow.myHero = new Hero(getName(), 75, 25, 45, 5, 70, 20, getX(), getY());
                 this.heroClass = "Warrior";
             }
         }

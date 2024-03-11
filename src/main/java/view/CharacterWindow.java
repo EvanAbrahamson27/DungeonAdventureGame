@@ -1,7 +1,5 @@
 package view;
 
-import model.*;
-import controller.DungeonAdventure;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,9 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DungeonMap;
-import model.Priestess;
-import model.Thief;
-import model.Warrior;
+import model.Hero;
 
 public class CharacterWindow extends Stage {
     private String myName = "";
@@ -77,7 +73,7 @@ public class CharacterWindow extends Stage {
 
         showAndWait();
 
-        myDungeonMap = new DungeonMap(characterSelect);
+        myDungeonMap = new DungeonMap(characterSelect, myName);
         myHero = myDungeonMap.getHero();
         myHero.setRoom(myDungeonMap.getRoomAtLocation(myHero.getX(), myHero.getY()));
     }

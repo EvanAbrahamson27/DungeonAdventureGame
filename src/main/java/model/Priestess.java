@@ -10,9 +10,9 @@ public class Priestess extends Hero {
 
     public Priestess (final String theName, final int theHealthPoints, final int theDamageMin,
                       final int theDamageMax, final int theAttackSpeed,
-                      final double theChanceToHit, final int theX, final int theY) {
+                      final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
 //        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 5, 70, theX, theY);
-        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theX, theY);
+        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theChanceToBlock, theX, theY);
         setSkillName("Blessed Heal");
     }
 
