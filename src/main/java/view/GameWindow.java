@@ -8,8 +8,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.application.Application;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class GameWindow extends Application {
     protected ButtonPanel buttonPanel;
@@ -139,9 +144,15 @@ public class GameWindow extends Application {
         Menu debugClassMenu = new Menu("Change Class");
 
         MenuItem saveItem = new MenuItem("Save");
+        saveItem.setStyle("-fx-text-fill: black");
+        saveItem.setOnAction(e -> saveGame(saveItem, "savegame")); // Invoke saveGame method
         MenuItem restartItem = new MenuItem("Restart");
+        restartItem.setStyle("-fx-text-fill: black");
         MenuItem exitItem = new MenuItem("Exit");
+        exitItem.setStyle("-fx-text-fill: black");
         MenuItem helpItem = new MenuItem("Help");
+        helpItem.setStyle("-fx-text-fill: black");
+
 
         MenuItem dbClassP = new MenuItem("Priestess");
         MenuItem dbClassW = new MenuItem("Warrior");
@@ -170,6 +181,63 @@ public class GameWindow extends Application {
         menuBar.getMenus().addAll(fileMenu, helpMenu);
 
         return menuBar;
+    }
+
+    public void saveGame(MenuItem saveItem, String filename) {
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.setTitle("Save Game");
+
+        Button sac = new Button("Save and Continue");
+        sac.setOnAction(e -> {
+            SaveGameContinue(filename);
+            dialogStage.close(); // Close the dialog when the button is clicked
+        });
+
+        Button sae = new Button("Save and Exit");
+        sae.setOnAction(e -> {
+            SaveGameExit(filename);
+            dialogStage.close(); // Close the dialog when the button is clicked
+        });
+
+        HBox buttonsBox = new HBox(10);
+        buttonsBox.getChildren().addAll(sac, sae);
+        buttonsBox.setAlignment(Pos.CENTER);
+
+        VBox dialogVBox = new VBox(20);
+        dialogVBox.getChildren().addAll(new Label("Save Options"), buttonsBox);
+        dialogVBox.setAlignment(Pos.CENTER);
+
+        Scene dialogScene = new Scene(dialogVBox, 300, 150);
+        dialogStage.setScene(dialogScene);
+        dialogStage.show();
+
+    }
+
+    private void SaveGameExit(String filename) {
+        try (FileOutputStream fileOS = new FileOutputStream(filename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
+
+            objectOS.writeObject(CharacterWindow.myHero);
+            objectOS.writeObject(CharacterWindow.myDungeonMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("There was an error saving the game.");
+        }
+        System.exit(0);
+    }
+
+    private void SaveGameContinue(String filename) {
+        try (FileOutputStream fileOS = new FileOutputStream(filename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
+
+            objectOS.writeObject(CharacterWindow.myHero);
+            objectOS.writeObject(CharacterWindow.myDungeonMap);
+
+            objectOS.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("There was an error saving the game.");
+        }
+
     }
 
     public void restartWindow() {
