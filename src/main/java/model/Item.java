@@ -42,7 +42,7 @@ public class Item {
     public ImageView getImage() {
         Image itemImage = new Image("HealthPotion.png");
         ImageView itemImageView = new ImageView(itemImage);
-        itemImageView.setFitWidth(50);
+        itemImageView.setFitWidth(25);
         itemImageView.setPreserveRatio(true);
 
         return itemImageView;

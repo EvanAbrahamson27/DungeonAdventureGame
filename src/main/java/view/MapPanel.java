@@ -22,11 +22,16 @@ public class MapPanel extends BorderPane {
     MapPanel() {
         contentBox = new VBox();
 
+        // Add left padding to contentBox
+        contentBox.setPadding(new Insets(0, 0, 0, 15));
+
         Label gameMapLabel = new Label("Game Map:");
+        gameMapLabel.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 20px; -fx-font-weight: bold;");
+
         contentBox.getChildren().add(gameMapLabel);
 
         this.myMapGrid = new GridPane();
-        this.myMapGrid.setPadding(new Insets(10, 10, 10, 10));
+        this.myMapGrid.setPadding(new Insets(5, 10, 10, 10));
 
         drawMap();
 
