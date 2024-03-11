@@ -16,8 +16,9 @@ public class Room {
     private Room bottomNeighbor;
     private Room leftNeighbor;
     private Room rightNeighbor;
+    private Boolean isWall;
 
-    public Room(final Monster theMonster, final Hero theHero, final Item theItem, final int theXLocation, final int theYLocation) {
+    public Room(final Monster theMonster, final Hero theHero, final Item theItem, final int theXLocation, final int theYLocation, final boolean isWall) {
         myMonster = theMonster;
         myItem = theItem;
         myXLocation = theXLocation;
@@ -27,6 +28,7 @@ public class Room {
         this.bottomNeighbor = null;
         this.leftNeighbor = null;
         this.rightNeighbor = null;
+        this.isWall = isWall;
     }
 
     public int getXLocation() {
@@ -86,21 +88,21 @@ public class Room {
             if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Priestess")) {
                 Image heroImage = new Image("Priestess.png");
                 ImageView heroImageView = new ImageView(heroImage);
-                heroImageView.setFitWidth(50);
+                heroImageView.setFitWidth(25);
                 heroImageView.setPreserveRatio(true);
 
                 return heroImageView;
             } else if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Warrior")) {
                 Image heroImage = new Image("Warrior.png");
                 ImageView heroImageView = new ImageView(heroImage);
-                heroImageView.setFitWidth(50);
+                heroImageView.setFitWidth(25);
                 heroImageView.setPreserveRatio(true);
 
                 return heroImageView;
             } else if (CharacterWindow.myHero.getHeroClass().equalsIgnoreCase("Thief")) {
                 Image heroImage = new Image("Thief.png");
                 ImageView heroImageView = new ImageView(heroImage);
-                heroImageView.setFitWidth(50);
+                heroImageView.setFitWidth(25);
                 heroImageView.setPreserveRatio(true);
 
                 return heroImageView;
@@ -112,12 +114,22 @@ public class Room {
         } else if (myItem != null) {
             return myItem.getImage();
         } else {
-            Image emptySpace = new Image("Floor-Tile.png");
-            ImageView emptySpaceImageView = new ImageView(emptySpace);
-            emptySpaceImageView.setFitWidth(50);
-            emptySpaceImageView.setPreserveRatio(true);
 
-            return emptySpaceImageView;
+            if (isWall) {
+                Image wall = new Image("Wall.png");
+                ImageView wallImageView = new ImageView(wall);
+                wallImageView.setFitWidth(25);
+                wallImageView.setPreserveRatio(true);
+
+                return wallImageView;
+            } else {
+                Image emptySpace = new Image("Floor-Tile.png");
+                ImageView emptySpaceImageView = new ImageView(emptySpace);
+                emptySpaceImageView.setFitWidth(25);
+                emptySpaceImageView.setPreserveRatio(true);
+
+                return emptySpaceImageView;
+            }
         }
     }
 
@@ -163,5 +175,20 @@ public class Room {
 
     public Room getRightNeighbor() {
         return this.rightNeighbor;
+    }
+
+    public void setVisited(boolean visited) {
+        this.isVisited = visited;
+    }
+
+    public boolean getIsVisited() {
+        return this.isVisited;
+    }
+
+    public boolean isWall() {
+        return this.isWall;
+    }
+    public void setIsWall(boolean isWall) {
+        this.isWall = isWall;
     }
 }

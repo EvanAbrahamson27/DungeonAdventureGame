@@ -19,7 +19,7 @@ public class Hero extends DungeonCharacter {
                 final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
-        myRoom = new Room(null, this, null, theX, theY);
+        myRoom = new Room(null, this, null, theX, theY, false);
         mySkillName = "Heal";
     }
 
@@ -71,7 +71,7 @@ public class Hero extends DungeonCharacter {
     }
     public void move(final int theX, final int theY) {
         Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
-        if (newRoom != null) {
+        if (newRoom != null && newRoom.isWall() == false) {
             myRoom = newRoom;
             DungeonAdventure.addToLog(getName() + " moved to [" + getX() + "," + getY() + "]");
             myRoom.encounterMonster();
