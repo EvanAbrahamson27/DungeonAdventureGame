@@ -6,7 +6,9 @@ import javafx.scene.image.ImageView;
 import view.CharacterWindow;
 import view.GameWindow;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     final private int myUseAmt;
     final private char myItemType;
     final private String myName;

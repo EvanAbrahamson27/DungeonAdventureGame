@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class DungeonMap {
+public class DungeonMap implements Serializable {
     private final Room[][] myMap;
     private final int SMALL_WIDTH = 5;
     private final int SMALL_HEIGHT = 5;

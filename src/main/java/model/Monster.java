@@ -4,9 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.CharacterWindow;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Monster extends DungeonCharacter {
+public class Monster extends DungeonCharacter implements Serializable {
     private double myChanceToHeal;
     private int myHealMin;
     private int myHealMax;

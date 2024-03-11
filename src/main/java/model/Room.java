@@ -5,7 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.CharacterWindow;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     private Monster myMonster;
     private Hero myHero;
     private Item myItem;
