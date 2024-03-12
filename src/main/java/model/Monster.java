@@ -11,7 +11,7 @@ public class Monster extends DungeonCharacter implements Serializable {
     private double myChanceToHeal;
     private int myHealMin;
     private int myHealMax;
-    private char usingTurn = 'n';
+    private char myUsingTurn = 'n';
     final private int myRoomX;
     final private int myRoomY;
     public Monster(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
@@ -30,9 +30,10 @@ public class Monster extends DungeonCharacter implements Serializable {
                     case 0, 1 -> {
                         if (!CharacterWindow.myHero.blockAttack()) {
                             attack(CharacterWindow.myHero);
-                            usingTurn = 'a';} else setTurns(getTurns() - 1);
+                            myUsingTurn = 'a';} else setTurns(getTurns() - 1);
                         }
-                    case 2 -> {heal(5);setTurns(getTurns() - 1);usingTurn = 'h';}
+                    case 2 -> {heal(5);setTurns(getTurns() - 1);
+                        myUsingTurn = 'h';}
                 }
             }
             CharacterWindow.myHero.setSkillCooldown(CharacterWindow.myHero.getSkillCooldown() - 1);
@@ -50,10 +51,10 @@ public class Monster extends DungeonCharacter implements Serializable {
     }
 
     public char getUsingTurn() {
-        return usingTurn;
+        return myUsingTurn;
     }
     public void setUsingTurn(char theChar) {
-        usingTurn = theChar;
+        myUsingTurn = theChar;
     }
 
     public int getRoomX() {

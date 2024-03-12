@@ -10,7 +10,7 @@ public class DungeonMap implements Serializable {
     private final int BIG_WIDTH = SMALL_WIDTH * 2 + 1;
     private final int BIG_HEIGHT = SMALL_HEIGHT * 2 + 1;
 
-    private final Map<Room, List<Room>> adjacencyList;
+    private final Map<Room, List<Room>> myAdjacencyList;
     private final Hero myHero;
 
     private final int SKELETONS = 5;
@@ -28,7 +28,7 @@ public class DungeonMap implements Serializable {
             this.myHero = null;
         }
 
-        this.adjacencyList = new HashMap<>();
+        this.myAdjacencyList = new HashMap<>();
 
         // 10 x 10 2d array of rooms
         Room[][] tempMap = new Room[SMALL_WIDTH][SMALL_HEIGHT];
@@ -36,7 +36,7 @@ public class DungeonMap implements Serializable {
         for (int i = 0; i < SMALL_WIDTH; i++) {
             for (int j = 0; j < SMALL_HEIGHT; j++) {
                 tempMap[i][j] = new Room(null, null, null, i, j, false);
-                this.adjacencyList.put(tempMap[i][j], new ArrayList<>());
+                this.myAdjacencyList.put(tempMap[i][j], new ArrayList<>());
             }
         }
 
@@ -49,7 +49,7 @@ public class DungeonMap implements Serializable {
         generateCharacters();
     }
 
-    private void createAdjacencyList(Room[][] tempMap) {
+    private void createAdjacencyList(final Room[][] theTempMap) {
 
         // The for loop below accesses each node in the Node maze
         for (int i = 0; i < this.SMALL_WIDTH; i++) {
@@ -57,43 +57,43 @@ public class DungeonMap implements Serializable {
 
                 // Inserts our node into our adjacency list map and initializes an empty arraylist
                 // to store the left, top, right, and bottom neighbors.
-                this.adjacencyList.put(tempMap[i][j], new ArrayList<>());
+                this.myAdjacencyList.put(theTempMap[i][j], new ArrayList<>());
 
                 // Left
-                if ((j - 1) >= 0 && tempMap[i][j - 1] != null) {
-                    Room left = tempMap[i][j - 1];
-                    this.adjacencyList.get(tempMap[i][j]).add(left); // Add neighbor to adjacency list
-                    tempMap[i][j].leftNeighbor(left);
+                if ((j - 1) >= 0 && theTempMap[i][j - 1] != null) {
+                    Room left = theTempMap[i][j - 1];
+                    this.myAdjacencyList.get(theTempMap[i][j]).add(left); // Add neighbor to adjacency list
+                    theTempMap[i][j].leftNeighbor(left);
                 }
 
                 // Right
-                if ((j + 1) < tempMap[0].length && tempMap[i][j + 1] != null) {
-                    Room right = tempMap[i][j + 1];
-                    this.adjacencyList.get(tempMap[i][j]).add(right); // Add neighbor to adjacency list
-                    tempMap[i][j].rightNeighbor(right);
+                if ((j + 1) < theTempMap[0].length && theTempMap[i][j + 1] != null) {
+                    Room right = theTempMap[i][j + 1];
+                    this.myAdjacencyList.get(theTempMap[i][j]).add(right); // Add neighbor to adjacency list
+                    theTempMap[i][j].rightNeighbor(right);
                 }
 
                 // Bottom
-                if ((i + 1) < tempMap.length && tempMap[i + 1][j] != null) {
-                    Room bottom = tempMap[i + 1][j];
-                    this.adjacencyList.get(tempMap[i][j]).add(bottom); // Add neighbor to adjacency list
-                    tempMap[i][j].bottomNeighbor(bottom);
+                if ((i + 1) < theTempMap.length && theTempMap[i + 1][j] != null) {
+                    Room bottom = theTempMap[i + 1][j];
+                    this.myAdjacencyList.get(theTempMap[i][j]).add(bottom); // Add neighbor to adjacency list
+                    theTempMap[i][j].bottomNeighbor(bottom);
                 }
 
                 // Top
-                if ((i - 1) >= 0 && tempMap[i - 1][j] != null) {
-                    Room top = tempMap[i - 1][j];
-                    this.adjacencyList.get(tempMap[i][j]).add(top); // Add neighbor to adjacency list
-                    tempMap[i][j].topNeighbor(top);
+                if ((i - 1) >= 0 && theTempMap[i - 1][j] != null) {
+                    Room top = theTempMap[i - 1][j];
+                    this.myAdjacencyList.get(theTempMap[i][j]).add(top); // Add neighbor to adjacency list
+                    theTempMap[i][j].topNeighbor(top);
                 }
             }
         }
     }
 
-    private Room[][] generateMaze(Room[][] tempMap) {
+    private Room[][] generateMaze(final Room[][] theTempMap) {
 
         // Construct maze with walls
-        Room[][] mazeMap = new Room[tempMap.length * 2 + 1][tempMap[0].length * 2 + 1];
+        Room[][] mazeMap = new Room[theTempMap.length * 2 + 1][theTempMap[0].length * 2 + 1];
 
         for (int i = 0; i < mazeMap.length; i++) {
             for (int j = 0; j < mazeMap[i].length; j++) {
@@ -111,7 +111,7 @@ public class DungeonMap implements Serializable {
         // A stack to keep track of visited rooms
         Stack<Room> r = new Stack<>();
 
-        Room startingRoom = tempMap[0][0];
+        Room startingRoom = theTempMap[0][0];
 
         if (startingRoom != null) {
 
@@ -124,7 +124,7 @@ public class DungeonMap implements Serializable {
             while(r.size() > 0) {
                 Room currRoom = r.pop();
 
-                List<Room> neighbors = this.adjacencyList.get(currRoom);
+                List<Room> neighbors = this.myAdjacencyList.get(currRoom);
 
                 // Shuffle neighbors to create a random traversal of the maze
                 Collections.shuffle(neighbors);

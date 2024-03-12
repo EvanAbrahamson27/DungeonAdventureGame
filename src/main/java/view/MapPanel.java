@@ -1,44 +1,37 @@
 package view;
 
-import controller.*;
-import model.*;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Box;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-
-import java.util.List;
+import model.Room;
 
 public class MapPanel extends BorderPane {
     private GridPane myMapGrid;
-    private VBox contentBox;
+    private VBox myContentBox;
 
     MapPanel() {
-        contentBox = new VBox();
+        myContentBox = new VBox();
 
         // Add left padding to contentBox
-        contentBox.setPadding(new Insets(0, 0, 0, 15));
+        myContentBox.setPadding(new Insets(0, 0, 0, 15));
 
         Label gameMapLabel = new Label("Game Map:");
         gameMapLabel.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 20px; -fx-font-weight: bold;");
 
-        contentBox.getChildren().add(gameMapLabel);
+        myContentBox.getChildren().add(gameMapLabel);
 
         this.myMapGrid = new GridPane();
         this.myMapGrid.setPadding(new Insets(5, 10, 10, 10));
 
         drawMap();
 
-        contentBox.getChildren().add(this.myMapGrid);
+        myContentBox.getChildren().add(this.myMapGrid);
 
-        contentBox.setMaxSize(100, 100);
-        setCenter(contentBox);
+        myContentBox.setMaxSize(150, 150);
+        setCenter(myContentBox);
 
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> refreshMap());
     }
@@ -50,7 +43,7 @@ public class MapPanel extends BorderPane {
         for (int i = 0; i < roomMap.length; i++) {
             for (int j = 0; j < roomMap[i].length; j++) {
                 Room currRoom = roomMap[i][j];
-                if (currRoom != null) {
+                if (currRoom != null && currRoom.isVisible()) {
                     this.myMapGrid.add(currRoom.getImage(), i, j);
                 }
             }

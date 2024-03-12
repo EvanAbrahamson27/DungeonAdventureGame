@@ -29,6 +29,7 @@ public class Hero extends DungeonCharacter implements Serializable {
 
     public void setRoom(final Room theRoom) {
         myRoom = theRoom;
+        showHeroRooms();
     }
 
     public boolean blockAttack() {
@@ -71,6 +72,7 @@ public class Hero extends DungeonCharacter implements Serializable {
                 "\nChance to Hit: " + getChanceToHit() + "%" +
                 "\n\nClass: " + this.getClass().toString().substring(12) +
                 " \nSpecial Skill: " + mySkillName +
+                "\nPillars: " + myPillars +
                 "\n\nItems: ");
     }
 
@@ -85,6 +87,7 @@ public class Hero extends DungeonCharacter implements Serializable {
             myRoom.encounterMonster();
             myRoom.encounterItem();
         }
+        showHeroRooms();
     }
     public int getY() {
         return myRoom.getYLocation();
@@ -143,5 +146,21 @@ public class Hero extends DungeonCharacter implements Serializable {
 
     public void setPillars(int thePillars) {
         myPillars = thePillars;
+    }
+
+    public void showHeroRooms() {
+        if (CharacterWindow.myHero != null) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if (CharacterWindow.myHero.getX() + i >= 0 && CharacterWindow.myHero.getY() + j >= 0 &&
+                            CharacterWindow.myHero.getX() + i <= 10 && CharacterWindow.myHero.getY() + j <= 10 &&
+                            !CharacterWindow.myDungeonMap.getMap()[CharacterWindow.myHero.getX() + i]
+                                    [CharacterWindow.myHero.getY() + j].isVisible()) {
+                        CharacterWindow.myDungeonMap.getMap()[CharacterWindow.myHero.getX() + i][
+                                CharacterWindow.myHero.getY() + j].setVisible(true);
+                    }
+                }
+            }
+        }
     }
 }

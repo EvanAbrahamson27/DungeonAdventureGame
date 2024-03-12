@@ -64,6 +64,7 @@ public class Item implements Serializable {
             }
             case 3 -> {
                 DungeonAdventure.addToLog("You found the Pillar of Polymorphism! You win!");
+                CharacterWindow.myHero.setPillars(4);
                 CharacterWindow.myHero.setIsDead(true);
                 GameWindow.openGameOverWindow(false);
             }

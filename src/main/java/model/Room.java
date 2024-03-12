@@ -13,24 +13,26 @@ public class Room implements Serializable {
     private Item myItem;
     private final int myXLocation;
     private final int myYLocation;
-    private boolean isVisited;
-    private Room topNeighbor;
-    private Room bottomNeighbor;
-    private Room leftNeighbor;
-    private Room rightNeighbor;
-    private Boolean isWall;
+    private boolean myIsVisited;
+    private Room myTopNeighbor;
+    private Room myBottomNeighbor;
+    private Room myLeftNeighbor;
+    private Room myRightNeighbor;
+    private Boolean myIsWall;
+    private boolean myIsVisible;
 
     public Room(final Monster theMonster, final Hero theHero, final Item theItem, final int theXLocation, final int theYLocation, final boolean isWall) {
         myMonster = theMonster;
         myItem = theItem;
         myXLocation = theXLocation;
         myYLocation = theYLocation;
-        this.isVisited = false;
-        this.topNeighbor = null;
-        this.bottomNeighbor = null;
-        this.leftNeighbor = null;
-        this.rightNeighbor = null;
-        this.isWall = isWall;
+        this.myIsVisited = false;
+        this.myTopNeighbor = null;
+        this.myBottomNeighbor = null;
+        this.myLeftNeighbor = null;
+        this.myRightNeighbor = null;
+        this.myIsWall = isWall;
+        this.myIsVisible = false;
     }
 
     public int getXLocation() {
@@ -117,7 +119,7 @@ public class Room implements Serializable {
             return myItem.getImage();
         } else {
 
-            if (isWall) {
+            if (myIsWall) {
                 Image wall = new Image("Wall.png");
                 ImageView wallImageView = new ImageView(wall);
                 wallImageView.setFitWidth(25);
@@ -136,61 +138,69 @@ public class Room implements Serializable {
     }
 
     public void setIsVisited(final Boolean theIsVisited) {
-        this.isVisited = theIsVisited;
+        this.myIsVisited = theIsVisited;
     }
 
     public void topNeighbor(final Room neighbor) {
         if (neighbor != null) {
-            this.topNeighbor = neighbor;
+            this.myTopNeighbor = neighbor;
         }
     }
 
     public Room getTopNeighbor() {
-        return this.topNeighbor;
+        return this.myTopNeighbor;
     }
 
     public void bottomNeighbor(final Room neighbor) {
         if (neighbor != null) {
-            this.bottomNeighbor = neighbor;
+            this.myBottomNeighbor = neighbor;
         }
     }
 
     public Room getBottomNeighbor() {
-        return this.bottomNeighbor;
+        return this.myBottomNeighbor;
     }
 
     public void leftNeighbor(final Room neighbor) {
         if (neighbor != null) {
-            this.leftNeighbor = neighbor;
+            this.myLeftNeighbor = neighbor;
         }
     }
 
     public Room getLeftNeighbor() {
-        return this.leftNeighbor;
+        return this.myLeftNeighbor;
     }
 
     public void rightNeighbor(final Room neighbor) {
         if (neighbor != null) {
-            this.rightNeighbor = neighbor;
+            this.myRightNeighbor = neighbor;
         }
     }
 
     public Room getRightNeighbor() {
-        return this.rightNeighbor;
+        return this.myRightNeighbor;
     }
 
-    public void setVisited(boolean visited) {
-        this.isVisited = visited;
+    public void setVisited(final boolean theVisited) {
+        this.myIsVisited = theVisited;
     }
 
     public boolean getIsVisited() {
-        return this.isVisited;
+        return this.myIsVisited;
     }
 
     public boolean isWall() {
-        return this.isWall;
+        return this.myIsWall;
     }
-    public void setIsWall(boolean isWall) {
-        this.isWall = isWall;
+    public void setIsWall(final boolean theIsWall) {
+        this.myIsWall = theIsWall;
+    }
+
+    public boolean isVisible() {
+        return myIsVisible;
+    }
+
+    public void setVisible(final boolean theVisible) {
+        myIsVisible = theVisible;
     }
 }
