@@ -9,9 +9,9 @@ public class Thief extends Hero {
     final static int DAMAGE_MAX = 40;
 
     public Thief (final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
-                  final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
+                  final int theAttackSpeed, final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
 //        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 6, 80);
-        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theX, theY);
+        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theChanceToBlock, theX, theY);
         setSkillName("Surprise Attack");
     }
 

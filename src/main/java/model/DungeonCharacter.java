@@ -10,11 +10,10 @@ public abstract class DungeonCharacter {
     private int myHealthPoints;
     private int myDamageMin;
     private int myDamageMax;
-    private final int myAttackSpeed;
-    private final double myChanceToHit;
+    private int myAttackSpeed;
+    private double myChanceToHit;
     private int myTurns;
     private boolean myIsDead;
-    private final Position myPosition;
 
     DungeonCharacter(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
                      final int theAttackSpeed, final double theChanceToHit) {
@@ -25,7 +24,7 @@ public abstract class DungeonCharacter {
         myAttackSpeed = theAttackSpeed;
         myChanceToHit = theChanceToHit;
         myIsDead = false;
-        myPosition = new Position(0,0);
+        Position myPosition = new Position(0, 0);
     }
 
     public void attack(final DungeonCharacter theCh) {
@@ -116,8 +115,15 @@ public abstract class DungeonCharacter {
     public int getAttackSpeed() {
         return myAttackSpeed;
     }
+    public void setChanceToHit(double theChanceToHit) {
+        myChanceToHit = theChanceToHit;
+    }
     @Override
     public String toString() {
         return myName;
+    }
+
+    public void setAttackSpeed(int theAttackSpeed) {
+        myAttackSpeed = theAttackSpeed;
     }
 }

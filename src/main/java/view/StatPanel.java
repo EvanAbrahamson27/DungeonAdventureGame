@@ -1,6 +1,5 @@
 package view;
 
-import controller.DungeonAdventure;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Label;
@@ -20,10 +19,12 @@ public class StatPanel extends BorderPane {
     final private VBox myContentBox;
 
     StatPanel() {
-        setStyle("-fx-border-color: black;");
+        // setStyle("-fx-border-color: black;");
+        setStyle("-fx-background-opacity: 0.0;");
 
         myContentBox = new VBox();
         myContentBox.getChildren().addAll(createStatsList(), createItemImages());
+        myContentBox.setStyle("-fx-background-opacity: 0.0;");
 
         setCenter(myContentBox);
 
@@ -34,6 +35,8 @@ public class StatPanel extends BorderPane {
         statsArea = new Label();
         statsArea.setText("Test!");
         statsArea.setFont(new Font("Times New Roman", 20));
+
+        statsArea.setStyle("-fx-padding: 10;");
 
         return statsArea;
     }
@@ -49,6 +52,8 @@ public class StatPanel extends BorderPane {
                 case 'd' -> {imageView = createImage("DamagePotion.png");
                     tooltip = new Tooltip(item.toString());}
                 case 'v' -> {imageView = createImage("VisionPotion.png");
+                    tooltip = new Tooltip(item.toString());}
+                case 'p' -> {imageView = createImage("Pillar.png");
                     tooltip = new Tooltip(item.toString());}
                 default -> {return null;}
             }

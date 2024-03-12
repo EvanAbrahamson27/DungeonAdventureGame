@@ -9,9 +9,9 @@ public class Warrior extends Hero {
     final static int DAMAGE_MAX = 60;
 
     public Warrior(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
-                   final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
+                   final int theAttackSpeed, final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
 //        super(theName, 125, DAMAGE_MIN, DAMAGE_MAX, 4, 80);
-        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theX, theY);
+        super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theChanceToBlock, theX, theY);
         setSkillName("Crushing Blow");
     }
 

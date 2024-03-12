@@ -1,17 +1,17 @@
 package model;
 
-import controller.DungeonAdventure;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.CharacterWindow;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Monster extends DungeonCharacter {
+public class Monster extends DungeonCharacter implements Serializable {
     private double myChanceToHeal;
     private int myHealMin;
     private int myHealMax;
-    private char usingTurn = 'n';
+    private char myUsingTurn = 'n';
     final private int myRoomX;
     final private int myRoomY;
     public Monster(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
@@ -30,9 +30,10 @@ public class Monster extends DungeonCharacter {
                     case 0, 1 -> {
                         if (!CharacterWindow.myHero.blockAttack()) {
                             attack(CharacterWindow.myHero);
-                            usingTurn = 'a';} else myTurns--;
+                            myUsingTurn = 'a';} else setTurns(getTurns() - 1);
                         }
-                    case 2 -> {heal(5);myTurns--;usingTurn = 'h';}
+                    case 2 -> {heal(5);setTurns(getTurns() - 1);
+                        myUsingTurn = 'h';}
                 }
             }
             CharacterWindow.myHero.setSkillCooldown(CharacterWindow.myHero.getSkillCooldown() - 1);
@@ -43,17 +44,17 @@ public class Monster extends DungeonCharacter {
     public ImageView getImage() {
         Image monsterImage = new Image("Skeleton.png");
         ImageView monsterImageView = new ImageView(monsterImage);
-        monsterImageView.setFitWidth(50);
+        monsterImageView.setFitWidth(25);
         monsterImageView.setPreserveRatio(true);
 
         return monsterImageView;
     }
 
     public char getUsingTurn() {
-        return usingTurn;
+        return myUsingTurn;
     }
     public void setUsingTurn(char theChar) {
-        usingTurn = theChar;
+        myUsingTurn = theChar;
     }
 
     public int getRoomX() {

@@ -4,32 +4,37 @@ import controller.DungeonAdventure;
 import view.CharacterWindow;
 import view.GameWindow;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Hero extends DungeonCharacter {
+public class Hero extends DungeonCharacter implements Serializable {
     private final List<Item> myInventory;
     private Room myRoom;
     private String mySkillName;
     private int mySkillCooldown = 0;
     private String heroClass = "";
+    private int myPillars = 0;
+    private final int myChanceToBlock;
 
     public Hero(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
-                final int theAttackSpeed, final double theChanceToHit, final int theX, final int theY) {
+                final int theAttackSpeed, final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
         myInventory = new ArrayList<>();
-        myRoom = new Room(null, this, null, theX, theY);
+        myChanceToBlock = theChanceToBlock;
+        myRoom = new Room(null, this, null, theX, theY, false);
         mySkillName = "Heal";
     }
 
     public void setRoom(final Room theRoom) {
         myRoom = theRoom;
+        showHeroRooms();
     }
 
     public boolean blockAttack() {
         Random r = new Random();
-        if (r.nextInt(101) < 15) {
+        if (r.nextInt(101) < myChanceToBlock) {
             DungeonAdventure.addToLog("Blocked attack!");
             return true;
         }
@@ -49,6 +54,10 @@ public class Hero extends DungeonCharacter {
     public void addToInventory(final Item theItem) {
         myInventory.add(theItem);
         DungeonAdventure.addToLog("Picked up a " + theItem);
+        if (theItem.getMyItemType() == 'p') {
+            theItem.usePillar();
+            myInventory.remove(theItem);
+        }
     }
     public List<Item> getInventory() {
         return myInventory;
@@ -63,6 +72,7 @@ public class Hero extends DungeonCharacter {
                 "\nChance to Hit: " + getChanceToHit() + "%" +
                 "\n\nClass: " + this.getClass().toString().substring(12) +
                 " \nSpecial Skill: " + mySkillName +
+                "\nPillars: " + myPillars +
                 "\n\nItems: ");
     }
 
@@ -71,12 +81,13 @@ public class Hero extends DungeonCharacter {
     }
     public void move(final int theX, final int theY) {
         Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
-        if (newRoom != null) {
+        if (newRoom != null && !newRoom.isWall()) {
             myRoom = newRoom;
             DungeonAdventure.addToLog(getName() + " moved to [" + getX() + "," + getY() + "]");
             myRoom.encounterMonster();
             myRoom.encounterItem();
         }
+        showHeroRooms();
     }
     public int getY() {
         return myRoom.getYLocation();
@@ -104,11 +115,10 @@ public class Hero extends DungeonCharacter {
                 this.heroClass = "Thief";
             }
             default: {
-                CharacterWindow.myHero = new Hero(getName(), 75, 25, 45, 5, 70, getX(), getY());
+                CharacterWindow.myHero = new Hero(getName(), 75, 25, 45, 5, 70, 20, getX(), getY());
                 this.heroClass = "Warrior";
             }
         }
-        // this will be used for debug/test menu purposes, not working as intended yet
     }
 
     public String getHeroClass() {
@@ -122,14 +132,35 @@ public class Hero extends DungeonCharacter {
     public void setSkillCooldown(final int theSkillCooldown) {
         this.mySkillCooldown = theSkillCooldown;
     }
-
-
-
     public void die() {
         setIsDead(true);
         CharacterWindow.myHero.setSkillCooldown(0);
         DungeonAdventure.addToLog(getName() + " has died.");
         if (DungeonAdventure.myMonster != null) DungeonAdventure.myMonster.die();
-        GameWindow.openGameOverWindow();
+        GameWindow.openGameOverWindow(true);
+    }
+
+    public int getPillars() {
+        return myPillars;
+    }
+
+    public void setPillars(int thePillars) {
+        myPillars = thePillars;
+    }
+
+    public void showHeroRooms() {
+        if (CharacterWindow.myHero != null) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if (CharacterWindow.myHero.getX() + i >= 0 && CharacterWindow.myHero.getY() + j >= 0 &&
+                            CharacterWindow.myHero.getX() + i <= 10 && CharacterWindow.myHero.getY() + j <= 10 &&
+                            !CharacterWindow.myDungeonMap.getMap()[CharacterWindow.myHero.getX() + i]
+                                    [CharacterWindow.myHero.getY() + j].isVisible()) {
+                        CharacterWindow.myDungeonMap.getMap()[CharacterWindow.myHero.getX() + i][
+                                CharacterWindow.myHero.getY() + j].setVisible(true);
+                    }
+                }
+            }
+        }
     }
 }
