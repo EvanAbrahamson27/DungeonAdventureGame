@@ -2,6 +2,7 @@ package model;
 
 import controller.DungeonAdventure;
 import view.CharacterWindow;
+import view.RoomPanel;
 
 import java.util.Random;
 
@@ -52,6 +53,7 @@ public abstract class DungeonCharacter {
             String message = ("Ouch! " + myName + " took " + theDamage + " damage!");
             if (this.getClass().equals(Monster.class) && this.myHealthPoints > 0) {
                 message += (" (" + myHealthPoints + " remain)");
+                RoomPanel.attackAnimation();
             }
             DungeonAdventure.addToLog(message);
             if (this.myHealthPoints <= 0) {
