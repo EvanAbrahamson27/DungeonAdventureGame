@@ -9,10 +9,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DungeonMap;
 import model.Hero;
+
+import java.util.Objects;
 
 public class CharacterWindow extends Stage {
     private String myName = "";
@@ -26,6 +30,9 @@ public class CharacterWindow extends Stage {
 
         initModality(Modality.APPLICATION_MODAL);
 
+        javafx.scene.media.Media buttonClickSound = new Media(Objects.requireNonNull(getClass().getResource("/buttonClick.mp3")).toExternalForm());
+        MediaPlayer buttonMediaPlayer = new MediaPlayer(buttonClickSound);
+
         Label classLabel = new Label("Pick your class and name!");
 
         TextField nameField = new TextField();
@@ -34,14 +41,24 @@ public class CharacterWindow extends Stage {
         nameField.setOnKeyTyped(keyEvent -> myName = nameField.getText());
         if (myName.equals("")) myName = "Adventurer";
 
+
         Button warriorButton = new Button("Warrior");
-        warriorButton.setOnAction(actionEvent -> {this.characterSelect = "Warrior"; close();});
+        warriorButton.setOnAction(actionEvent -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            this.characterSelect = "Warrior"; close();});
 
         Button priestessButton = new Button("Priestess");
-        priestessButton.setOnAction(actionEvent -> {this.characterSelect = "Priestess"; close();});
+        priestessButton.setOnAction(actionEvent -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            this.characterSelect = "Priestess"; close();});
 
         Button thiefButton = new Button("Thief");
-        thiefButton.setOnAction(actionEvent -> {this.characterSelect = "Thief"; close();});
+        thiefButton.setOnAction(actionEvent -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            this.characterSelect = "Thief"; close();});
 
         ImageView warriorImage = new ImageView(new Image("Warrior.png"));
         ImageView priestessImage = new ImageView(new Image("Priestess.png"));

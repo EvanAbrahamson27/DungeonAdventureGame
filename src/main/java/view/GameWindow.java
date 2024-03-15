@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
@@ -15,6 +17,7 @@ import javafx.scene.layout.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Objects;
 
 public class GameWindow extends Application {
     private ButtonPanel myButtonPanel;
@@ -55,26 +58,44 @@ public class GameWindow extends Application {
         buttons.setAlignment(Pos.CENTER);
 
 
+        Media buttonClickSound = new Media(Objects.requireNonNull(getClass().getResource("/buttonClick.mp3")).toExternalForm());
+        MediaPlayer buttonMediaPlayer = new MediaPlayer(buttonClickSound);
+
         Button startButton = new Button("Start Game");
         startButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        startButton.setOnAction(e -> {startButtonAction(theStage, myBorderPane, startButton);
+        startButton.setOnAction(e -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            startButtonAction(theStage, myBorderPane, startButton);
             myBorderPane.getChildren().remove(dungeonImageView);});
 //        borderPane.setCenter(startButton);
 //        BorderPane.setAlignment(startButton, Pos.CENTER);
 
         Button loadGame = new Button("Load Game");
         loadGame.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        loadGame.setOnAction(e -> loadGameAction(theStage, myBorderPane, loadGame));
+        loadGame.setOnAction(e -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            loadGameAction(theStage, myBorderPane, loadGame);
+        });
 //        borderPane.setCenter(loadGame);
 //        BorderPane.setAlignment(loadGame, Pos.TOP_CENTER);
 
         Button helpButton = new Button("Help");
         helpButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        helpButton.setOnAction(e -> helpButtonAction(theStage, myBorderPane, helpButton));
+        helpButton.setOnAction(e -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            helpButtonAction(theStage, myBorderPane, helpButton);
+        });
 
         Button exitButton = new Button("Exit Game");
         exitButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        exitButton.setOnAction(e -> theStage.close());
+        exitButton.setOnAction(e -> {
+            buttonMediaPlayer.stop();
+            buttonMediaPlayer.play();
+            theStage.close();
+        });
         // exitButtonAction(theStage, borderPane, exitButton));
 
         helpButton.setMinWidth(185);
@@ -90,6 +111,9 @@ public class GameWindow extends Application {
     }
 
     private void startButtonAction(final Stage theStage, final BorderPane theBorderPane, final Button theStartButton) {
+
+        backgroundMusic();
+
         GameWindow.myBorderPane.getChildren().remove(theStartButton); // Remove the Start Game button
 
         new CharacterWindow();
@@ -292,6 +316,17 @@ public class GameWindow extends Application {
             e.printStackTrace();
             System.out.println("There was an error saving the game.");
         }
-
     }
+
+    private void backgroundMusic() {
+            String s = "/audio.mp3";
+            Media audio = new Media(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
+            MediaPlayer mediaPlayer = new MediaPlayer(audio);
+
+            // Set the volume (0.0 to 1.0)
+            mediaPlayer.setVolume(0.2);
+
+            mediaPlayer.play();
+    }
+
 }
