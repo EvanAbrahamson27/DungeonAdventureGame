@@ -4,10 +4,11 @@ import controller.DungeonAdventure;
 import view.CharacterWindow;
 import view.GameWindow;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero extends DungeonCharacter {
+public class Hero extends DungeonCharacter implements Serializable {
     private final List<Item> myInventory;
     private Room myRoom;
     private String mySkillName;
