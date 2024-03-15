@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="Pushed Aaniyah's Save changes!">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/audio.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/buttonClick.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/win.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonAdventureGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710188082094</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added background audio and button sound effect">
+      <created>1710529649593</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710529649593</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,7 +271,8 @@
     <MESSAGE value="Fixed issues with running" />
     <MESSAGE value="- Fixed character naming&#10;- Re-added class stats&#10;- Added block chance&#10;- Nerfed pillar 1" />
     <MESSAGE value="Pushed Aaniyah's Save changes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushed Aaniyah's Save changes!" />
+    <MESSAGE value="Added background audio and button sound effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added background audio and button sound effect" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

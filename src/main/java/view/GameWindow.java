@@ -17,6 +17,7 @@ import javafx.scene.layout.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import javafx.util.Duration;
 import java.util.Objects;
 
 public class GameWindow extends Application {
@@ -29,6 +30,7 @@ public class GameWindow extends Application {
 
     @Override
     public void start(final Stage theStage) {
+        backgroundMusic();
 
         theStage.setTitle("Dungeon Adventure");
         theStage.setWidth(1200);
@@ -111,8 +113,6 @@ public class GameWindow extends Application {
     }
 
     private void startButtonAction(final Stage theStage, final BorderPane theBorderPane, final Button theStartButton) {
-
-        backgroundMusic();
 
         GameWindow.myBorderPane.getChildren().remove(theStartButton); // Remove the Start Game button
 
@@ -319,14 +319,18 @@ public class GameWindow extends Application {
     }
 
     private void backgroundMusic() {
-            String s = "/audio.mp3";
-            Media audio = new Media(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
-            MediaPlayer mediaPlayer = new MediaPlayer(audio);
+        try {
+            Media backgroundMusic = new Media(Objects.requireNonNull(getClass().getResource("/audio.mp3")).toExternalForm());
+            MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
 
-            // Set the volume (0.0 to 1.0)
+            // Set the music to play in a loop
+            mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
             mediaPlayer.setVolume(0.2);
 
             mediaPlayer.play();
+        } catch (NullPointerException e) {
+            System.out.println("Error loading background music: " + e.getMessage());
+        }
     }
 
 }

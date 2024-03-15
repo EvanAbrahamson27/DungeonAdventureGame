@@ -9,8 +9,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class GameOverWindow extends Stage {
 
@@ -21,6 +25,7 @@ public class GameOverWindow extends Stage {
 
         initModality(Modality.APPLICATION_MODAL);
 
+
         Label gameOverLabel;
         ImageView victoryImage = new ImageView(new Image("Victory.png"));
         if (theLoss) {
@@ -29,6 +34,15 @@ public class GameOverWindow extends Stage {
         } else {
             setHeight(400);
             gameOverLabel = new Label("You win!");
+        }
+
+        try {
+            Media winSound = new Media(Objects.requireNonNull(getClass().getResource("/win.mp3")).toExternalForm());
+            MediaPlayer mediaPlayer = new MediaPlayer(winSound);
+            mediaPlayer.setVolume(0.5);
+            mediaPlayer.play();
+        } catch (NullPointerException e) {
+            System.out.println("Error loading win sound effect: " + e.getMessage());
         }
 
         Button continueButton = new Button("Restart");
