@@ -106,8 +106,8 @@ public class enemydb {
             //walk through each 'row' of results, grab data by column/field name
             // and print it
             while ( rs.next() ) {
-                String character = rs.getString( "QUESTION" );
-                String health = rs.getString( "ANSWER" );
+                String character = rs.getString( "CHARACTER" );
+                String health = rs.getString( "HEALTH" );
                 String atkSpeed = rs.getString("ATK_SPEED");
                 String chanceToHit = rs.getString("CHANCE_TO_HIT");
                 String dmgMin = rs.getString("DAMAGE_MIN");
