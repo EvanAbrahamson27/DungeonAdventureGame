@@ -8,9 +8,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import model.Room;
 
-public class MapPanel extends BorderPane {
-    private GridPane myMapGrid;
-    private VBox myContentBox;
+import java.io.Serializable;
+
+public class MapPanel extends BorderPane implements Serializable {
+    private transient GridPane myMapGrid;
+    private transient VBox myContentBox;
 
     MapPanel() {
         myContentBox = new VBox();

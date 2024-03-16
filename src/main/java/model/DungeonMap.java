@@ -249,4 +249,15 @@ public class DungeonMap implements Serializable {
             }
         }
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < BIG_WIDTH; i++) {
+            for (int j = 0; j < BIG_HEIGHT; j++) {
+                sb.append(this.myMap[i][j].toString());
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

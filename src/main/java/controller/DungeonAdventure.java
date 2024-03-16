@@ -2,6 +2,11 @@ package controller;
 
 import model.*;
 import view.GameWindow;
+import view.SavedState;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class DungeonAdventure {
     public static String[] myArgs;
@@ -9,6 +14,8 @@ public class DungeonAdventure {
     public static Monster myMonster;
     private static boolean myFirstLaunch = true;
     private static String myName;
+
+    private static GameWindow myGameWindow;
 
     public static void main(final String[] theArgs) {
         myArgs = theArgs;
@@ -18,16 +25,16 @@ public class DungeonAdventure {
     public static void setupGame() {
         myName = "Adventurer";
         myLog = new StringBuilder();
-        GameWindow game = new GameWindow();
+        myGameWindow = new GameWindow();
 
         if (myFirstLaunch) {
             myFirstLaunch = false;
-            game.main(myArgs);
+            myGameWindow.main(myArgs);
         } else {
             myMonster = null;
 
             // Restart game
-            game.restartWindow();
+            myGameWindow.restartWindow();
         }
     }
 

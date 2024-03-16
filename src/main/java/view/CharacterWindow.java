@@ -77,4 +77,10 @@ public class CharacterWindow extends Stage {
         myHero = myDungeonMap.getHero();
         myHero.setRoom(myDungeonMap.getRoomAtLocation(myHero.getX(), myHero.getY()));
     }
+
+    public CharacterWindow(Hero theHero, DungeonMap theDungeonMap) {
+
+        myHero = theHero;
+        myDungeonMap = theDungeonMap;
+    }
 }

@@ -13,10 +13,12 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import model.Item;
 
-public class StatPanel extends BorderPane {
-    private Label statsArea;
-    private HBox myInventoryImages;
-    final private VBox myContentBox;
+import java.io.Serializable;
+
+public class StatPanel extends BorderPane implements Serializable {
+    private transient Label statsArea;
+    private transient HBox myInventoryImages;
+    final private transient VBox myContentBox;
 
     StatPanel() {
         // setStyle("-fx-border-color: black;");

@@ -10,8 +10,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-public class RoomPanel extends BorderPane {
-    final private VBox myContentBox;
+import java.io.Serializable;
+
+public class RoomPanel extends BorderPane implements Serializable {
+    final private transient VBox myContentBox;
     private static ImageView myMonsterImage;
     private ImageView myItemImage;
     RoomPanel() {

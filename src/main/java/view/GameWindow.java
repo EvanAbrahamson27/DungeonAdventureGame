@@ -11,9 +11,14 @@ import javafx.application.Application;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import com.google.gson.Gson;
 import model.DungeonMap;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 import model.Hero;
 
 import javafx.stage.FileChooser;
@@ -25,6 +30,8 @@ public class GameWindow extends Application {
     private static MapPanel myMapPanel;
     private RoomPanel myRoomPanel;
     private static BorderPane myBorderPane;
+    private static Hero myHero;
+
 
     @Override
     public void start(final Stage theStage) {
@@ -66,7 +73,7 @@ public class GameWindow extends Application {
 
         Button loadGame = new Button("Load Game");
         loadGame.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        loadGame.setOnAction(e -> loadGameAction(theStage, myBorderPane));
+        loadGame.setOnAction(e -> loadGameAction());
 //        borderPane.setCenter(loadGame);
 //        BorderPane.setAlignment(loadGame, Pos.TOP_CENTER);
 
@@ -95,6 +102,7 @@ public class GameWindow extends Application {
         GameWindow.myBorderPane.getChildren().remove(theStartButton); // Remove the Start Game button
 
         new CharacterWindow();
+
 
         // Add game background image
         Image dungeonBackground = new Image("TempDungeonImage.jpg");
@@ -129,6 +137,8 @@ public class GameWindow extends Application {
 
         GameWindow.myBorderPane.setTop(vBox);
 
+        this.myHero = CharacterWindow.myHero;
+
     }
 
 
@@ -147,8 +157,13 @@ public class GameWindow extends Application {
         debugClassMenu.setStyle("-fx-text-fill: black");
 
         MenuItem saveItem = new MenuItem("Save");
+        MenuItem loadItem = new MenuItem("Load");
         saveItem.setStyle("-fx-text-fill: black");
-        saveItem.setOnAction(e -> saveGame(saveItem, "save-game.ser")); // Invoke saveGame method
+        loadItem.setStyle("-fx-text-fill: black");
+        int randomVal = (int) (Math.random() * 1000);
+        String saveFileName = "./saved-games/save-game-" + randomVal + ".ser";
+        saveItem.setOnAction(e -> saveGame(saveItem, saveFileName)); // Invoke saveGame method
+        loadItem.setOnAction(e -> loadGameAction()); // Invoke loadGame method
         MenuItem restartItem = new MenuItem("Restart");
         restartItem.setStyle("-fx-text-fill: black");
         MenuItem exitItem = new MenuItem("Exit");
@@ -181,7 +196,7 @@ public class GameWindow extends Application {
         restartItem.setOnAction(actionEvent -> DungeonAdventure.setupGame());
         exitItem.setOnAction(actionEvent -> System.exit(0));
 
-        fileMenu.getItems().addAll(saveItem, restartItem, exitItem);
+        fileMenu.getItems().addAll(saveItem, loadItem, restartItem, exitItem);
         helpMenu.getItems().addAll(helpItem, debugMenu);
         debugMenu.getItems().addAll(debugClassMenu, dbDamageBoost, dbHealthBoost, dbDie);
         debugClassMenu.getItems().addAll(dbClassP, dbClassT, dbClassW);
@@ -230,6 +245,8 @@ public class GameWindow extends Application {
         vBox.getChildren().addAll(menuBar, myLogPanel);
 
         myBorderPane.setTop(vBox);
+
+        this.myHero = CharacterWindow.myHero;
     }
 
     public static void main(final String[] theArgs) {
@@ -271,10 +288,12 @@ public class GameWindow extends Application {
 
     }
     private void SaveGameExit(String theFilename) {
+
+        SavedState savedState = new SavedState(CharacterWindow.myDungeonMap, CharacterWindow.myDungeonMap.getHero());
+
         try (FileOutputStream fileOS = new FileOutputStream(theFilename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
 
-            objectOS.writeObject(CharacterWindow.myHero);
-            objectOS.writeObject(CharacterWindow.myDungeonMap);
+            objectOS.writeObject(savedState);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("There was an error saving the game.");
@@ -283,42 +302,126 @@ public class GameWindow extends Application {
     }
 
     private void SaveGameContinue(String theFilename) {
+        SavedState savedState = new SavedState(CharacterWindow.myDungeonMap, CharacterWindow.myDungeonMap.getHero());
+
         try (FileOutputStream fileOS = new FileOutputStream(theFilename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
 
-            objectOS.writeObject(CharacterWindow.myHero);
-            objectOS.writeObject(CharacterWindow.myDungeonMap);
-
+            objectOS.writeObject(savedState);
             objectOS.flush();
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("There was an error saving the game.");
         }
-
     }
 
-    private void loadGameAction(final Stage theStage, final BorderPane theBorderPane) {
+    private void loadGameAction() {
 
-//        Stage dialogStage = new Stage();
-//        dialogStage.initModality(Modality.APPLICATION_MODAL);
-//        dialogStage.setTitle("Load Game");
-//
-//        // Create buttons for each saved game option
-//        Button loadGame1 = new Button("Saved Game");
-//        loadGame1.setOnAction(e -> {
-//                loadGame("save-game.ser");
-//                dialogStage.close(); // Load saved game 1
-//        });
-//
-//        // Add buttons to a layout
-//        VBox dialogVBox = new VBox(20);
-//        dialogVBox.getChildren().addAll(new Label("Choose a saved game:"), loadGame1);
-//        dialogVBox.setAlignment(Pos.CENTER);
-//
-//        // Create a scene for the dialog and set it to the stage
-//        Scene dialogScene = new Scene(dialogVBox, 300, 200);
-//        dialogStage.setScene(dialogScene);
-//        dialogStage.show();
-//       // loadGame("save-game.ser");
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.setTitle("Load Game");
+
+        // List files in "saved-games" directory
+        ArrayList<String> fileNames = new ArrayList<>();
+        try {
+            File savedGameDir = new File("./saved-games");
+            File[] savedGameFiles = savedGameDir.listFiles();
+
+            for (int i = 0; i < savedGameFiles.length; i++) {
+                fileNames.add(savedGameFiles[i].getName());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Error loading files from 'saved-games' directory.");
+        }
+
+//        System.out.println("List of saved games: " + fileNames.toString());
+
+        // Create buttons for each saved game option
+        ArrayList<Button> loadGameButtons = new ArrayList<>();
+        for (String fileName : fileNames) {
+            Button loadGame = new Button(fileName);
+            loadGame.setOnAction(e -> {
+                loadGame(fileName);
+                dialogStage.close();
+            });
+
+            loadGameButtons.add(loadGame);
+        }
+
+        // Add buttons to a layout
+        VBox dialogVBox = new VBox(20);
+        dialogVBox.getChildren().addAll(new Label("Choose a saved game:"));
+
+        for (Button button : loadGameButtons) {
+            dialogVBox.getChildren().add(button);
+        }
+
+        dialogVBox.setAlignment(Pos.CENTER);
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(dialogVBox);
+
+        // Position items in scroll pane to center
+        scrollPane.setFitToWidth(true);
+
+        // Create a scene for the dialog and set it to the stage
+        Scene dialogScene = new Scene(scrollPane, 300, 200);
+        dialogStage.setScene(dialogScene);
+        dialogStage.show();
+    }
+
+    private void loadGame(final String theFilename) {
+
+        try (FileInputStream fileIS = new FileInputStream("./saved-games/" + theFilename); ObjectInputStream objectIS = new ObjectInputStream(fileIS)) {
+
+            SavedState savedState = (SavedState) objectIS.readObject();
+
+            restartWindow(savedState.getMyHero(), savedState.getMyDungeonMap());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("There was an error loading the game.");
+        }
+    }
+
+    public void restartWindow(Hero theHero, DungeonMap theDungeonMap) {
+
+        // Restart the game
+        myBorderPane.getChildren().clear();
+
+        // Add game background image
+        Image dungeonBackground = new Image("TempDungeonImage.jpg");
+        ImageView dungeonImageView = new ImageView(dungeonBackground);
+
+        // Adjust the image to fill the game window
+        dungeonImageView.fitWidthProperty().bind(myBorderPane.widthProperty());
+        dungeonImageView.fitHeightProperty().bind(myBorderPane.heightProperty());
+        dungeonImageView.setPreserveRatio(false);
+
+        // Add image and updated properties to the borderPane to display in the background
+        myBorderPane.getChildren().add(dungeonImageView);
+
+        new CharacterWindow(theHero, theDungeonMap);
+
+        myLogPanel = new LogPanel();
+        myStatPanel = new StatPanel();
+        myRoomPanel = new RoomPanel();
+        myMapPanel = new MapPanel();
+        myButtonPanel = new ButtonPanel(theHero, myMapPanel);
+
+        myBorderPane.setBottom(myButtonPanel);
+        myBorderPane.setLeft(myMapPanel);
+        myBorderPane.setTop(myLogPanel);
+        myBorderPane.setRight(myStatPanel);
+        myBorderPane.setCenter(myRoomPanel);
+
+        MenuBar menuBar = createMenuBar();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(menuBar, myLogPanel);
+
+        myBorderPane.setTop(vBox);
+
+        this.myHero = theHero;
     }
 
 }
