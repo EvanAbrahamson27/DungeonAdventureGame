@@ -110,7 +110,6 @@ public class GameWindow extends Application {
             buttonMediaPlayer.play();
             theStage.close();
         });
-        // exitButtonAction(theStage, borderPane, exitButton));
 
         helpButton.setMinWidth(185);
         buttons.getChildren().addAll(startButton, loadGame, helpButton, exitButton);
