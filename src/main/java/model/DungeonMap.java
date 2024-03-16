@@ -50,6 +50,7 @@ public class DungeonMap implements Serializable {
         generateCharacters();
     }
 
+
     private void createAdjacencyList(final Room[][] theTempMap) {
 
         // The for loop below accesses each node in the Node maze
