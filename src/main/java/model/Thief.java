@@ -13,12 +13,6 @@ import java.util.Random;
  */
 public class Thief extends Hero {
 
-    /** The minimum damage the Thief can deal. */
-    final static int DAMAGE_MIN = 20;
-    /** The maximum damage the Thief can deal. */
-
-    final static int DAMAGE_MAX = 40;
-
     /**
      * Constructs a new Thief character with the specified attributes.
      * @param theName The name of the Thief.

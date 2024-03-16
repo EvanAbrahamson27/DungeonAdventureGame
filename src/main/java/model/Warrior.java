@@ -12,13 +12,6 @@ import java.util.Random;
  * Inherits attributes and behaviors from the Hero class.
  */
 public class Warrior extends Hero {
-    /** The minimum damage the Warrior can deal. */
-
-    final static int DAMAGE_MIN = 35;
-
-    /** The maximum damage the Warrior can deal. */
-    final static int DAMAGE_MAX = 60;
-
 
     /**
      * Constructs a new Warrior character with the specified attributes.
