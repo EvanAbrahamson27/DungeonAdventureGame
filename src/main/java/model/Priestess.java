@@ -2,9 +2,14 @@ package model;
 
 import controller.DungeonAdventure;
 
+import java.io.Serial;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Priestess extends Hero {
+    @Serial
+    private static final long serialVersionUID = 1L;
     final static int DAMAGE_MIN = 25;
     final static int DAMAGE_MAX = 45;
 
@@ -14,7 +19,11 @@ public class Priestess extends Hero {
 //        super(theName, 75, DAMAGE_MIN, DAMAGE_MAX, 5, 70, theX, theY);
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit, theChanceToBlock, theX, theY);
         setSkillName("Blessed Heal");
+
+
     }
+
+
 
     public void performSpecialSkill() {
         if (getTurns() > 0) {

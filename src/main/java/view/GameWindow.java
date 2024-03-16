@@ -11,10 +11,12 @@ import javafx.application.Application;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import model.DungeonMap;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import model.Hero;
+
+import javafx.stage.FileChooser;
 
 public class GameWindow extends Application {
     private ButtonPanel myButtonPanel;
@@ -64,7 +66,7 @@ public class GameWindow extends Application {
 
         Button loadGame = new Button("Load Game");
         loadGame.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
-        loadGame.setOnAction(e -> loadGameAction(theStage, myBorderPane, loadGame));
+        loadGame.setOnAction(e -> loadGameAction(theStage, myBorderPane, loadGame, "save-game.ser"));
 //        borderPane.setCenter(loadGame);
 //        BorderPane.setAlignment(loadGame, Pos.TOP_CENTER);
 
@@ -129,8 +131,7 @@ public class GameWindow extends Application {
 
     }
 
-    private void loadGameAction(final Stage theStage, final BorderPane theBorderPane, final Button theLoadGame) {
-    }
+
 
     private void helpButtonAction(final Stage theStage, final BorderPane theBorderPane, final Button theHelpButton) {
     }
@@ -147,7 +148,7 @@ public class GameWindow extends Application {
 
         MenuItem saveItem = new MenuItem("Save");
         saveItem.setStyle("-fx-text-fill: black");
-        saveItem.setOnAction(e -> saveGame(saveItem, "savegame")); // Invoke saveGame method
+        saveItem.setOnAction(e -> saveGame(saveItem, "save-game.ser")); // Invoke saveGame method
         MenuItem restartItem = new MenuItem("Restart");
         restartItem.setStyle("-fx-text-fill: black");
         MenuItem exitItem = new MenuItem("Exit");
@@ -239,7 +240,7 @@ public class GameWindow extends Application {
         new GameOverWindow(theLoss);
     }
 
-    public void saveGame(final MenuItem theSaveItem, final String theFilename) {
+    private void saveGame(final MenuItem theSaveItem, final String theFilename) {
         Stage dialogStage = new Stage();
         dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setTitle("Save Game");
@@ -292,6 +293,49 @@ public class GameWindow extends Application {
             e.printStackTrace();
             System.out.println("There was an error saving the game.");
         }
+
+    }
+
+    private void loadGameAction(final Stage theStage, final BorderPane theBorderPane, final Button theLoadGame, String theFileName) {
+
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.setTitle("Load Game");
+
+        // Create buttons for each saved game option
+        Button loadGame1 = new Button("Saved Game");
+        loadGame1.setOnAction(e -> {
+                loadGame("save-game.ser");
+                dialogStage.close(); // Load saved game 1
+        });
+
+        // Add buttons to a layout
+        VBox dialogVBox = new VBox(20);
+        dialogVBox.getChildren().addAll(new Label("Choose a saved game:"), loadGame1);
+        dialogVBox.setAlignment(Pos.CENTER);
+
+        // Create a scene for the dialog and set it to the stage
+        Scene dialogScene = new Scene(dialogVBox, 300, 200);
+        dialogStage.setScene(dialogScene);
+        dialogStage.show();
+       // loadGame("save-game.ser");
+    }
+
+    private void loadGame(String theFilename) {
+        try (FileInputStream fileIS = new FileInputStream(theFilename); ObjectInputStream objectIS = new ObjectInputStream(fileIS)) {
+            Hero loadHero = (Hero) objectIS.readObject();
+            DungeonMap loadMap = (DungeonMap) objectIS.readObject();
+
+            loadGameData(loadHero, loadMap);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("There was an error loading the game.");
+        }
+    }
+    private void loadGameData(Hero loadHero, DungeonMap loadMap) {
+        CharacterWindow.myHero = loadHero;
+        CharacterWindow.myDungeonMap = loadMap;
 
     }
 }

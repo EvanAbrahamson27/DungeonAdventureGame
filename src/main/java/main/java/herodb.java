@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  *
  * @author tom capaul
- * @authos isabelle del castillo
+ * @authors isabelle del castillo
  *
  * Simple class to demonstrate SQLite connectivity
  * 1) create connection

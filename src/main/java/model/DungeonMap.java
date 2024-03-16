@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class DungeonMap implements Serializable {
+    private static final long serialVers = 1L;
     private final Room[][] myMap;
     private final int SMALL_WIDTH = 5;
     private final int SMALL_HEIGHT = 5;

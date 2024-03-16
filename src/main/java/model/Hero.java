@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Hero extends DungeonCharacter implements Serializable {
+    private static final long serialVers = 1L;
     private final List<Item> myInventory;
     private Room myRoom;
     private String mySkillName;

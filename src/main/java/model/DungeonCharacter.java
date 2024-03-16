@@ -4,9 +4,10 @@ import controller.DungeonAdventure;
 import view.CharacterWindow;
 import view.RoomPanel;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class DungeonCharacter {
+public abstract class DungeonCharacter implements Serializable {
     final private String myName;
     private int myHealthPoints;
     private int myDamageMin;
