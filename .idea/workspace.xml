@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DungeonAdventureGame.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save-game.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
