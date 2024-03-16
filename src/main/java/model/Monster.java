@@ -13,12 +13,18 @@ public class Monster extends DungeonCharacter implements Serializable {
     private int myHealMax;
     final private int myRoomX;
     final private int myRoomY;
+    private String myImageFile;
+
     public Monster(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
-                   final int theAttackSpeed, final double theChanceToHit, final double theChanceToHeal,
-                   final int theX, final int theY) {
+                   final int theAttackSpeed, final double theChanceToHit, final double theChanceToHeal, final int theHealMin,
+                   final int theHealMax, final int theX, final int theY, String theImageFile) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
+        this.myChanceToHeal = theChanceToHeal;
+        this.myHealMin = theHealMin;
+        this.myHealMax = theHealMax;
         this.myRoomX = theX;
         this.myRoomY = theY;
+        this.myImageFile = theImageFile;
     }
 
     public void useTurn() {
@@ -38,14 +44,23 @@ public class Monster extends DungeonCharacter implements Serializable {
         }
     }
 
+//    public ImageView getImage() {
+//        Image monsterImage = new Image("Skeleton.png");
+//        ImageView monsterImageView = new ImageView(monsterImage);
+//        monsterImageView.setFitWidth(25);
+//        monsterImageView.setPreserveRatio(true);
+//
+//        return monsterImageView;
+//    }
+
     public ImageView getImage() {
-        Image monsterImage = new Image("Skeleton.png");
+        Image monsterImage = new Image(myImageFile);
         ImageView monsterImageView = new ImageView(monsterImage);
         monsterImageView.setFitWidth(25);
         monsterImageView.setPreserveRatio(true);
-
         return monsterImageView;
     }
+
 
     public int getRoomX() {
         return this.myRoomX;

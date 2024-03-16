@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/win.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gremlin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ogre.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ogre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +225,21 @@
       <option name="project" value="LOCAL" />
       <updated>1710529649593</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed bug">
+      <created>1710530739307</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710530739307</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed db">
+      <created>1710543361057</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710543361057</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,7 +293,24 @@
     <MESSAGE value="- Fixed character naming&#10;- Re-added class stats&#10;- Added block chance&#10;- Nerfed pillar 1" />
     <MESSAGE value="Pushed Aaniyah's Save changes!" />
     <MESSAGE value="Added background audio and button sound effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added background audio and button sound effect" />
+    <MESSAGE value="Fixed bug" />
+    <MESSAGE value="Fixed db" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed db" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java</url>
+          <line>30</line>
+          <properties class="model.DungeonCharacter" method="attack">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

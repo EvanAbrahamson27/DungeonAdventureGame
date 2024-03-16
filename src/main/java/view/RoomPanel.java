@@ -74,21 +74,21 @@ public class RoomPanel extends BorderPane {
         updateTimer.play();
     }
 
-    public static void attackAnimation() {
-        Image tempImage;
-        Image newImage;
-        switch (DungeonAdventure.myMonster.toString()) {
-            case "Skeleton" -> {newImage = new Image("SkeletonDamage.png"); tempImage = new Image("Skeleton.png");}
-            case "Gremlin" -> {newImage = new Image("GremlinDamage.png"); tempImage = new Image("Gremlin.png");}
-            case "Ogre" -> {newImage = new Image("OgreDamage.png"); tempImage = new Image("Ogre.png");}
-            default -> {return;}
-        }
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0), event -> myMonsterImage.setImage(newImage)),
-                new KeyFrame(Duration.seconds(0.5), event -> myMonsterImage.setImage(tempImage))
-        );
-        timeline.setCycleCount(1);
-
-        timeline.play();
-    }
+//    public static void attackAnimation() {
+//        Image tempImage;
+//        Image newImage;
+//        switch (DungeonAdventure.myMonster.toString()) {
+//            case "Skeleton" -> {newImage = new Image("SkeletonDamage.png"); tempImage = new Image("Skeleton.png");}
+//            case "Gremlin" -> {newImage = new Image("GremlinDamage.png"); tempImage = new Image("Gremlin.png");}
+//            case "Ogre" -> {newImage = new Image("OgreDamage.png"); tempImage = new Image("Ogre.png");}
+//            default -> {return;}
+//        }
+//        Timeline timeline = new Timeline(
+//                new KeyFrame(Duration.seconds(0), event -> myMonsterImage.setImage(newImage)),
+//                new KeyFrame(Duration.seconds(0.5), event -> myMonsterImage.setImage(tempImage))
+//        );
+//        timeline.setCycleCount(1);
+//
+//        timeline.play();
+//    }
 }

@@ -42,7 +42,7 @@ public abstract class DungeonCharacter {
             }
             if (myTurns <= 0) {
                 theCh.startBattle(this);
-                if (theCh.getClass().equals(Monster.class)) DungeonAdventure.myMonster.useTurn();
+                if (theCh instanceof Monster) DungeonAdventure.myMonster.useTurn();
             }
         }
     }
@@ -53,7 +53,7 @@ public abstract class DungeonCharacter {
             String message = ("Ouch! " + myName + " took " + theDamage + " damage!");
             if (this.getClass().equals(Monster.class) && this.myHealthPoints > 0) {
                 message += (" (" + myHealthPoints + " remain)");
-                RoomPanel.attackAnimation();
+//                RoomPanel.attackAnimation();
             }
             DungeonAdventure.addToLog(message);
             if (this.myHealthPoints <= 0) {

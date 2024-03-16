@@ -13,7 +13,10 @@ public class DungeonMap implements Serializable {
     private final Map<Room, List<Room>> myAdjacencyList;
     private final Hero myHero;
 
-    private final int SKELETONS = 5;
+    private final int SKELETONS = 3;
+    private final int OGRES = 2;
+    private final int GREMLINS = 2;
+
     private final int POTIONS = 2;
 
     public DungeonMap(final String theCharacterSelect, final String theName) {
@@ -190,17 +193,53 @@ public class DungeonMap implements Serializable {
         return this.myHero;
     }
 
+//    private void generateMonsters() {
+//        for (int i = 0; i < this.SKELETONS; i++) {
+//            int x = (int) (Math.random() * (BIG_WIDTH));
+//            int y = (int) (Math.random() * (BIG_HEIGHT));
+//            if (this.myMap[x][y].isEmptySpace() == true && !(x == 1 && y == 0) && this.myMap[x][y].isWall() == false) {
+//                this.myMap[x][y] = new Room(new Monster("Skeleton", 60, 5, 15, 3, 95, 50, x, y), null, null, x, y, false);
+//            } else {
+//                i--;
+//            }
+//        }
+//    }
+
+
     private void generateMonsters() {
-        for (int i = 0; i < this.SKELETONS; i++) {
-            int x = (int) (Math.random() * (BIG_WIDTH));
-            int y = (int) (Math.random() * (BIG_HEIGHT));
-            if (this.myMap[x][y].isEmptySpace() == true && !(x == 1 && y == 0) && this.myMap[x][y].isWall() == false) {
-                this.myMap[x][y] = new Room(new Monster("Skeleton", 60, 5, 15, 3, 95, 50, x, y), null, null, x, y, false);
+        int totalMonsters = this.SKELETONS + this.OGRES + this.GREMLINS;
+
+        for (int i = 0; i < totalMonsters; i++) {
+            int x = (int) (Math.random() * BIG_WIDTH);
+            int y = (int) (Math.random() * BIG_HEIGHT);
+
+            if (this.myMap[x][y].isEmptySpace() && !(x == 1 && y == 0) && !this.myMap[x][y].isWall()) {
+                Monster monster = null;
+                int monsterType = (int) (Math.random() * 3);
+                switch (monsterType) {
+                    case 0 -> // Create a Skeleton
+                            monster = new Skeleton("Skeleton", 70, 15, 30, 5,
+                                    0.8, 0.4, 20, 40, x, y);
+                    case 1 -> // Create an Ogre
+                            monster = new Ogre("Ogre", 70, 15, 30, 5,
+                                    0.8, 0.4, 20, 40, x, y);
+                    case 2 -> // Create a Gremlin
+                            monster = new Gremlin("Gremlin", 70, 15, 30, 5,
+                                    0.8, 0.4, 20, 40, x, y);
+                }
+
+                if (monster != null) {
+                    this.myMap[x][y] = new Room(monster, null, null, x, y, false);
+                } else {
+                    i--;
+                }
             } else {
                 i--;
             }
         }
     }
+
+
 
     private void generatePotions() {
         for (int i = 0; i < this.POTIONS; i++) {
