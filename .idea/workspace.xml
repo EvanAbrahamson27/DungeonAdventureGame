@@ -5,17 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbfac303-dac1-4bef-b830-683f2d17deb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gremlin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ogre.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enemydb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/java/enemydb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/herodb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/java/herodb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DungeonMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Gremlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Ogre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ogre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Priestess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Priestess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Thief.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ButtonPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CharacterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOverWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LogPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RoomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StatPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +99,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/belle/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -302,12 +318,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/DungeonCharacter.java</url>
-          <line>30</line>
+          <line>51</line>
           <properties class="model.DungeonCharacter" method="attack">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/DungeonMap.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

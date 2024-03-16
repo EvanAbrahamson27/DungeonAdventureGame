@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package view;
 
 import controller.DungeonAdventure;
@@ -10,11 +14,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * Represents the panel in the game that displays the current room's content,
+ * including any monsters or items present. This class is responsible for updating the visual representation
+ * of the room as the player navigates through the dungeon.
+ */
 public class RoomPanel extends BorderPane {
     final private VBox myContentBox;
     private static ImageView myMonsterImage;
     private ImageView myItemImage;
-    RoomPanel() {
+
+    /**
+     * Constructs a new RoomPanel. Initializes the content box and sets up the panel to display room content,
+     * such as monsters or items, centered within the panel.
+     */
+    public RoomPanel() {
         myContentBox = new VBox();
 
         setCenter(myContentBox);
@@ -23,6 +37,12 @@ public class RoomPanel extends BorderPane {
         updateRoom();
     }
 
+    /**
+     * Creates and returns an ImageView for a monster image based on the current room's monster.
+     * The method selects the correct image file based on the type of monster present in the room.
+     *
+     * @return An ImageView containing the monster's image, or null if there is no monster.
+     */
     private ImageView createMonsterImage() {
         switch (DungeonAdventure.myMonster.toString()) {
             case "Skeleton" -> myMonsterImage = createImage("Skeleton.png");
@@ -37,6 +57,12 @@ public class RoomPanel extends BorderPane {
         return myMonsterImage;
     }
 
+    /**
+     * Creates and returns an ImageView for an item image based on the current room's item.
+     * The method selects the correct image file based on the type of item present in the room.
+     *
+     * @return An ImageView containing the item's image, or null if there is no item.
+     */
     private ImageView createItemImage() {
         switch (CharacterWindow.myHero.getRoom().getItem().toString()) {
             case "Health Potion" -> myItemImage = createImage("HealthPotion.png");
@@ -51,10 +77,22 @@ public class RoomPanel extends BorderPane {
         return myItemImage;
     }
 
+    /**
+     * Creates and returns an ImageView from a specified file location.
+     * This utility method is used to create image views for monsters and items.
+     *
+     * @param theFileLocation The location of the image file to load.
+     * @return An ImageView object containing the image from the specified file location.
+     */
     private ImageView createImage(final String theFileLocation) {
         return new ImageView(new Image(theFileLocation));
     }
 
+    /**
+     * Updates the room panel to reflect the current room's state. This includes displaying or removing monster
+     * and item images based on whether they are present and alive in the room. This method is called repeatedly
+     * to ensure the panel reflects the current state of the room.
+     */
     private void updateRoom() {
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
             if (DungeonAdventure.myMonster != null && DungeonAdventure.myMonster.getIsDead()) {

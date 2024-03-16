@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package model;
 
 import controller.DungeonAdventure;
@@ -8,7 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * The Hero class extends DungeonCharacter and represents the player's character in the game.
+ * It includes properties such as inventory, current room, skill name, skill cooldown, hero class, and number of collected pillars.
+ * Additionally, the class provides methods for moving the hero, using items, blocking attacks, and performing a special skill.
+ */
 public class Hero extends DungeonCharacter implements Serializable {
     private final List<Item> myInventory;
     private Room myRoom;
@@ -18,6 +26,18 @@ public class Hero extends DungeonCharacter implements Serializable {
     private int myPillars = 0;
     private final int myChanceToBlock;
 
+    /**
+     * Constructs a Hero with specified attributes and initializes inventory and current room.
+     * @param theName Name of the hero.
+     * @param theHealthPoints Initial health points.
+     * @param theDamageMin Minimum damage.
+     * @param theDamageMax Maximum damage.
+     * @param theAttackSpeed Attack speed.
+     * @param theChanceToHit Chance to hit the opponent.
+     * @param theChanceToBlock Chance to block an incoming attack.
+     * @param theX Initial X-coordinate in the dungeon.
+     * @param theY Initial Y-coordinate in the dungeon.
+     */
     public Hero(final String theName, final int theHealthPoints, final int theDamageMin, final int theDamageMax,
                 final int theAttackSpeed, final double theChanceToHit, final int theChanceToBlock, final int theX, final int theY) {
         super(theName, theHealthPoints, theDamageMin, theDamageMax, theAttackSpeed, theChanceToHit);
@@ -27,11 +47,19 @@ public class Hero extends DungeonCharacter implements Serializable {
         mySkillName = "Heal";
     }
 
+    /**
+     * Sets the current room of the hero.
+     * @param theRoom The new room for the hero.
+     */
     public void setRoom(final Room theRoom) {
         myRoom = theRoom;
         showHeroRooms();
     }
 
+    /**
+     * Attempts to block an attack using the hero's chance to block.
+     * @return true if the attack is successfully blocked, false otherwise.
+     */
     public boolean blockAttack() {
         Random r = new Random();
         if (r.nextInt(101) < myChanceToBlock) {
@@ -40,6 +68,12 @@ public class Hero extends DungeonCharacter implements Serializable {
         }
         return false;
     }
+
+    /**
+     * Uses an item from the hero's inventory.
+     * @param theItem The name of the item to use.
+     * @param theTarget The target to apply the item on.
+     */
     public void useItem(final String theItem, final DungeonCharacter theTarget) {
         for (Item item : myInventory) {
             if (item.toString().equals(theItem)) {
@@ -51,6 +85,11 @@ public class Hero extends DungeonCharacter implements Serializable {
         }
         DungeonAdventure.addToLog("No item found");
     }
+
+    /**
+     * Adds an item to the hero's inventory.
+     * @param theItem The item to add.
+     */
     public void addToInventory(final Item theItem) {
         myInventory.add(theItem);
         DungeonAdventure.addToLog("Picked up a " + theItem);
@@ -59,10 +98,21 @@ public class Hero extends DungeonCharacter implements Serializable {
             myInventory.remove(theItem);
         }
     }
+
+    /**
+     * Gets the hero's inventory.
+     * @return A list of items in the hero's inventory.
+     */
     public List<Item> getInventory() {
         return myInventory;
     }
 
+    /**
+     * Returns a string representation of the Hero, including name, health, attack range,
+     * attack speed, chance to hit, class, special skill, number of collected pillars, and items.
+     * This method is intended for providing a detailed overview of the hero's current status.
+     * @return A formatted string containing the hero's current status and attributes.
+     */
     @Override
     public String toString() {
         return (getName() +
@@ -76,9 +126,20 @@ public class Hero extends DungeonCharacter implements Serializable {
                 "\n\nItems: ");
     }
 
+    /**
+     * Retrieves the current room where the hero is located.
+     * This can be used to determine the hero's position within the dungeon.
+     * @return The Room object representing the hero's current location.
+     */
     public Room getRoom() {
         return myRoom;
     }
+
+    /**
+     * Moves the hero to a new location in the dungeon.
+     * @param theX The X-coordinate of the new location.
+     * @param theY The Y-coordinate of the new location.
+     */
     public void move(final int theX, final int theY) {
         Room newRoom = CharacterWindow.myDungeonMap.getRoomAtLocation(theX, theY);
         if (newRoom != null && !newRoom.isWall()) {
@@ -89,22 +150,52 @@ public class Hero extends DungeonCharacter implements Serializable {
         }
         showHeroRooms();
     }
-    public int getY() {
-        return myRoom.getYLocation();
-    }
-    public int getX() {
-        return myRoom.getXLocation();
-    }
+
+    /**
+     * Performs the hero's special skill.
+     */
     public void performSpecialSkill() {
         heal(5);
     }
+
+    /**
+     * Retrieves the Y-coordinate of the hero's current location in the dungeon.
+     * This method is used to identify the hero's vertical position within the map grid.
+     * @return An integer representing the Y-coordinate of the hero's current room.
+     */
+    public int getY() {
+        return myRoom.getYLocation();
+    }
+    /**
+     * Retrieves the X-coordinate of the hero's current location in the dungeon.
+     * This method is used to identify the hero's horizontal position within the map grid.
+     * @return An integer representing the X-coordinate of the hero's current room.
+     */
+    public int getX() {
+        return myRoom.getXLocation();
+    }
+
+    /**
+     * Gets the name of the hero's special skill.
+     * This method is intended to provide information about the hero's unique ability.
+     * @return A string representing the name of the hero's special skill.
+     */
     public String getSkillName() {
         return mySkillName;
     }
+
+    /**
+     * Sets the hero's special skill name.
+     * @param theSkill The new name of the special skill.
+     */
     public void setSkillName(final String theSkill) {
         mySkillName = theSkill;
     }
 
+    /**
+     * Sets the hero's class.
+     * @param theClass The new class of the hero.
+     */
     public void setClass(final String theClass) {
         switch (theClass) {
             case "Priestess" : {
@@ -121,17 +212,34 @@ public class Hero extends DungeonCharacter implements Serializable {
         }
     }
 
+    /**
+     * Gets the hero's class.
+     * @return The class of the hero.
+     */
     public String getHeroClass() {
         return this.heroClass;
     }
 
+    /**
+     * Gets the hero's skill cooldown.
+     * @return The skill cooldown.
+     */
     public int getSkillCooldown() {
         return mySkillCooldown;
     }
 
+    /**
+     * Sets the hero's skill cooldown.
+     * @param theSkillCooldown The new skill cooldown.
+     */
     public void setSkillCooldown(final int theSkillCooldown) {
         this.mySkillCooldown = theSkillCooldown;
     }
+
+
+    /**
+     * Hero dies and performs necessary actions upon death.
+     */
     public void die() {
         setIsDead(true);
         CharacterWindow.myHero.setSkillCooldown(0);
@@ -140,14 +248,26 @@ public class Hero extends DungeonCharacter implements Serializable {
         GameWindow.openGameOverWindow(true);
     }
 
+    /**
+     * Gets the number of pillars the hero has collected.
+     * @return The number of pillars.
+     */
     public int getPillars() {
         return myPillars;
     }
 
+
+    /**
+     * Sets the number of pillars the hero has collected.
+     * @param thePillars The new number of pillars.
+     */
     public void setPillars(int thePillars) {
         myPillars = thePillars;
     }
 
+    /**
+     * Shows the rooms around the hero.
+     */
     public void showHeroRooms() {
         if (CharacterWindow.myHero != null) {
             for (int i = -1; i <= 1; i++) {

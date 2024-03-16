@@ -1,8 +1,17 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package model;
 
 import java.io.Serializable;
 import java.util.*;
-
+/**
+ * Represents the dungeon map for the game.
+ * The map consists of rooms arranged in a grid, containing heroes, monsters, and items.
+ * It supports generating and managing the layout of rooms, the characters (heroes and monsters),
+ * and items like potions and pillars of OO within the game.
+ */
 public class DungeonMap implements Serializable {
     private final Room[][] myMap;
     private final int SMALL_WIDTH = 5;
@@ -19,6 +28,12 @@ public class DungeonMap implements Serializable {
 
     private final int POTIONS = 2;
 
+    /**
+     * Constructs the DungeonMap, initializes map dimensions, and populates the map with rooms,
+     * a hero based on selected character, monsters, and items.
+     * @param theCharacterSelect The type of hero character selected by the player (Warrior, Priestess, Thief).
+     * @param theName The name given to the hero character.
+     */
     public DungeonMap(final String theCharacterSelect, final String theName) {
 
         if (theCharacterSelect.equalsIgnoreCase("Warrior")) {
@@ -52,6 +67,10 @@ public class DungeonMap implements Serializable {
         generateCharacters();
     }
 
+    /**
+     * Creates adjacency lists for rooms to facilitate maze generation and movement within the map.
+     * @param theTempMap A temporary map structure used to construct the dungeon layout.
+     */
     private void createAdjacencyList(final Room[][] theTempMap) {
 
         // The for loop below accesses each node in the Node maze
@@ -93,6 +112,11 @@ public class DungeonMap implements Serializable {
         }
     }
 
+    /**
+     * Generates a maze within the map, carving out paths between rooms and setting wall boundaries.
+     * @param theTempMap A temporary map structure used for initial room setup.
+     * @return A two-dimensional array of Room objects representing the completed maze.
+     */
     private Room[][] generateMaze(final Room[][] theTempMap) {
 
         // Construct maze with walls
@@ -177,6 +201,9 @@ public class DungeonMap implements Serializable {
         return mazeMap;
     }
 
+    /**
+     * Populates the dungeon map with monsters, potions, and pillars based on predefined counts.
+     */
     private void generateCharacters() {
 
         // Generate monsters on the map randomly
@@ -187,10 +214,6 @@ public class DungeonMap implements Serializable {
 
         // Generate pillars on the map randomly
         generatePillars();
-    }
-
-    public Hero getHero() {
-        return this.myHero;
     }
 
 //    private void generateMonsters() {
@@ -205,7 +228,9 @@ public class DungeonMap implements Serializable {
 //        }
 //    }
 
-
+    /**
+     * Randomly places monsters within the dungeon map based on predefined types and counts.
+     */
     private void generateMonsters() {
         int totalMonsters = this.SKELETONS + this.OGRES + this.GREMLINS;
 
@@ -240,7 +265,9 @@ public class DungeonMap implements Serializable {
     }
 
 
-
+    /**
+     * Randomly places healing potions within the dungeon map based on a predefined count.
+     */
     private void generatePotions() {
         for (int i = 0; i < this.POTIONS; i++) {
             int x = (int) (Math.random() * BIG_WIDTH);
@@ -253,6 +280,9 @@ public class DungeonMap implements Serializable {
         }
     }
 
+    /**
+     * Randomly places pillars of OO within the dungeon map, ensuring all four are placed.
+     */
     private void generatePillars() {
         for (int i = 0; i < 4; i++) {
             int x = (int) (Math.random() * BIG_WIDTH);
@@ -265,11 +295,30 @@ public class DungeonMap implements Serializable {
         }
     }
 
+    /**
+     * Retrieves the hero character associated with this dungeon map.
+     * @return The hero present in the dungeon.
+     */
+    public Hero getHero() {
+        return this.myHero;
+    }
+
+    /**
+     * Gets the current state of the dungeon map as a two-dimensional array of rooms.
+     * Also updates the map status by removing dead monsters from the rooms.
+     * @return A two-dimensional array representing the current state of the dungeon.
+     */
     public Room[][] getMap() {
         updateMapStatus();
         return this.myMap;
     }
 
+    /**
+     * Retrieves the room located at the specified coordinates in the dungeon.
+     * @param theXLocation The x-coordinate of the room.
+     * @param theYLocation The y-coordinate of the room.
+     * @return The room at the specified coordinates, or null if coordinates are out of bounds.
+     */
     public Room getRoomAtLocation(final int theXLocation, final int theYLocation) {
         if (theXLocation < 0 || theXLocation >= BIG_WIDTH || theYLocation < 0 || theYLocation >= BIG_HEIGHT) {
             return null;
@@ -277,6 +326,9 @@ public class DungeonMap implements Serializable {
         return this.myMap[theXLocation][theYLocation];
     }
 
+    /**
+     * Updates the status of the map, typically used to clean up after monsters have been defeated.
+     */
     public void updateMapStatus() {
         for (int i = 0; i < BIG_WIDTH; i++) {
             for (int j = 0; j < BIG_HEIGHT; j++) {

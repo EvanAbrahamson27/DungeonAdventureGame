@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package view;
 
 import model.*;
@@ -10,10 +14,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The ButtonPanel class is a component of the game's user interface in a dungeon-crawler style game.
+ * It extends BorderPane and contains control buttons for player actions.
+ * This class is responsible for managing the interaction between the player's actions and the game's mechanics,
+ */
 public class ButtonPanel extends BorderPane {
     private final Font myFont;
     private Button myAttackButton;
@@ -23,6 +31,12 @@ public class ButtonPanel extends BorderPane {
     private final MapPanel myMapPanel;
     private final Hero myPlayer;
 
+    /**
+     * Constructs a ButtonPanel associated with a specific Hero and MapPanel. This panel includes control buttons for player actions such as moving, attacking, using skills, and using items.
+     *
+     * @param thePlayer The Hero associated with this button panel.
+     * @param mapPanel The MapPanel displaying the current dungeon map associated with this button panel.
+     */
     public ButtonPanel(final Hero thePlayer, final MapPanel mapPanel) {
         this.myPlayer = thePlayer;
         this.myMapPanel = mapPanel;
@@ -33,6 +47,11 @@ public class ButtonPanel extends BorderPane {
         updateButtons();
     }
 
+    /**
+     * Creates and arranges all control buttons including movement, attack, skill, and item use buttons. Sets up their initial properties and event handlers.
+     *
+     * @return HBox containing all the control buttons arranged horizontally.
+     */
     private HBox addButtons() {
         HBox buttonBox = new HBox(5);
 
@@ -88,15 +107,32 @@ public class ButtonPanel extends BorderPane {
         return buttonBox;
     }
 
+    /**
+     * Enables a button, making it clickable and fully opaque.
+     *
+     * @param theButton The button to be enabled.
+     */
     private void enableButton(final Button theButton) {
         theButton.setDisable(false);
         theButton.setStyle("-fx-opacity: 1.0;");
     }
+
+
+    /**
+     * Disables a button, making it unclickable and partially transparent.
+     *
+     * @param theButton The button to be disabled.
+     */
     private void disableButton(final Button theButton) {
         theButton.setDisable(true);
         theButton.setStyle("-fx-opacity: 0.5;");
     }
 
+    /**
+     * Regularly updates the buttons' states based on the current game status. This includes enabling
+     * or disabling buttons based on the Hero's and the Monster's states, updating the skill button text,
+     * and controlling the visibility and usability of movement buttons based on the dungeon map and hero's position.
+     */
     private void updateButtons() {
         final boolean[] canMove = {true};
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {

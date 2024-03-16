@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package view;
 
 import javafx.geometry.Pos;
@@ -15,14 +19,29 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DungeonMap;
 import model.Hero;
-
 import java.util.Objects;
 
+/**
+ * A window for character selection in a dungeon-crawler style game.
+ * This stage allows players to select their character class and enter a name before starting the game.
+ * The window includes options for choosing between different character classes, inputting a player name,
+ * and visual representations of each character class. Selections made in this window initialize the game's hero
+ * and dungeon map based on the player's choices.
+ * The window plays a sound upon button click, and sets the stage for the game's starting point
+ * by selecting a character class and defining the player's name.
+ * After selection, the window will close, and the game initializes the player's character and the dungeon map accordingly.
+ */
 public class CharacterWindow extends Stage {
     private String myName = "";
-    private String characterSelect = "";
+    private String myCharacterSelect = "";
     public static DungeonMap myDungeonMap;
     public static Hero myHero;
+
+    /**
+     * Constructs and displays the character selection window.
+     * Initializes UI components necessary for character selection, including text fields, buttons, and images.
+     * Sets up event handlers for the interaction within this window and starts the game with the selected character.
+     */
     public CharacterWindow() {
         setTitle("Character Select");
         setWidth(800);
@@ -46,19 +65,19 @@ public class CharacterWindow extends Stage {
         warriorButton.setOnAction(actionEvent -> {
             buttonMediaPlayer.stop();
             buttonMediaPlayer.play();
-            this.characterSelect = "Warrior"; close();});
+            this.myCharacterSelect = "Warrior"; close();});
 
         Button priestessButton = new Button("Priestess");
         priestessButton.setOnAction(actionEvent -> {
             buttonMediaPlayer.stop();
             buttonMediaPlayer.play();
-            this.characterSelect = "Priestess"; close();});
+            this.myCharacterSelect = "Priestess"; close();});
 
         Button thiefButton = new Button("Thief");
         thiefButton.setOnAction(actionEvent -> {
             buttonMediaPlayer.stop();
             buttonMediaPlayer.play();
-            this.characterSelect = "Thief"; close();});
+            this.myCharacterSelect = "Thief"; close();});
 
         ImageView warriorImage = new ImageView(new Image("Warrior.png"));
         ImageView priestessImage = new ImageView(new Image("Priestess.png"));
@@ -90,7 +109,7 @@ public class CharacterWindow extends Stage {
 
         showAndWait();
 
-        myDungeonMap = new DungeonMap(characterSelect, myName);
+        myDungeonMap = new DungeonMap(myCharacterSelect, myName);
         myHero = myDungeonMap.getHero();
         myHero.setRoom(myDungeonMap.getRoomAtLocation(myHero.getX(), myHero.getY()));
     }

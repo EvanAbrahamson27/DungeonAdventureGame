@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package view;
 
 import controller.DungeonAdventure;
@@ -20,6 +24,12 @@ import java.io.ObjectOutputStream;
 import javafx.util.Duration;
 import java.util.Objects;
 
+/**
+ * The main game window for the dungeon adventure game, handling the overall game interface including starting,
+ * loading, and restarting the game. This class extends the Application class of JavaFX and sets up the game's
+ * primary Stage including buttons, panels, and other interactive elements. It also manages the background music
+ * and the saving and loading of game states.
+ */
 public class GameWindow extends Application {
     private ButtonPanel myButtonPanel;
     private StatPanel myStatPanel;
@@ -28,6 +38,12 @@ public class GameWindow extends Application {
     private RoomPanel myRoomPanel;
     private static BorderPane myBorderPane;
 
+    /**
+     * Starts the main game window, setting up the layout, background, buttons, and event handlers. It initializes
+     * the game environment and displays the initial game scene with options to start, load, or exit the game.
+     *
+     * @param theStage The primary stage for this application, onto which the application scene can be set.
+     */
     @Override
     public void start(final Stage theStage) {
         backgroundMusic();
@@ -70,8 +86,6 @@ public class GameWindow extends Application {
             buttonMediaPlayer.play();
             startButtonAction(theStage, myBorderPane, startButton);
             myBorderPane.getChildren().remove(dungeonImageView);});
-//        borderPane.setCenter(startButton);
-//        BorderPane.setAlignment(startButton, Pos.CENTER);
 
         Button loadGame = new Button("Load Game");
         loadGame.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
@@ -80,8 +94,6 @@ public class GameWindow extends Application {
             buttonMediaPlayer.play();
             loadGameAction(theStage, myBorderPane, loadGame);
         });
-//        borderPane.setCenter(loadGame);
-//        BorderPane.setAlignment(loadGame, Pos.TOP_CENTER);
 
         Button helpButton = new Button("Help");
         helpButton.setStyle("-fx-font-family: 'Luminari'; -fx-font-size: 15px; -fx-padding: 10 50 10 50; -fx-background-color: maroon; -fx-text-fill: black; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
@@ -112,6 +124,15 @@ public class GameWindow extends Application {
 
     }
 
+    /**
+     * Initiates the start of a new game by opening the character selection window and setting up the game environment.
+     * It removes the initial start button and replaces the scene with the game layout, including the map, stat panels,
+     * and other game controls.
+     *
+     * @param theStage The main stage of the application.
+     * @param theBorderPane The main layout container for the application.
+     * @param theStartButton The start game button.
+     */
     private void startButtonAction(final Stage theStage, final BorderPane theBorderPane, final Button theStartButton) {
 
         GameWindow.myBorderPane.getChildren().remove(theStartButton); // Remove the Start Game button
@@ -153,12 +174,33 @@ public class GameWindow extends Application {
 
     }
 
+    /**
+     * Handles the action for loading a game. This method is intended to be implemented with functionality to load a
+     * saved game state.
+     *
+     * @param theStage The main stage of the application.
+     * @param theBorderPane The main layout container for the application.
+     * @param theLoadGame The button for loading a game.
+     */
     private void loadGameAction(final Stage theStage, final BorderPane theBorderPane, final Button theLoadGame) {
     }
 
+    /**
+     * Provides help information to the player. This method can be expanded to display a help dialog or information screen.
+     *
+     * @param theStage The main stage of the application.
+     * @param theBorderPane The main layout container for the application.
+     * @param theHelpButton The help button.
+     */
     private void helpButtonAction(final Stage theStage, final BorderPane theBorderPane, final Button theHelpButton) {
     }
 
+    /**
+     * Creates and returns a MenuBar containing game options like saving and exiting, and debug options for changing
+     * the character class and enhancing player abilities for testing purposes.
+     *
+     * @return A fully constructed MenuBar with file and help options.
+     */
     private MenuBar createMenuBar() {
         MenuBar menuBar = new MenuBar();
 
@@ -214,6 +256,9 @@ public class GameWindow extends Application {
         return menuBar;
     }
 
+    /**
+     * Restarts the game window, clearing all current content and initializing a new game environment.
+     */
     public void restartWindow() {
 
         // Restart the game
@@ -255,14 +300,32 @@ public class GameWindow extends Application {
         myBorderPane.setTop(vBox);
     }
 
+    /**
+     * Launches the application. This is the entry point method called by the JavaFX runtime.
+     *
+     * @param theArgs Command line arguments passed to the application.
+     */
     public static void main(final String[] theArgs) {
         launch(theArgs);
     }
 
+
+    /**
+     * Opens the game over window, displaying a message based on the outcome of the game and providing options to restart or exit.
+     *
+     * @param theLoss Indicates whether the game ended in a loss (true) or a win (false).
+     */
     public static void openGameOverWindow(final boolean theLoss) {
         new GameOverWindow(theLoss);
     }
 
+
+    /**
+     * Opens a dialog for saving the game, offering options to save and continue or save and exit.
+     *
+     * @param theSaveItem The menu item that triggered the save action.
+     * @param theFilename The filename under which to save the game state.
+     */
     public void saveGame(final MenuItem theSaveItem, final String theFilename) {
         Stage dialogStage = new Stage();
         dialogStage.initModality(Modality.APPLICATION_MODAL);
@@ -293,6 +356,12 @@ public class GameWindow extends Application {
         dialogStage.show();
 
     }
+
+    /**
+     * Saves the game state and exits the application.
+     *
+     * @param theFilename The filename under which to save the game state.
+     */
     private void SaveGameExit(String theFilename) {
         try (FileOutputStream fileOS = new FileOutputStream(theFilename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
 
@@ -305,6 +374,11 @@ public class GameWindow extends Application {
         System.exit(0);
     }
 
+    /**
+     * Saves the game state and continues playing.
+     *
+     * @param theFilename The filename under which to save the game state.
+     */
     private void SaveGameContinue(String theFilename) {
         try (FileOutputStream fileOS = new FileOutputStream(theFilename); ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
 
@@ -318,6 +392,9 @@ public class GameWindow extends Application {
         }
     }
 
+    /**
+     * Initializes and plays background music in a loop. Handles exceptions if the music file cannot be found or loaded.
+     */
     private void backgroundMusic() {
         try {
             Media backgroundMusic = new Media(Objects.requireNonNull(getClass().getResource("/audio.mp3")).toExternalForm());
