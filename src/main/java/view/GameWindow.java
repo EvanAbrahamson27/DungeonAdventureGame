@@ -106,7 +106,7 @@ public class GameWindow extends Application {
         loadGame.setOnAction(e -> {
             buttonMediaPlayer.stop();
             buttonMediaPlayer.play();
-            loadGameAction());
+            loadGameAction();
             // loadGameAction(theStage, myBorderPane, loadGame);
         });
 

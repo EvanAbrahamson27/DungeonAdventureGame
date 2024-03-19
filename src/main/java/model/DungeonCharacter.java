@@ -11,13 +11,13 @@ import view.RoomPanel;
 import java.io.Serializable;
 import java.util.Random;
 
-public abstract class DungeonCharacter implements Serializable {
 /**
  * The DungeonCharacter class serves as an abstract base for characters in the game.
  * It encapsulates common properties and methods.
  * This class is designed to be extended by specific types of dungeon characters like heroes and monsters.
  */
-public abstract class DungeonCharacter {
+public abstract class DungeonCharacter implements Serializable {
+
     final private String myName;
     private int myHealthPoints;
     private int myDamageMin;
