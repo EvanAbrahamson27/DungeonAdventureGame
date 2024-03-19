@@ -1,27 +1,24 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
+
 package model;
 
+/**
+ * Represents a position with coordinates (x, y).
+ */
 public class Position {
-    private int x;
-    private int y;
+    final private int myX;
+    final private int myY;
 
-    public Position(final int x, final int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    /**
+     * Constructs a new Position object with the specified coordinates.
+     * @param theX The theX-coordinate.
+     * @param theY The theY-coordinate.
+     */
+    public Position(final int theX, final int theY) {
+        this.myX = theX;
+        this.myY = theY;
     }
 }

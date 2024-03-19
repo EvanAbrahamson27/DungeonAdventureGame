@@ -1,3 +1,7 @@
+/**
+ * TCSS 360
+ * Contributors: Aaniyah Alyes, Belle Kim, Evan Abrahamson, Isabelle del Castillo
+ */
 package view;
 
 import controller.DungeonAdventure;
@@ -10,10 +14,21 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
+/**
+ * A custom UI component representing the game log panel in a game.
+ * This panel contains a non-editable text area within a scroll pane, displaying ongoing game events and actions.
+ * It is updated periodically to reflect the latest game status and actions, providing players with feedback
+ * and history of their actions and the game's responses.
+ */
 public class  LogPanel extends BorderPane {
     final private TextArea myLog;
     final private ScrollPane myScrollPane;
-    LogPanel() {
+
+    /**
+     * Constructs a new LogPanel. Initializes the text area and scroll pane used to display the game log.
+     * Sets up the layout and styles for displaying the log content.
+     */
+    public LogPanel() {
         myLog = new TextArea();
         myScrollPane = new ScrollPane(myLog);
         // setStyle("-fx-border-color: black;");
@@ -28,6 +43,12 @@ public class  LogPanel extends BorderPane {
         updateLog();
     }
 
+    /**
+     * Initializes and returns the text area used for the game log. Sets properties such as editability,
+     * focus traversability, font, and wrap text. The scroll pane's vertical scroll bar policy is also defined here.
+     *
+     * @return The initialized TextArea for the game log.
+     */
     private TextArea createLog() {
         myLog.setEditable(false);
         myLog.setFocusTraversable(false);
@@ -39,6 +60,10 @@ public class  LogPanel extends BorderPane {
         return myLog;
     }
 
+    /**
+     * Continuously updates the text area with the latest game log entries from the DungeonAdventure controller.
+     * This method uses a Timeline to periodically check for and display new log messages.
+     */
     private void updateLog() {
         Timeline updateTimer = new Timeline(new KeyFrame(Duration.millis(100), event -> {
             if (!myLog.getText().equals(DungeonAdventure.getLog())) {
